@@ -1,0 +1,26 @@
+category	allowed	source_labels	note
+bathtub	true	arkitscenes:bathtub	
+bed	true	arkitscenes:bed	
+cabinet	true	arkitscenes:cabinet	
+chair	true	arkitscenes:chair	
+dishwasher	true	arkitscenes:dishwasher	
+fireplace	true	arkitscenes:fireplace	
+oven	true	arkitscenes:oven	
+refrigerator	true	arkitscenes:refrigerator	
+shelf	true	arkitscenes:shelf	
+sink	true	arkitscenes:sink	
+sofa	true	arkitscenes:sofa	
+stool	true	arkitscenes:stool	
+armchair	true		由 sofa 派生：场景中最长边 < 1.2m 的 sofa 恰好 1 个时改称 armchair（负责人 2026-10-31 决定）
+stove	true	arkitscenes:stove	
+table	true	arkitscenes:table	
+toilet	true	arkitscenes:toilet	
+TV	true	arkitscenes:tv_monitor	原标签 tv_monitor，题干中写作 "the TV"
+washing machine	true	arkitscenes:washer	原标签 washer，改为无歧义的 washing machine
+wall	false		指南禁止出题类别（ScanNet++ 映射时使用）
+floor	false		指南禁止出题类别（ScanNet++ 映射时使用）
+ceiling	false		指南禁止出题类别（ScanNet++ 映射时使用）
+object	false		指南禁止出题类别（ScanNet++ 映射时使用）
+stuff	false		指南禁止出题类别（ScanNet++ 映射时使用）
+unknown	false		指南禁止出题类别（ScanNet++ 映射时使用）
+misc	false		指南禁止出题类别（ScanNet++ 映射时使用）

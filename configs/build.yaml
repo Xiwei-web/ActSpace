@@ -1,0 +1,289 @@
+# ActSpace-Bench build configuration. All paths, thresholds and random seeds live here.
+# Relative paths are resolved against the project root (two levels above this file).
+
+seed: 20261030
+
+paths:
+  data_raw: data_raw
+  work: work                         # intermediate outputs and frozen versions; the machine-specific location is set by `work` in configs/paths.yaml
+  reports: reports
+  vocab: vocab
+  arkit_3dod_root: data_raw/arkitscenes/3dod          # <video_id>/<video_id>_frames/...
+  arkit_raw_root: data_raw/arkitscenes/raw            # <video_id>/vga_wide, vga_wide_intrinsics
+  arkit_metadata_csv: data_raw/arkitscenes/metadata.csv
+  arkit_split_csv: data_raw/arkitscenes/3dod_train_val_splits.csv
+  arkit_split_name: Validation
+  arkit_raw_url: https://docs-assets.developer.apple.com/ml-research/datasets/arkitscenes/v1/raw
+  arkit_repo: third_party/ARKitScenes   # official repository (download_data.py); vga is downloaded to <repo>/data/raw/Validation/<video_id>/; arkitscenes_repo in paths.yaml
+
+arkitscenes:
+  display_frames: vga_wide            # frames used for questions and display (640x480)
+  pose_frames: lowres_wide            # frames used for GATE A pose validation
+  vga_pose_interp_max_gap_s: 0.10     # maximum time gap between the two poses used for interpolation
+  vga_pose_nearest_tol_s: 0.02        # tolerance for taking the nearest pose directly
+  vga_download_cap_gb: null           # no cap: the full ARKit vga set is downloaded in one go
+  vga_assets: [vga_wide, vga_wide_intrinsics]
+  depth_scale: 0.001                  # lowres_depth png is uint16 millimetres
+  pilot_scenes: ["47331971", "47333456", "47895355", "48018375", "48458417"]  # GATE C1 pilot scenes (selection described in reports/step0_inventory.md)
+  pilot_scenes_dropped: ["42899680", "42899714"]  # drawn in the first round but ORIENTATION_CONFLICT; replaced in seed order
+
+# ScanNet++-specific configuration (scannetpp branch, runs in parallel with ARKit; ARKit does not read this section)
+scannetpp:
+  root: data_raw/scannetpp            # ScanNet++ data root (splits/, metadata/, data/<scene_id>/); data_raw is set in paths.yaml
+  toolbox: third_party/scannetpp     # official toolbox github.com/scannetpp/scannetpp (path layout in common/scene_release.py); scannetpp_toolbox in paths.yaml
+  work_subdir: scannetpp              # intermediate outputs: <paths.work>/scannetpp/
+  logs: logs/scannetpp
+  split: nvs_sem_val
+  # Pilot scenes: stratified by official scene type, 5 drawn with the seed from 5 different types (scannetpp.draw_stratified_pilots,
+  # rng = scene_rng(cfg, split, "pilot_draw"))
+  pilot_scenes: ["c50d2d1d42", "31a2c91c43", "f3d64c30f8", "5ee7c22ba0", "5748ce6f01"]  # office, bathroom, apartment, kitchen, conference room
+  pilot_count: 5
+  # Original pilot scenes (first 5 of splits/nvs_sem_val.txt, all offices); kept on disk, no longer used as pilots
+  pilot_scenes_v0: ["7b6477cb95", "c50d2d1d42", "cc5237fd77", "acd95847c5", "fb5a96b1a2"]
+  required_files:                     # files required by Step 0 (relative to data/<scene_id>/)
+    - iphone/rgb.mkv
+    - iphone/pose_intrinsic_imu.json
+    - iphone/depth.bin
+    - scans/mesh_aligned_0.05.ply
+    - scans/mesh_aligned_0.05_semantic.ply
+    - scans/segments.json
+    - scans/segments_anno.json
+  # Decoding (frame rate in frames.scannetpp_decode_fps): RGB and depth use the same raw frame numbers; file names follow the toolbox's frame_%06d (same as the pose JSON keys)
+  rgb_jpeg_qscale: 1                  # ffmpeg -q:v, same as the toolbox's extract_rgb
+  rgb_size: [1920, 1440]              # expected [width, height]
+  depth_size: [256, 192]              # expected [width, height]; depth.bin is per-frame lz4 (uint16 millimetres), falling back to zlib (float32 metres) as in the toolbox
+  depth_scale: 0.001                  # decoded depth png is uint16 millimetres
+  decode_workers: 5                   # number of scene-level parallel processes
+  # Evidence linking: questions.evidence_link_mode is shared with ARKit (currently partial_partial). ScanNet++ Steps 5-6 read this key
+  # as an override; null = use the shared questions.evidence_link_mode, so the main results follow the ARKit rule and the rule is
+  # identical in the merged release. visible_partial (one visible, the other at least partial; code value visible_partial) is kept
+  # as a comparison rule, and the question counts under both rules are reported
+  evidence_link_mode: null
+  evidence_link_compare_modes: [partial_partial]   # compared with visible_partial in the pilot (18 groups / 73 questions vs 20 groups / 86 questions); the full run uses only the main rule
+  # T3/T4 quadrant balancing removes questions (shared questions.quadrant_balance_tol: 0.05); ScanNet++ does no removal-based balancing in the pilot or full stage (null),
+  # it only reports the imbalance; balancing is applied when Step 8 is rerun after merging with ARKit. Option letters are balanced as usual (shuffled, nothing removed)
+  quadrant_balance_tol: null
+  compare_shared_quadrant_rule: false   # true = also run the shared rule for comparison (in the pilot it would remove 12 / 86 questions)
+  # Within a scene, T2 is deduplicated by reference object + comparison direction + correct answer (distractors ignored); ARKit unchanged
+  t2_dedup_by_answer: true
+  whatif_work_root: work_whatif_scannetpp   # sandbox work directory for read-only what-if analyses, alongside paths.work; never touches the official outputs
+  gate_a_vis_objects_max: 25          # GATE A overlays: maximum number of object boxes drawn per frame (top ones by number of visible points)
+  gate_a_vis_min_visible_frac: 0.3    # overlays only draw objects whose visible fraction of sample points is >= this value (visualisation only, not used for decisions)
+  gate_a_edge_check_scale: 0.5        # RGB alignment check: render mesh depth at RGB resolution x this factor and compare with RGB edges
+  drop_unverified_pose_frames: true   # frames whose pose is "unverified" are also dropped (POSE_FRAME_INVALID), as for ARKit
+  # Step 3 (objects and category vocabulary). Object box: minimum-area bounding rectangle in xy + z bounds (scannetpp.object_obb)
+  # Vocabulary: vocab/label_mapping_scannetpp.tsv (category_fine / category_merged) and vocab/categories_scannetpp_draft.tsv (allowed),
+  # drafted by python -m actspace_build.scannetpp_vocab build and reviewed at GATE B
+  # Size references (larger / smaller) are permanently disabled; ScanNet++ refers to objects only by "a category name unique in the scene"
+  size_reference_enabled: false
+  blacklist_file: configs/object_blacklist_scannetpp.yaml   # ScanNet++ has its own blacklist, separate from ARKit; the switch is objects.blacklist_enabled
+  small_sofa_max_longest_m: 1.0       # a sofa (single armchair) with longest edge < this value is not referable (NOT_REFERABLE, detail small_sofa) but still counts towards sofa uniqueness
+  # Uniqueness is decided on merged categories; objects are named by the merged category name by default, and by the fine-grained name only where the merged name would be misleading (vocabulary name_ok: monitor, copier)
+  vocab_granularity: merged_unique_fine_name   # fine / merged / hybrid (comparison rule before GATE B) / merged_unique_fine_name
+  small_category_max_longest_m: 0.30  # categories whose typical size (median longest box edge) is below this value are listed separately, to decide whether to ban them from questions
+  outlier_size_factor: 2.5            # report only: longest box edge > typical longest edge of the category x this factor (and exceeding it by >= outlier_min_excess_m) is marked "clearly oversized"
+  outlier_min_excess_m: 0.5
+  outlier_robust_pct: 1.0             # report only: a box rebuilt after dropping this percentage of points at both ends of each box axis, whose longest edge ratio to the original is >= outlier_robust_ratio, is marked "suspected outlier points"
+  outlier_robust_ratio: 1.5
+  best_view_render_size: [480, 360]   # resolution at which mesh depth is rendered when choosing an object's best view (report figures only)
+  # Step 4 (view graph and visibility; all thresholds come from the view_graph / visibility sections). Sensor depth is read for the same frame number and upscaled with nearest neighbour to RGB resolution (equivalent to scaling the intrinsics, verified at GATE A)
+  # Object points that fall on magenta masking patches are always invisible; the magenta test is the same as in the Step 2 statistics, dilated by a few pixels to cover JPEG block edges
+  magenta_r_min: 200
+  magenta_b_min: 200
+  magenta_g_max: 60
+  magenta_dilate_px: 4                # pixels at full RGB resolution (1920x1440)
+  # For objects whose label contains "mirror", the thinnest box face facing the room acts as an opaque occluder; points beyond that face are always occluded
+  mirror_label_exclude: ["mirror lamp"]   # a mirror lamp is a lamp (vanity light), not a mirror surface
+  # In 31a2c91c43, "window" #25 is actually a bathroom mirror (the box shows reflections of the opposite door and hanging jeans), so it is treated as a mirror
+  mirror_object_overrides: {"31a2c91c43": [25]}
+  # The report lists flat objects whose in-box sensor depth is clearly farther than the box face as suspected mirrors, for manual review (report only, no effect on decisions)
+  mirror_scan_max_thickness_m: 0.15   # a box with thinnest edge <= this value and second-longest edge >= mirror_scan_min_face_m counts as flat
+  mirror_scan_min_face_m: 0.30
+  mirror_scan_far_m: 0.30             # sensor depth more than this beyond the box face counts as "farther"
+  mirror_scan_min_px: 200             # only nodes where the box face covers at least this many valid pixels in the depth map (256x192) are counted
+  mirror_scan_min_nodes: 3
+  mirror_scan_min_far_frac: 0.50      # listed as suspected when the share of "farther" pixels among counted nodes is >= this value
+  # ScanNet++ visibility adds two conditions (ARKit unchanged); visible objects that fail them are downgraded to partial. Thresholds chosen on a 50-pair spot check; null = disabled
+  vis_min_short_side_px: 105          # shape: short side of the minimum bounding rectangle of the convex hull of projected visible points (pixels in the 1920x1440 original)
+  vis_min_sharpness_ratio: 0.18       # region sharpness: Laplacian variance inside the convex hull / reference value
+  vis_sharpness_ref: scene_frames     # reference: scene_frames (median over whole images of the scene's nodes) / object_nodes (median of the region values over the object's visible nodes)
+  # Extension of the magenta rule: visible is downgraded to partial when the share of in-frustum points projecting onto magenta pixels exceeds this value (fixes the case where a patch covers the middle of an object and only edge points remain, while the hull area is still computed from the whole box)
+  vis_max_magenta_frac: 0.30
+  # ScanNet++ visible_min_ratio (rho) raised 0.30 -> 0.40; evaluated first on the full data in a sandbox and adopted only if the question count drops by <= 10%; null = use the shared value (ARKit 0.30)
+  visible_min_ratio: 0.40           # sandbox evaluation: questions 839 -> 821 (-2.1%, <= 10%), so adopted
+  # Motion blur detected from 60 FPS poses: camera angular speed (deg/s) and linear speed (m/s) within +-motion_half_window_frames frames of the keyframe (2 frames ~ +-1/30 s);
+  # for nodes above the thresholds, all visible objects are downgraded to partial (the node stays in the view graph). Evaluated first in a sandbox and adopted only if the question count drops by <= 5%; null = disabled
+  motion_half_window_frames: 2
+  motion_max_ang_deg_s: 73            # sandbox evaluation: questions 803 -> 803 (0%, <= 5%), so adopted. Basis (earlier spot checks): known blurry samples at 53 / 62 / 74 / 97; 4 of the 181 samples judged "usable" are >= 73
+  motion_max_lin_m_s: null            # not used for blur; >= 0.9 would flag the offset-box frames of object #26, advisory only
+  # Lateral pose offset: for nodes whose per-pose depth error is >= the scene's median node error x this factor and whose linear speed is >= the next value, visible is downgraded to partial
+  pose_err_ratio_max: 2.5
+  pose_err_min_lin_m_s: 0.9           # the fast-motion threshold used in the analysis (only 3 of the 181 spot-check samples judged "usable" are >= 0.9)
+
+frames:
+  scannetpp_decode_fps: 10
+  pose_timestamp_tolerance_s: 0.02
+  blur_drop_percentile: 20            # raised from 10 to 20
+  blur_min_rel_to_median: 0.4         # frames with Laplacian variance < scene median x 0.4 are always dropped
+  keyframe_sharpest_window_s: 0.5     # once the motion condition is met, the sharpest frame within +-0.5 s is taken as the keyframe
+  keyframe_require_depth_match: true  # within the window, only frames with a time-matched (<= visibility.sensor_depth_tol_s) lowres_depth are candidates
+  keyframe_min_translation_m: 0.30
+  keyframe_min_rotation_deg: 15
+  min_keyframes_per_scene: 40
+  min_rgb_long_side_px: 640
+
+gate_a:
+  frames_per_scene: 10
+  depth_median_abs_err_m: 0.10
+  pass_ratio: 0.90                    # only used to determine the pose convention (no longer decides whether a scene is kept)
+  pose_check_depth_tol_s: 0.02        # per-pose check: maximum time gap between a traj pose and lowres_depth; beyond it the pose is "unverified"
+  max_bad_pose_frac: 0.20             # a scene is dropped when bad poses exceed 20% of verified poses
+  vis_frames_per_scene: 3
+  depth_min_valid_m: 0.1              # lower bound of the valid sensor depth range
+  depth_max_valid_m: 10.0             # upper bound of the valid sensor depth range
+  min_valid_pixels: 500               # frames with fewer valid pixels are excluded from the statistics
+  vga_image_min_ncc: 0.8              # vga validation (scene-level orientation check): lower bound on the median normalised cross-correlation between a resized vga frame and the nearest lowres frame
+
+orientation:
+  min_agreement_frac: 0.8             # share of frames in a scene that must agree; below it the orientation is uncertain
+  # When the pose-based orientation conflicts with metadata sky_direction, the pose decides, provided the agreement is >= min_agreement_frac
+  # and the upright thumbnails have been checked manually; confirmed video_ids are listed here
+  confirmed_conflict_scenes: ["41125696", "42444954", "42446016", "42897538", "42897678", "42898497", "42899680", "42899688", "42899691", "42899699", "42899714", "42899723", "42899725", "42899731", "47331311", "47331333", "47333435", "47430422", "47430471", "47430483", "47430485", "47895750", "48018730"]  # all confirmed after checking orientation_review.md line by line; 47332915 (48% agreement) dropped
+
+objects:
+  min_longest_edge_m: 0.10
+  arkit_obb_inflate_m: 0.05          # inflate only horizontally and upwards
+  floor_cut_m: 0.03                   # drop vertices with z < OBB bottom + 0.03 m (floor / carpet)
+  # Object point sets also drop vertices that fall inside another object's (non-inflated) OBB
+  nested_min_volume_frac: 0.80        # a small box with >= 80% of its volume inside a larger box is nested and overlapping vertices go to the smaller object; otherwise the boxes are adjacent and the vertices are dropped from both
+  min_object_points: 100
+  min_referable_objects_per_scene: 3  # lowered from 5 to 3
+  size_ref_enabled: false             # size references are permanently disabled (GATE D round 3 part B showed larger/smaller to be very ambiguous), for both ARKit and ScanNet++;
+                                      # objects are referred to only by "a category name unique in the scene". The size_* parameters below are inactive and kept only to reproduce old versions
+  size_disambig_min_volume_ratio: 2.5 # (inactive) raised from 1.5 to 2.5
+  size_disambig_max_instances: 2      # (inactive) larger/smaller only when the category has exactly 2 instances; largest/smallest no longer used
+  size_ref_require_covisible: true    # (inactive) the two instances must both be visible in at least one node (checked when Steps 5-6 load the scene)
+  size_ref_covisible_mode: visible_visible  # (inactive) the "same view" rule for the previous key (current: both visible); other values are for read-only what-if analyses only
+  size_disambig_min_center_dist_m: 1.0  # (inactive) instance centres of the category must be pairwise >= 1.0 m apart, otherwise disabled (excludes double sinks, side-by-side cabinets)
+  blacklist_enabled: true             # objects involved in GATE D questions flagged label wrong / unannotated same-category object are no longer used for questions
+  blacklist_file: configs/object_blacklist.yaml
+  armchair_enabled: false             # the armchair rule is disabled
+  armchair_max_longest_edge_m: 1.2    # (inactive) when exactly one sofa instance has longest edge < 1.2 m it is called "the armchair"
+  banned_categories: [wall, floor, ceiling, object, stuff, unknown, misc]
+
+view_graph:
+  move_min_m: 0.2
+  move_max_m: 1.5
+  move_max_m_relaxed: 2.0
+  move_max_dyaw_deg: 45
+  turn_max_translation_m: 0.5
+  turn_min_deg: 20
+  turn_max_deg: 90
+  turn_target_deg: 45
+  front_half_angle_deg: 45
+  back_min_angle_deg: 135
+  min_scc_ratio: 0.70
+  stop_if_disconnected_frac: 0.10     # in the full run, stop and report if > 10% of scenes are dropped for GRAPH_DISCONNECTED
+
+visibility:
+  max_points_per_object: 2000
+  occlusion_tolerance_m: 0.05
+  visible_min_ratio: 0.30
+  visible_min_area_frac: 0.02          # raised from 0.003 to 0.02
+  visible_min_points: 50
+  invisible_max_ratio: 0.05
+  visible_min_completeness: 0.30      # visible also requires visible points / all sample points of the object >= 0.30
+  visible_min_in_frame_frac: 0.60     # at least 60% of the projected object OBB area must lie inside the image
+  sensor_depth_tol_s: 0.02            # when a frame is within this time of a lowres_depth frame, occlusion also uses sensor depth
+  sensor_occlusion_tolerance_m: 0.10  # tolerance for "not occluded" under sensor depth
+
+groups:
+  require_constraint: false           # groups are generated with a constraint when one is available, otherwise unconstrained groups are allowed; still 3-5 questions and >= 2 templates
+  objects_per_cluster: [3, 5]
+  min_pair_distance_m: 0.5
+  max_groups_per_scene: 8
+  max_object_overlap_between_groups: 2
+  init_view_min_visible_objects: 2
+  init_view_min_invisible_frac: 0.70
+  questions_per_group: [3, 5]
+  cluster_sample_attempts: 5000       # maximum attempts when randomly sampling object clusters
+  small_scene_max_referable: 6        # in scenes with <= 6 referable objects, clusters of 3 objects are preferred
+  small_scene_cluster_size: 3
+  cluster_require_visible_anywhere: true  # clusters are drawn only from referable objects that are visible in at least one node
+  init_view_relaxed: true             # second-stage switch: enabled because only 53 < 95 scenes produced questions after the first stage
+  init_view_relaxed_min_visible: 1    # relaxed: >= 1 annotated object visible
+  init_view_relaxed_min_seen: 2       # or >= 2 annotated objects visible / partial
+
+questions:
+  t1_distance_range_m: [0.5, 8.0]
+  rank_margin_rel: 0.15
+  rank_margin_abs_m: 0.30
+  angle_margin_deg: 20
+  min_standpoint_distance_m: 0.5
+  max_init_per_group: 1
+  target_init_frac_max: 0.10
+  target_unanswerable_frac: [0.08, 0.12]
+  # Unanswerable questions use masking: all nodes of the question's view graph where the masked object is visible/partial are removed,
+  # so the object is invisible in every remaining node; p0 is never masked. If the remaining graph is disconnected, nodes not connected to p0 are masked too;
+  # after masking, every other question in the group must still be answerable, and the whole group shares the masked view graph; questions and groups record the masked node list
+  pilot_unanswerable_per_scene: [1, 2]  # C1 pilot only; the full run tries 1 per group, with at most the upper bound of target_unanswerable_frac over the dataset
+  unanswerable_max_masked_frac: 0.30  # candidates whose masked-node share exceeds 30% are discarded
+  require_evidence_linked: true       # for T1/T2/T3/T5 the graph linking evidence objects that share a node must be connected, otherwise discarded (EVIDENCE_NOT_LINKED); T4 exempt
+  evidence_link_mode: partial_partial # "same view" relaxed: visible_partial (one visible, the other at least partial) was tried first;
+                                      # it yielded < 500 final questions (only 181 after Step 6), so partial_partial (both at least partial) is used
+                                      # options: visible_visible (original definition) / visible_partial / partial_partial
+  never_visible_is_ambiguous: true    # evidence objects invisible in every view are discarded as AMBIGUOUS_EVIDENCE; unanswerable questions use masking only
+  # With "largest/smallest X" enabled, a question can have 15+ evidence objects (e.g. 12 cabinets) and the exact oracle search
+  # (designed for <= 5 evidence objects) runs out of memory; questions with more evidence objects than this are discarded (EVIDENCE_TOO_LARGE)
+  max_evidence_objects: 8
+  max_t4_per_object_per_scene: 2      # deduplication: within a scene, the same object appears in at most 2 T4 questions (different start points)
+  quadrant_balance_tol: 0.05          # each T3/T4 quadrant must be within 25% +- 0.05; otherwise the fewest non-constraint filler questions are removed
+  answer_round_m: 0.1
+  store_round_decimals: 2
+  t2_options: [3, 4]                  # number of T2 options (3-4)
+  t5_options: [3, 4]                  # raised from 2-3 to 3-4, same as T2
+  t2_farthest_frac: 0.5               # share of T2 questions phrased with "farthest"
+  pair_max_frac: 0.20                 # upper bound on the share of two-option comparison questions (T2:pair) among all questions
+  max_distance_transitivity_per_scene: 1  # at most 1 group per scene with a distance_transitivity constraint
+
+report:
+  cards_per_scene: 3                  # GATE C: number of group visualisation cards per pilot scene
+  card_max_evidence_views: 3          # maximum number of evidence views shown on a card
+
+rewrite:
+  n_paraphrases: 3
+  model: "<to be set by owner>"
+  temperature: 0.7
+
+debias:
+  n_folds: 5
+  prune_step_frac: 0.05
+  mc_margin_over_chance_pp: 5
+  max_prune_frac_per_template: 0.40
+  keep_group_on_constraint_loss: true   # when a question in a constraint is pruned, only the constraint is invalidated; the group is kept if it still has 3 questions and 2 templates
+  t4_front_back_tol: 0.05             # T4 (answerable): front / back each 50% +- 5%
+  output_version: arkit_only_v0.11    # optional constraints + no group-level pruning; v0.9 / v0.10 outputs are kept under _step8/
+
+human_check:
+  sample_frac: 0.15                   # round 1 (v0.9): sampling fraction per stratum
+  round_groups: 30                    # from round 2 on, 30 groups are drawn stratified with a new seed, disjoint from earlier rounds
+  # Round 3 = part A (20 groups new in v0.11, prioritising T4 and unconstrained groups) + part B (10 groups from the size-reference experiment branch)
+  round3:
+    a_groups: 20
+    a_priority_weight: 2.0            # strata containing T4 or no constraint get quota = stratum size x 2
+    b_groups: 10
+    b_version: arkit_size_exp_v0.11
+    b_config: null                    # was the experiment-branch sandbox config; the sandbox has been deleted
+    b_cancelled: true                 # size references are permanently disabled; part B is statistics only, not used for the decision, and the experiment-branch outputs are deleted
+    b_prefix: B_
+    b_label: B 部分（大小指称验证）
+    b_min_size_correct_frac: 0.95     # (inactive) size references would be reconsidered only if >= 95% of part-B size questions were "correct without label wrong"
+  annotators_per_group: 1             # one annotator checks every question; no kappa is computed
+  # GATE D has two phases (blind answer -> check against ground truth) and the check phase decides; this replaces an "annotator agrees with ground truth >= 90%" criterion
+  min_review_correct_frac: 0.95       # lower bound on the share of answerable questions checked as "correct"
+  # Extra checkboxes offered for each question group on the GATE D annotation page (Step 9)
+  extra_flags:
+    - id: unannotated_same_category_object
+      label: "场景中存在同类但未被标注的物体（指称有歧义）"
+      example: "48458417 p0 中的白色立式冰箱可能未被标注"
+  max_ambiguous_frac: 0.05            # upper bound on the share of answerable questions flagged "ambiguous" or "unannotated same-category object"

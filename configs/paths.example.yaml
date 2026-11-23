@@ -1,0 +1,49 @@
+# Local paths for ActSpace-Bench. Copy this file to configs/paths.yaml (git-ignored) and edit it, or point the
+# environment variable ACTSPACE_PATHS to your copy. Every key is optional: without it the default in brackets is used.
+# Relative paths are relative to the directory of this file; ~ and $VARS are expanded.
+paths:
+  # Raw datasets [data_raw/ in the repository]. Expected layout (symlinks are fine):
+  #   <data_raw>/arkitscenes/3dod                     -> <ARKitScenes>/data/3dod/Validation
+  #   <data_raw>/arkitscenes/raw                      -> <ARKitScenes>/data/raw/Validation      (vga_wide frames)
+  #   <data_raw>/arkitscenes/metadata.csv             -> <ARKitScenes>/data/3dod/metadata.csv
+  #   <data_raw>/arkitscenes/3dod_train_val_splits.csv
+  #   <data_raw>/scannetpp                            -> <ScanNet++ data root> (data/, splits/, metadata/)
+  data_raw: /data/datasets/actspace_raw
+
+  # Build outputs and frozen versions of the construction pipeline [work/]. Without `annotations`, the evaluation reads the frozen
+  # version from here: <work>/merged/_step8/merged_v1.0/ and <work>/<dataset>/<scene>/
+  work: /data/actspace/work
+
+  # The released ActSpace annotation package (unpacked; data/, scenes/, metadata/, SHA256SUMS) [not set]. When set, the
+  # evaluation reads the benchmark from here instead of the frozen build directory under `work`.
+  annotations: /data/actspace/annotations/merged_v1.0
+
+  # Release packages written by `python -m actspace_build.merge_release release` [release/]
+  release: /data/actspace/release
+  # Scratch area for merge dry runs [merge_sandbox/]
+  sandbox: /data/actspace/merge_sandbox
+  # Logs of long build steps [logs/]
+  logs: /data/actspace/logs
+
+  # Evaluation frames [not set: frames are read from the raw datasets]. Either the output directory of
+  # scripts/rebuild_frames.py (<frames>/<scene_id>/<frame_id>.png|.jpg) or exported evaluation JPEGs
+  # (<frames>/<dataset>/<scene_id>/<frame_id>.jpg).
+  frames: /data/actspace/frames
+
+  # Open-model weights, one directory per model (<models>/<model dir>) [models/]
+  models: /data/models
+  # Results of all runs: open models <results>/<model>/<setting>/<run>/, API models <results>/api/...,
+  # single runs <results>/eval_runs/..., figures <results>/_reports/... [results/]
+  results: /data/actspace/results
+  # Hugging Face cache used by the model servers (offline at run time) [not set]
+  hf_home: /data/hf_cache
+
+  # Conda environment that contains vLLM (bin/vllm and bin/python), required for open models [not set]
+  vllm_env: ~/miniconda3/envs/actspace-vllm
+  # Cambrian-S (optional): python of its environment and a clone of github.com/cambrian-mllm/cambrian-s [not set; third_party/cambrian-s]
+  cambrian_python: ~/miniconda3/envs/cambrian-s/bin/python
+  cambrian_repo: /data/code/cambrian-s
+
+  # Only for rebuilding the dataset from raw data: official toolboxes [third_party/scannetpp, third_party/ARKitScenes]
+  scannetpp_toolbox: /data/code/scannetpp
+  arkitscenes_repo: /data/code/ARKitScenes

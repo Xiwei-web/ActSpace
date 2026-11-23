@@ -1,0 +1,4 @@
+Metadata-Version: 2.1
+Name: actspace-vllm-plugins
+Version: 0.1
+Summary: ActSpace vLLM plugins (LLaVA-OneVision base-resolution only)

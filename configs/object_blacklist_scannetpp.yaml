@@ -1,0 +1,178 @@
+# ScanNet++ object blacklist, kept separate from ARKit's configs/object_blacklist.yaml so the frozen ARKit configuration stays untouched.
+# ScanNet++ Step 3 (scannetpp_step3.load_blacklist) matches entries by (scene_id, obj_id), checks source_label (raises on mismatch) and
+# marks the object BLACKLISTED; blacklisted objects still count towards category uniqueness.
+# The `reason` values are kept verbatim in Chinese because this file is hashed by the frozen dataset manifest;
+# an English gloss is given in the comment above each entry. 'Visibility spot check' = manual visibility spot check of
+# sampled (object, frame) pairs; 'audit' = manual audit of all objects used in questions (tile ids P<page>-<tile>).
+objects:
+# actually a bathroom mirror (the box shows reflections of the opposite door and jeans); spot check round 1 #09, #11
+- scene_id: '31a2c91c43'
+  obj_id: 25
+  source_label: window
+  reason: 实为浴室镜子（框内是对面门与牛仔裤的倒影）；可见性抽检第 1 轮 #09、#11
+# actually a grey wall strip + cardboard box, not a whiteboard; spot check round 1 #06
+- scene_id: '5ee7c22ba0'
+  obj_id: 33
+  source_label: whiteboard
+  reason: 实为墙面灰色饰带 + 纸箱，不是白板；可见性抽检第 1 轮 #06
+# Added after round 1 of the full-dataset visibility spot check
+# flat panel heater (long white panel, no fins), not recognisable; full spot check round 1 #02, #32
+- scene_id: '3864514494'
+  obj_id: 2
+  source_label: heater
+  reason: 平板式暖气（白色长板，无散热片），人认不出；全量抽检第 1 轮 #02、#32
+# actually a thin corrugated sheet leaning between metal plates, wrong label; full spot check round 1 #39
+- scene_id: '13c3e046d7'
+  obj_id: 27
+  source_label: cardbox
+  reason: 实为靠在金属板之间的一张瓦楞薄板，标签错误；全量抽检第 1 轮 #39
+# Added after round 2 of the full-dataset spot check
+# third occurrence of a thin side-on strip (pilot round 1 #21/#22, full round 2 #22)
+- scene_id: 'c50d2d1d42'
+  obj_id: 64
+  source_label: blinds
+  reason: 第三次出现侧视细条（试点第 1 轮 #21/#22、全量第 2 轮 #22）
+# actually a plastic storage box on the washbasin; full spot check round 2 #38
+- scene_id: 'e7af285f7d'
+  obj_id: 104
+  source_label: shelf
+  reason: 实为洗手台上的塑料收纳盒；全量抽检第 2 轮 #38
+# Added after round 3 of the full-dataset spot check
+# built-in fridge that looks like a cabinet; full spot check round 3 #44
+- scene_id: '3db0a1c8f3'
+  obj_id: 36
+  source_label: refrigerator
+  reason: 嵌入式冰箱，外观同橱柜；全量抽检第 3 轮 #44
+# built-in dishwasher, failed twice (full spot check round 2 #16, round 3 #48)
+- scene_id: '3864514494'
+  obj_id: 18
+  source_label: dishwasher
+  reason: 嵌入式洗碗机，两次失败（全量抽检第 2 轮 #16、第 3 轮 #48）
+# Added after GATE D (human verification)
+# actually a cardboard box; GATE D g_000055 (4 questions), full spot check round 3 #15
+- scene_id: '3e8bba0176'
+  obj_id: 43
+  source_label: printer
+  reason: 实为纸箱；GATE D g_000055（4 题），全量抽检第 3 轮 #15
+# 7 plant pots elsewhere in the scene, 'the pot' is ambiguous; GATE D g_000081_q2
+- scene_id: '5942004064'
+  obj_id: 56
+  source_label: pot
+  reason: 场景中另有 7 个 plant pot，“the pot”有歧义；GATE D g_000081_q2
+# an unannotated trash can under the sink makes 'the trash can' ambiguous; GATE D g_000046_q2
+- scene_id: '38d58a7a31'
+  obj_id: 71
+  source_label: trash can
+  reason: sink 下有一个未标注的垃圾桶，“the trash can”有歧义；GATE D g_000046_q2
+# Added after round 4 of the visibility spot check
+# actually a cake paper mat; visibility spot check round 4 #28
+- scene_id: 'f9f95681fd'
+  obj_id: 11
+  source_label: chopping board
+  reason: 实为蛋糕纸垫；可见性抽检第 4 轮 #28
+# Added after the audit of all objects used in questions
+# audit P3-16 (shelf): name mismatch: open compartment holding a microwave
+- scene_id: '3864514494'
+  obj_id: 19
+  source_label: shelf
+  reason: 普查 P3-16（shelf）：称呼不符：放微波炉的开放格
+# audit P5-12 (refrigerator): name mismatch: built-in fridge
+- scene_id: '40aec5fffa'
+  obj_id: 45
+  source_label: refrigerator
+  reason: 普查 P5-12（refrigerator）：称呼不符：嵌入式冰箱
+# audit P5-14 (picture): name mismatch: paper stuck on a cabinet door
+- scene_id: '40aec5fffa'
+  obj_id: 53
+  source_label: picture
+  reason: 普查 P5-14（picture）：称呼不符：柜门上贴的纸
+# audit P7-08 (shelf): name mismatch: wooden tray labelled bookshelf
+- scene_id: '5eb31827b7'
+  obj_id: 49
+  source_label: bookshelf
+  reason: 普查 P7-08（shelf）：称呼不符：木托盘标为 bookshelf
+# audit P8-16 (trash can): name mismatch: two waste-paper baskets side by side, ambiguous
+- scene_id: '7b6477cb95'
+  obj_id: 15
+  source_label: trash can
+  reason: 普查 P8-16（trash can）：称呼不符：两个纸篓并排，有歧义
+# audit P12-15 (shelf): name mismatch: metal rack under the counter
+- scene_id: 'f9f95681fd'
+  obj_id: 33
+  source_label: shelf
+  reason: 普查 P12-15（shelf）：称呼不符：台面下的金属架
+# audit P3-05 (heater): not clearly visible: radiator occluded
+- scene_id: '25f3b7a318'
+  obj_id: 71
+  source_label: heater
+  reason: 普查 P3-05（heater）：看不清：暖气片被挡
+# audit P3-15 (refrigerator): not clearly visible: side of an under-counter fridge is blurry
+- scene_id: '3864514494'
+  obj_id: 15
+  source_label: fridge
+  reason: 普查 P3-15（refrigerator）：看不清：台下小冰箱侧面模糊
+# audit P4-16 (towel): not clearly visible: towel only partly visible
+- scene_id: '3db0a1c8f3'
+  obj_id: 160
+  source_label: towel
+  reason: 普查 P4-16（towel）：看不清：毛巾只露出一部分
+# audit P8-03 (suitcase): not clearly visible: only a small part of the suitcase is visible
+- scene_id: '5f99900f09'
+  obj_id: 64
+  source_label: suitcase
+  reason: 普查 P8-03（suitcase）：看不清：行李箱只露出一小块
+# audit P5-01 (washing machine): box includes the adjacent drying rack, centre is off
+- scene_id: '3db0a1c8f3'
+  obj_id: 179
+  source_label: washing machine
+  reason: 普查 P5-01（washing machine）：框包进旁边的晾衣架，中心偏移
+# audit P7-09 (stool): red cylinder looks like a bucket, with another red bucket next to it
+- scene_id: '5eb31827b7'
+  obj_id: 50
+  source_label: footstool
+  reason: 普查 P7-09（stool）：红色圆柱看起来像桶，旁边还有一个红桶
+# audit P9-15 (sofa): folding foam sofa that looks like a mattress
+- scene_id: 'a24f64f7fb'
+  obj_id: 42
+  source_label: folding sofa
+  reason: 普查 P9-15（sofa）：折叠泡沫沙发，看起来像床垫
+# audit P2-09 (heater): flat panel heater, same as the already blacklisted one
+- scene_id: '1ada7a0617'
+  obj_id: 35
+  source_label: heater
+  reason: 普查 P2-09（heater）：平板暖气，与已拉黑的同类一致
+# audit P12-04 (heater): actually a heated towel rail
+- scene_id: 'e7af285f7d'
+  obj_id: 107
+  source_label: heater
+  reason: 普查 P12-04（heater）：实为电热毛巾架
+# audit P12-12 (towel): actually a cleaning cloth
+- scene_id: 'f3d64c30f8'
+  obj_id: 129
+  source_label: towel
+  reason: 普查 P12-12（towel）：实为抹布
+# audit P2-06 (computer tower): even the clearest question view shows only a corner / mostly occluded
+- scene_id: '1ada7a0617'
+  obj_id: 14
+  source_label: computer tower
+  reason: 普查 P2-06（computer tower）：题目视角中最清楚的一帧也只露出一角 / 大半被挡
+# audit P8-14 (shelf): even the clearest question view shows only a corner / mostly occluded
+- scene_id: '7b6477cb95'
+  obj_id: 2
+  source_label: bookshelf
+  reason: 普查 P8-14（shelf）：题目视角中最清楚的一帧也只露出一角 / 大半被挡
+# audit P10-03 (lamp): even the clearest question view shows only a corner / mostly occluded
+- scene_id: 'a8bf42d646'
+  obj_id: 97
+  source_label: lamp
+  reason: 普查 P10-03（lamp）：题目视角中最清楚的一帧也只露出一角 / 大半被挡
+# audit P11-04 (lamp): even the clearest question view shows only a corner / mostly occluded
+- scene_id: 'c49a8c6cff'
+  obj_id: 36
+  source_label: lamp
+  reason: 普查 P11-04（lamp）：题目视角中最清楚的一帧也只露出一角 / 大半被挡
+# audit P11-09 (curtain): even the clearest question view shows only a corner / mostly occluded
+- scene_id: 'c49a8c6cff'
+  obj_id: 55
+  source_label: curtain
+  reason: 普查 P11-09（curtain）：题目视角中最清楚的一帧也只露出一角 / 大半被挡

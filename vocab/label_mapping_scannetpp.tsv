@@ -1,0 +1,561 @@
+source_label	kind	benchmark_class	category_fine	category_merged	rule	instances_50	scenes_50	pilot_instances
+object	object		object	object	identity	561	44	45
+wall	object	wall	wall	wall	identity	438	50	32
+book	object	book	book	book	identity	258	15	1
+chair	object	chair	chair	chair	identity	244	25	17
+box	object	box	box	box	identity	149	31	18
+power socket	object	socket	socket	socket	official_map	128	37	14
+table	object	table	table	table	identity	127	29	9
+ceiling lamp	object	ceiling lamp	ceiling lamp	ceiling lamp	identity	122	30	10
+window	object	window	window	window	identity	92	29	5
+bottle	object	bottle	bottle	bottle	identity	83	20	13
+light switch	object	light switch	light switch	light switch	identity	80	38	6
+door	object	door	door	door	identity	79	47	7
+SPLIT	artifact				annotation_artifact	76	22	3
+monitor	object	monitor	monitor	TV	family	70	18	6
+paper	object	paper	paper	paper	identity	68	15	2
+cabinet	object	cabinet	cabinet	cabinet	identity	67	29	2
+floor	object	floor	floor	floor	identity	64	50	5
+ceiling	object	ceiling	ceiling	ceiling	identity	62	43	6
+ceiling light	object	ceiling lamp	ceiling lamp	ceiling lamp	official_map	53	11	0
+office chair	object	office chair	office chair	chair	family	48	16	9
+pipe	object	pipe	pipe	pipe	identity	45	9	4
+computer tower	object	computer tower	computer tower	computer tower	identity	42	7	3
+doorframe	object	doorframe	doorframe	doorframe	identity	41	25	5
+electrical duct	object	electrical duct	electrical duct	electrical duct	identity	39	13	3
+keyboard	object	keyboard	keyboard	keyboard	identity	39	17	2
+picture	object	picture	picture	picture	identity	39	14	0
+heater	object	heater	heater	heater	identity	38	24	3
+towel	object	towel	towel	towel	identity	38	15	3
+trash bin	object	trash can	trash can	trash can	official_map	35	18	1
+whiteboard	object	whiteboard	whiteboard	whiteboard	identity	35	18	5
+window frame	object	window frame	window frame	window frame	identity	34	17	1
+mouse	object	mouse	mouse	mouse	identity	33	15	2
+structure	object		structure	structure	identity	33	14	0
+cardboard box	object	box	box	box	official_map	31	5	1
+split	artifact				annotation_artifact	31	15	1
+REMOVE	artifact				annotation_artifact	30	8	0
+shelf	object	shelf	shelf	shelf	identity	30	20	0
+trash can	object	trash can	trash can	trash can	identity	30	17	5
+door frame	object		doorframe	doorframe	synonym	29	21	2
+mug	object	cup	cup	cup	official_map	29	7	2
+bag	object	bag	bag	bag	identity	27	13	3
+shoe	object	shoes	shoes	shoes	official_map	26	3	0
+books	group	book	book	book	official_map	25	14	2
+kitchen cabinet	object	kitchen cabinet	kitchen cabinet	cabinet	family	25	8	0
+storage cabinet	object	storage cabinet	storage cabinet	cabinet	family	25	10	3
+smoke detector	object	smoke detector	smoke detector	smoke detector	identity	24	18	2
+blinds	object	blinds	blinds	blinds	identity	23	15	2
+sink	object	sink	sink	sink	identity	22	18	1
+shower wall	object	shower wall	shower wall	shower wall	identity	20	5	0
+pillow	object	pillow	pillow	pillow	identity	19	7	0
+windowsill	object	windowsill	windowsill	windowsill	identity	19	15	1
+plant	object	plant	plant	plant	identity	18	6	1
+machine	object		machine	machine	identity	17	5	0
+plastic case	object		plastic case	box	family	17	2	0
+telephone	object	telephone	telephone	telephone	identity	17	14	1
+toilet paper	object	toilet paper	toilet paper	toilet paper	identity	17	9	1
+plant pot	object	plant pot	plant pot	pot	family	16	6	1
+cup	object	cup	cup	cup	identity	15	10	2
+exhaust fan	object	exhaust fan	exhaust fan	exhaust fan	identity	15	9	0
+jar	object	jar	jar	jar	identity	15	2	0
+outlet	object	socket	socket	socket	official_map	15	5	3
+shoes	object	shoes	shoes	shoes	identity	15	4	0
+backpack	object	backpack	backpack	bag	family	13	7	0
+board	object	board	board	whiteboard	family	13	5	1
+switch	object		switch	switch	identity	13	6	2
+curtain	object	curtain	curtain	curtain	identity	12	7	0
+light	object		light	lamp	family	12	4	0
+sofa	object	sofa	sofa	sofa	identity	12	8	0
+blanket	object	blanket	blanket	blanket	identity	11	7	0
+bookshelf	object	bookshelf	bookshelf	shelf	family	11	8	1
+cardboard	object		cardboard	box	family	11	3	0
+crate	object	crate	crate	crate	identity	11	3	9
+file	object		file	file	identity	11	1	0
+jacket	object	jacket	jacket	jacket	identity	11	6	0
+plate	object		plate	plate	identity	11	7	0
+speaker	object	speaker	speaker	speaker	identity	11	6	0
+joined tables	group		table	table	synonym	10	3	0
+laboratory equipment	object		laboratory equipment	laboratory equipment	identity	10	1	0
+power strip	object	power strip	power strip	power strip	identity	10	7	1
+stool	object		stool	stool	identity	10	5	0
+cloth	object	cloth	cloth	cloth	identity	9	4	0
+kitchen counter	object	kitchen counter	kitchen counter	table	family	9	7	0
+poster	object	poster	poster	picture	family	9	4	4
+printer	object	printer	printer	printer	identity	9	7	0
+remove	artifact				annotation_artifact	9	4	0
+tap	object	tap	tap	tap	identity	9	7	1
+toilet	object	toilet	toilet	toilet	identity	9	8	1
+arm chair	object		armchair	chair	synonym+family	8	1	0
+bed	object	bed	bed	bed	identity	8	8	0
+cable raceway	object		cable raceway	cable raceway	identity	8	1	0
+ceiling vent	object		ceiling vent	ceiling vent	identity	8	3	0
+laptop	object	laptop	laptop	laptop	identity	8	7	0
+microwave	object	microwave	microwave	microwave	identity	8	8	2
+paper towel	object	paper towel	paper towel	towel	family	8	5	0
+pillar	object		pillar	pillar	identity	8	5	0
+plastic bottle	object		bottle	bottle	synonym	8	2	5
+soap bottle	object		soap bottle	bottle	family	8	2	0
+windowframe	object	window frame	window frame	window frame	official_map	8	5	0
+air conditioner	object		air conditioner	air conditioner	identity	7	5	0
+basket	object	basket	basket	basket	identity	7	4	0
+beanbag	object		beanbag	beanbag	identity	7	2	0
+bucket	object	bucket	bucket	bucket	identity	7	3	1
+ceilng light	object	ceiling lamp	ceiling lamp	ceiling lamp	official_map	7	1	0
+paper stapler	object		paper stapler	paper stapler	identity	7	2	0
+pen	object		pen	pen	identity	7	2	0
+pen holder	object		pen holder	pen holder	identity	7	3	0
+reflection	object		reflection	reflection	identity	7	1	0
+refrigerator	object	refrigerator	refrigerator	refrigerator	identity	7	6	1
+shower floor	object		shower floor	shower floor	identity	7	6	0
+suitcase	object	suitcase	suitcase	suitcase	identity	7	5	0
+water kettle	object		kettle	kettle	synonym	7	3	0
+whiteboard eraser	object	whiteboard eraser	whiteboard eraser	whiteboard eraser	identity	7	6	0
+window sill	object	windowsill	windowsill	windowsill	official_map	7	5	0
+bottle crate	object		bottle crate	crate	family	6	1	6
+carpet	object		carpet	carpet	identity	6	3	0
+counter	object		counter	table	family	6	6	0
+cushion	object	cushion	cushion	cushion	identity	6	1	0
+files	group		file	file	synonym	6	1	0
+fire extinguisher	object		fire extinguisher	fire extinguisher	identity	6	6	0
+kettle	object	kettle	kettle	kettle	identity	6	6	0
+notice	object		notice	notice	identity	6	1	0
+papers	group	paper	paper	paper	official_map	6	3	2
+pedestal fan	object		pedestal fan	pedestal fan	identity	6	5	0
+plug	object		plug	plug	identity	6	2	0
+power sockets	group		socket	socket	synonym	6	2	0
+projector	object		projector	projector	identity	6	5	0
+toilet brush	object	toilet brush	toilet brush	toilet brush	identity	6	5	1
+tv	object	tv	TV	TV	synonym	6	6	0
+alligator clips	object		alligator clips	alligator clips	identity	5	1	0
+blackboard	object		blackboard	whiteboard	family	5	2	0
+broom	object		broom	broom	identity	5	3	1
+clothes	object		clothes	clothes	identity	5	4	0
+coffee maker	object		coffee maker	coffee maker	identity	5	4	0
+desk	object	table	table	table	official_map	5	3	0
+dining chair	object		dining chair	chair	family	5	1	0
+floor lamp	object		floor lamp	lamp	family	5	3	0
+helmet	object		helmet	helmet	identity	5	2	0
+kitchen utensil	object		kitchen utensil	kitchen utensil	identity	5	2	0
+knife	object		knife	knife	identity	5	1	0
+lamp	object		lamp	lamp	identity	5	5	1
+mirror	object		mirror	mirror	identity	5	4	0
+soap dispenser	object	soap dispenser	soap dispenser	soap dispenser	identity	5	5	0
+socket	object	socket	socket	socket	identity	5	3	0
+utensils	group		kitchen utensil	kitchen utensil	synonym	5	1	0
+air vent	object	air vent	air vent	air vent	identity	4	3	1
+bar stool	object		bar stool	stool	family	4	2	0
+bathtub	object		bathtub	bathtub	identity	4	4	0
+bench	object		bench	bench	identity	4	1	0
+bottles	group		bottle	bottle	synonym	4	2	3
+cable	object		cable	cable	identity	4	2	0
+cables	group		cable	cable	official_map	4	3	0
+coat	object		coat	coat	identity	4	1	0
+coat hanger	object	coat hanger	coat hanger	coat hanger	identity	4	3	1
+cutting board	object	cutting board	cutting board	cutting board	identity	4	4	0
+dishwasher	object		dishwasher	dishwasher	identity	4	3	0
+dumbbell	object		dumbbell	dumbbell	identity	4	1	0
+electrical pipe	object		electrical pipe	electrical pipe	identity	4	1	0
+faucet	object		tap	tap	synonym	4	4	0
+office table	object	table	table	table	official_map	4	1	4
+pan	object	pan	pan	pan	identity	4	3	0
+shower curtain	object		shower curtain	curtain	family	4	4	1
+spotlight	object		spotlight	lamp	family	4	2	0
+spray bottle	object	spray bottle	spray bottle	bottle	family	4	3	0
+toothbrush	object		toothbrush	toothbrush	identity	4	3	1
+toothpaste	object		toothpaste	toothpaste	identity	4	3	0
+wall clock	object		clock	clock	synonym	4	4	0
+air duct	object		air duct	air duct	identity	3	2	0
+bathroom cabinet	object		bathroom cabinet	cabinet	family	3	1	0
+bedframe	object		bedframe	bedframe	identity	3	1	0
+bicycle	object		bicycle	bicycle	identity	3	1	0
+binder	object	binder	binder	binder	identity	3	1	0
+bowl	object	bowl	bowl	pot	family	3	2	2
+bunny chocolate	object		bunny chocolate	bunny chocolate	identity	3	1	0
+cable duct	object		cable duct	cable duct	identity	3	2	0
+cable tray	object		cable tray	cable tray	identity	3	2	0
+calendar	object		calendar	calendar	identity	3	2	2
+clock	object	clock	clock	clock	identity	3	3	1
+coffee machine	object		coffee machine	coffee machine	identity	3	3	1
+container	object	container	container	box	family	3	2	0
+cosmetic bag	object		cosmetic bag	bag	family	3	1	0
+decoration	object		decoration	decoration	identity	3	2	0
+desk lamp	object		table lamp	lamp	synonym+family	3	2	0
+drying rack	object		drying rack	drying rack	identity	3	1	0
+fake ceiling	object	ceiling	ceiling	ceiling	official_map	3	2	0
+flush button	object		flush button	flush button	identity	3	2	1
+folder	object		folder	folder	identity	3	2	0
+grab bar	object		grab bar	grab bar	identity	3	1	3
+hammer	object		hammer	hammer	identity	3	2	0
+headphone	object		headphones	headphones	synonym	3	3	0
+jug	object		jug	jug	identity	3	2	2
+knife set	object		knife set	knife set	identity	3	1	0
+light fixture	object		light fixture	lamp	family	3	1	0
+marker	object	marker	marker	marker	identity	3	1	0
+metal sheet	object		metal sheet	metal sheet	identity	3	1	0
+objects	group		object	object	synonym	3	2	0
+ottoman chair	object		ottoman chair	chair	family	3	2	0
+oven	object		oven	oven	identity	3	3	0
+overhead projector	object		overhead projector	overhead projector	identity	3	3	1
+paper ram	object		paper ram	paper ram	identity	3	2	0
+paper towel dispenser	object		paper towel dispenser	paper towel dispenser	identity	3	3	0
+pinboard	object		pinboard	whiteboard	family	3	2	0
+plant pot mat	object		plant pot mat	plant pot mat	identity	3	1	0
+remote controller	object		remote controller	remote controller	identity	3	2	0
+roof	object		roof	roof	identity	3	1	0
+rug	object		rug	rug	identity	3	2	0
+shower	object		shower	shower	identity	3	3	1
+sliding door	object		sliding door	door	family	3	2	0
+slipper	object	slippers	slippers	shoes	official_map+family	3	1	0
+stapler	object	stapler	stapler	stapler	identity	3	1	0
+storage rack	object		storage rack	shelf	family	3	1	0
+stove	object		stove	stove	identity	3	3	0
+toilet paper holder	object		toilet paper holder	toilet paper holder	identity	3	3	0
+tools	group		tools	tools	identity	3	2	0
+ventilation	object		ventilation	ventilation	identity	3	2	0
+wall board	object		wall board	whiteboard	family	3	1	0
+wall outlet	object		socket	socket	synonym	3	2	2
+wardrobe	object		wardrobe	cabinet	family	3	3	0
+washing machine	object		washing machine	washing machine	identity	3	3	0
+wooden brush	object		wooden brush	wooden brush	identity	3	1	0
+bathroom shelf	object		bathroom shelf	shelf	family	2	2	0
+bedside lamp	object		table lamp	lamp	synonym+family	2	1	0
+bedside table	object		bedside table	table	family	2	2	0
+bin	object		trash can	trash can	synonym	2	1	0
+blind rail	object	blind rail	blind rail	blind rail	identity	2	2	1
+boot	object		boot	shoes	family	2	1	0
+cap	object		cap	cap	identity	2	1	0
+celing lamp	object		ceiling lamp	ceiling lamp	synonym	2	1	0
+cheese	object		cheese	cheese	identity	2	1	0
+clothes dryer	object		clothes dryer	clothes dryer	identity	2	1	0
+coaster	object		coaster	coaster	identity	2	2	1
+coax outlet	object		coax outlet	coax outlet	identity	2	1	0
+coax socket	object		coax socket	coax socket	identity	2	1	0
+cooking pot	object		cooking pot	pot	family	2	1	0
+copier	object		copier	printer	family	2	2	0
+detergent bottle	object		detergent bottle	bottle	family	2	1	0
+flip flop	object		flip flop	shoes	family	2	1	0
+floor mounted air conditioner	object		floor mounted air conditioner	floor mounted air conditioner	identity	2	1	0
+footstool	object		footstool	stool	family	2	2	0
+fridge	object	refrigerator	refrigerator	refrigerator	official_map	2	2	0
+fruit	object		fruit	fruit	identity	2	1	0
+garbage bin	object		trash can	trash can	synonym	2	1	0
+headphones	object	headphones	headphones	headphones	identity	2	2	1
+headset	object		headset	headset	identity	2	2	0
+hole puncher	object		hole puncher	hole puncher	identity	2	2	0
+jeans	object		jeans	jeans	identity	2	1	2
+kitchen drawer	object		kitchen drawer	cabinet	family	2	1	0
+kitchen towel	object		kitchen towel	towel	family	2	1	0
+lab equipment	object		lab equipment	lab equipment	identity	2	1	0
+lan	object		lan	lan	identity	2	1	0
+laundry basket	object		laundry basket	basket	family	2	2	0
+milling machine	object		milling machine	milling machine	identity	2	1	0
+mouse pad	object		mouse pad	mouse pad	identity	2	2	0
+mousepad	object		mouse pad	mouse pad	synonym	2	2	1
+multiplug	object		power strip	power strip	synonym	2	1	0
+nightstand	object		bedside table	table	synonym+family	2	2	0
+notebook	object		notebook	notebook	identity	2	2	0
+oscilloscope	object		oscilloscope	oscilloscope	identity	2	2	0
+package	object		package	package	identity	2	1	0
+panel	object		panel	panel	identity	2	2	0
+pants	object		pants	pants	identity	2	1	2
+paper holder	object		paper holder	paper holder	identity	2	1	0
+paper rack	object		paper rack	shelf	family	2	1	0
+paper towels	group		paper towel	towel	synonym+family	2	1	0
+phone	object		telephone	telephone	synonym	2	1	0
+photo frame	object		photo frame	picture	family	2	1	0
+plant pot coaster	object		plant pot coaster	plant pot coaster	identity	2	1	0
+plastic drum	object		plastic drum	plastic drum	identity	2	1	0
+plates	group		plate	plate	synonym	2	1	2
+rolling chair	object		rolling chair	chair	family	2	1	0
+screwdriver	object		screwdriver	screwdriver	identity	2	1	0
+sculpture	object		sculpture	sculpture	identity	2	1	0
+shampoo bottle	object		shampoo bottle	bottle	family	2	2	1
+shoe rack	object	shoe rack	shoe rack	shoe rack	identity	2	2	0
+shower faucet	object		shower faucet	shower faucet	identity	2	2	0
+shower gel	object		shower gel	shower gel	identity	2	1	0
+shower head	object		shower head	shower head	identity	2	2	0
+shower rug	object		shower rug	shower rug	identity	2	2	0
+shower valve	object		shower valve	shower valve	identity	2	2	1
+sink pipe	object		sink pipe	sink pipe	identity	2	2	0
+sponge	object		sponge	sponge	identity	2	1	0
+standing lamp	object		standing lamp	lamp	family	2	2	0
+table lamp	object	table lamp	table lamp	lamp	family	2	2	0
+tissue box	object	tissue box	tissue box	box	family	2	1	0
+toaster	object		toaster	toaster	identity	2	2	0
+toilet flush button	object		toilet flush button	toilet flush button	identity	2	2	0
+toilet paper dispenser	object		toilet paper dispenser	toilet paper dispenser	identity	2	2	0
+toilet paper rolls	group		toilet paper	toilet paper	synonym	2	2	0
+toothbrush holder	object		toothbrush holder	toothbrush holder	identity	2	2	1
+toy	object		toy	toy	identity	2	1	0
+tray	object		tray	tray	identity	2	2	0
+tripod	object		tripod	tripod	identity	2	2	0
+trousers	object		trousers	trousers	identity	2	2	1
+tv stand	object		tv stand	tv stand	identity	2	2	0
+umbrella	object		umbrella	umbrella	identity	2	1	0
+vacuum cleaner	object		vacuum cleaner	vacuum cleaner	identity	2	2	1
+ventilator	object		ventilator	ventilator	identity	2	2	0
+wall hooks	object		wall hooks	wall hooks	identity	2	1	0
+water filter	object		water filter	water filter	identity	2	2	0
+water pipe	object		water pipe	water pipe	identity	2	1	0
+water tap	object		tap	tap	synonym	2	1	0
+whiteboard stand	object		whiteboard stand	whiteboard stand	identity	2	1	0
+wooden plank	object		wooden plank	wooden plank	identity	2	1	0
+workshop tool	object		workshop tool	workshop tool	identity	2	1	0
+yoga mat	object		yoga mat	yoga mat	identity	2	2	0
+apple	object		apple	apple	identity	1	1	0
+armchair	object		armchair	chair	family	1	1	0
+ball	object		ball	ball	identity	1	1	0
+bananas	group		banana	banana	official_map	1	1	0
+bar soap	object		bar soap	bar soap	identity	1	1	0
+barcode scanner	object		barcode scanner	barcode scanner	identity	1	1	0
+baseball cap	object		baseball cap	baseball cap	identity	1	1	0
+bath cabinet	object		bath cabinet	cabinet	family	1	1	0
+bath mat	object		bath mat	bath mat	identity	1	1	0
+bathroom counter	object		bathroom counter	table	family	1	1	0
+bathroom mat	object		bathroom mat	bathroom mat	identity	1	1	1
+bedside cabinet	object		bedside cabinet	cabinet	family	1	1	0
+bedside counter	object		bedside counter	table	family	1	1	0
+billboard	object		billboard	billboard	identity	1	1	0
+blackboard frame	object		blackboard frame	blackboard frame	identity	1	1	0
+bluetooth speaker	object		bluetooth speaker	speaker	family	1	1	0
+book shelf	object		bookshelf	shelf	synonym+family	1	1	0
+bottle spray	object		spray bottle	bottle	synonym+family	1	1	0
+buket	object		buket	buket	identity	1	1	0
+button	object		button	button	identity	1	1	0
+cabinet door	object		cabinet door	cabinet door	identity	1	1	0
+cable socket	object		cable socket	cable socket	identity	1	1	0
+calculator	object		calculator	calculator	identity	1	1	0
+car door	object		car door	car door	identity	1	1	0
+carboard box	object	box	box	box	official_map	1	1	1
+cardbox	object		box	box	synonym	1	1	0
+cart	object		cart	cart	identity	1	1	0
+carton	object		box	box	synonym	1	1	0
+case	object		case	box	family	1	1	0
+ceiling beam	object		ceiling beam	ceiling beam	identity	1	1	0
+ceiling speaker	object		ceiling speaker	speaker	family	1	1	0
+cereal box	object		cereal box	box	family	1	1	0
+chemical bottle	object		bottle	bottle	synonym	1	1	0
+chessboard	object		chessboard	chessboard	identity	1	1	0
+chopping board	object		cutting board	cutting board	synonym	1	1	0
+cleaner	object		cleaner	cleaner	identity	1	1	0
+cleaning brush	object		cleaning brush	cleaning brush	identity	1	1	0
+cleaning liquid	object		cleaning liquid	cleaning liquid	identity	1	1	0
+closet	object		closet	cabinet	family	1	1	0
+cloth hanger	object		cloth hanger	coat hanger	family	1	1	0
+clothes hanger	object	clothes hanger	clothes hanger	coat hanger	family	1	1	0
+clothes rack	object		clothes rack	coat hanger	family	1	1	0
+coat rack	object		coat rack	coat hanger	family	1	1	0
+coffee table	object		coffee table	table	family	1	1	0
+column	object		column	column	identity	1	1	0
+comforter	object		comforter	blanket	family	1	1	0
+computer desk	object		table	table	synonym	1	1	0
+construction materials	object		construction materials	construction materials	identity	1	1	0
+copy machine	object		copier	printer	synonym+family	1	1	1
+cord cover	object		cord cover	cord cover	identity	1	1	0
+covered power socket	object		socket	socket	synonym	1	1	0
+curtain rail	object		curtain rail	curtain rail	identity	1	1	0
+curtain rod	object		curtain rod	curtain rod	identity	1	1	0
+delivery bag	object		delivery bag	bag	family	1	1	0
+desk fan	object		desk fan	desk fan	identity	1	1	1
+dining table	object		dining table	table	family	1	1	0
+dish drainer	object		dish drainer	dish drainer	identity	1	1	0
+dish drying rack	object		dish drying rack	dish drying rack	identity	1	1	0
+dishwashing sponge	object		dishwashing sponge	dishwashing sponge	identity	1	1	0
+disinfectant dispenser	object		disinfectant dispenser	disinfectant dispenser	identity	1	1	1
+door handle	object		door handle	door handle	identity	1	1	0
+door mat	object		door mat	door mat	identity	1	1	0
+door stopper	object		door stopper	door stopper	identity	1	1	0
+door vent	object		door vent	door vent	identity	1	1	0
+doormat	object		door mat	door mat	synonym	1	1	0
+duffle bag	object		duffle bag	bag	family	1	1	0
+dustpan	object		dustpan	dustpan	identity	1	1	1
+duvet	object		duvet	blanket	family	1	1	0
+egg carton	object		egg carton	box	family	1	1	0
+electric box	object		electric box	electric box	identity	1	1	1
+electric duct	object		electric duct	electric duct	identity	1	1	0
+electric pot	object		electric pot	pot	family	1	1	0
+electric stove	object		stove	stove	synonym	1	1	0
+emergency kit	object		emergency kit	emergency kit	identity	1	1	0
+eraser	object		eraser	eraser	identity	1	1	0
+espresso machine	object		espresso machine	espresso machine	identity	1	1	0
+fabric	object		fabric	fabric	identity	1	1	0
+false ceiling	object	ceiling	ceiling	ceiling	official_map	1	1	0
+fan	object		fan	fan	identity	1	1	0
+filter jug	object		filter jug	filter jug	identity	1	1	0
+first aid box	object		first aid box	box	family	1	1	0
+first aid cabinet	object		first aid cabinet	cabinet	family	1	1	0
+first aid kit	object		first aid kit	first aid kit	identity	1	1	0
+fitted wardrobe	object		fitted wardrobe	cabinet	family	1	1	0
+flat panel display	object		monitor	TV	synonym+family	1	1	1
+flour bag	object		flour bag	flour bag	identity	1	1	0
+flushes	object		flushes	flushes	identity	1	1	0
+foldable closet	object		foldable closet	cabinet	family	1	1	0
+folder holder	object		folder holder	folder holder	identity	1	1	0
+folders	group		folder	folder	synonym	1	1	0
+folding chair	object		folding chair	chair	family	1	1	0
+folding screen	object		folding screen	folding screen	identity	1	1	0
+folding sofa	object		folding sofa	sofa	family	1	1	0
+food container	object		food container	food container	identity	1	1	1
+frame	object		frame	picture	family	1	1	0
+french press	object		french press	french press	identity	1	1	1
+garbage bin cover	object		garbage bin cover	garbage bin cover	identity	1	1	0
+glass	object		glass	glass	identity	1	1	0
+glass pane	object		glass pane	glass pane	identity	1	1	1
+glass wall	object		glass wall	glass wall	identity	1	1	0
+guitar	object		guitar	guitar	identity	1	1	0
+hair dryer	object		hair dryer	hair dryer	identity	1	1	0
+hairdryer	object		hair dryer	hair dryer	synonym	1	1	0
+hammer holder	object		hammer holder	hammer holder	identity	1	1	0
+hand shower	object		hand shower	hand shower	identity	1	1	0
+hand soap	object		hand soap	hand soap	identity	1	1	1
+hand soap dispenser	object		soap dispenser	soap dispenser	synonym	1	1	0
+hand vacuum	object		hand vacuum	hand vacuum	identity	1	1	0
+hand washing soap	object		hand washing soap	hand washing soap	identity	1	1	0
+hat	object		hat	hat	identity	1	1	0
+headboard	object		headboard	headboard	identity	1	1	0
+headphone case	object		headphone case	headphone case	identity	1	1	0
+headphone holder	object		headphone holder	headphone holder	identity	1	1	0
+instant pot	object		instant pot	pot	family	1	1	0
+interactive whiteboard	object		interactive whiteboard	whiteboard	family	1	1	1
+intercom device	object		intercom device	intercom device	identity	1	1	0
+jerrycan	object		jerrycan	jerrycan	identity	1	1	0
+junction box	object		junction box	junction box	identity	1	1	0
+kitchen brush	object		kitchen brush	kitchen brush	identity	1	1	0
+kitchen glove	object		kitchen glove	kitchen glove	identity	1	1	0
+kitchen hood	object		kitchen hood	kitchen hood	identity	1	1	0
+kitchen object	object		kitchen object	kitchen object	identity	1	1	0
+kitchen utensils	group		kitchen utensil	kitchen utensil	synonym	1	1	0
+knife holder	object		knife holder	knife holder	identity	1	1	0
+laboratory bench	object		laboratory bench	table	family	1	1	0
+laboratory cabinet	object	cabinet	cabinet	cabinet	official_map	1	1	0
+ladder	object		ladder	ladder	identity	1	1	0
+laundry hamper	object		laundry hamper	laundry hamper	identity	1	1	0
+led ceiling fan	object		led ceiling fan	led ceiling fan	identity	1	1	0
+lint roller	object		lint roller	lint roller	identity	1	1	0
+liquid soap	object		liquid soap	liquid soap	identity	1	1	0
+magazine rack	object		magazine rack	shelf	family	1	1	0
+magnets	group		magnets	magnets	identity	1	1	1
+mattress	object		mattress	mattress	identity	1	1	0
+metal saw	object		metal saw	metal saw	identity	1	1	0
+microphone	object		microphone	microphone	identity	1	1	0
+mirror lamp	object		mirror lamp	lamp	family	1	1	0
+moka pot	object		moka pot	pot	family	1	1	0
+monitor holder	object		monitor holder	monitor holder	identity	1	1	0
+monitor light	object		monitor light	monitor light	identity	1	1	0
+monitor stand	object		monitor stand	monitor stand	identity	1	1	0
+mop	object		mop	mop	identity	1	1	1
+mop cloth	object		mop cloth	mop cloth	identity	1	1	0
+painting	object	painting	painting	picture	family	1	1	0
+pallet	object		pallet	pallet	identity	1	1	0
+pan set	object		pan set	pan set	identity	1	1	0
+paper bag	object	paper bag	paper bag	bag	family	1	1	0
+paper shredder	object		paper shredder	paper shredder	identity	1	1	0
+paper towel package	object		paper towel package	paper towel package	identity	1	1	0
+pc	object		computer tower	computer tower	synonym	1	1	0
+pegboard	object		pegboard	whiteboard	family	1	1	0
+pencil holder	object		pencil holder	pencil holder	identity	1	1	0
+pencil stande	object		pencil stande	pencil stande	identity	1	1	0
+pens	group		pen	pen	synonym	1	1	0
+photo	object		photo	picture	family	1	1	0
+photocopy machine	object		copier	printer	synonym+family	1	1	0
+piano	object		piano	piano	identity	1	1	0
+piano book	object		piano book	piano book	identity	1	1	0
+piano chair	object		piano chair	chair	family	1	1	0
+platform trolley	object		platform trolley	platform trolley	identity	1	1	0
+pliers	object		pliers	pliers	identity	1	1	0
+plushie	object		plushie	plushie	identity	1	1	0
+portable speaker	object		portable speaker	speaker	family	1	1	0
+post it	object		post-it	post-it	synonym	1	1	0
+post-it	object		post-it	post-it	identity	1	1	0
+postcards	group		postcards	postcards	identity	1	1	0
+pot	object	pot	pot	pot	identity	1	1	0
+pot cover	object		pot cover	pot cover	identity	1	1	0
+power brick	object		power brick	power brick	identity	1	1	0
+power panel	object		power panel	power panel	identity	1	1	0
+power plug	object		power plug	power plug	identity	1	1	0
+power socker	object		socket	socket	synonym	1	1	0
+powerstrip	object		power strip	power strip	synonym	1	1	0
+printer paper	object		printer paper	printer paper	identity	1	1	0
+projector holder	object		projector holder	projector holder	identity	1	1	0
+projector screen	object		projector screen	projector screen	identity	1	1	0
+pumper	object		pumper	pumper	identity	1	1	0
+range hood	object		range hood	range hood	identity	1	1	0
+razor	object		razor	razor	identity	1	1	0
+receipt	object		receipt	receipt	identity	1	1	0
+recessed shelve	object		recessed shelf	shelf	official_map+family	1	1	0
+recessed shower shelve	object		recessed shelf	shelf	official_map+family	1	1	0
+robot vaccuum cleaner	object		robot vacuum cleaner	robot vacuum cleaner	official_map	1	1	0
+rods	group		rods	rods	identity	1	1	0
+rolling cart	object		rolling cart	rolling cart	identity	1	1	0
+rolling stand	object		rolling stand	rolling stand	identity	1	1	0
+router	object		router	router	identity	1	1	0
+safe box	object		safe box	box	family	1	1	0
+salad spinner	object		salad spinner	salad spinner	identity	1	1	0
+scarf	object		scarf	scarf	identity	1	1	0
+scissor	object		scissors	scissors	synonym	1	1	0
+scissors	object		scissors	scissors	identity	1	1	0
+serving trolley	object		serving trolley	serving trolley	identity	1	1	0
+shaving foam	object		shaving foam	shaving foam	identity	1	1	0
+shelve	object		shelf	shelf	synonym	1	1	0
+shoes holder	object		shoes holder	shoes holder	identity	1	1	0
+shower ceiling	object		shower ceiling	shower ceiling	identity	1	1	0
+shower curtain rod	object		shower curtain rod	shower curtain rod	identity	1	1	1
+shower handle	object		shower handle	shower handle	identity	1	1	0
+shower loofah	object		shower loofah	shower loofah	identity	1	1	1
+shower rod	object		shower rod	shower rod	identity	1	1	0
+shower seating	object		shower seating	shower seating	identity	1	1	0
+shower tap	object		shower tap	shower tap	identity	1	1	0
+silicon gun	object		silicon gun	silicon gun	identity	1	1	0
+sink counter	object		sink counter	sink counter	identity	1	1	0
+sit-up pillow	object		sit-up pillow	sit-up pillow	identity	1	1	0
+skyligth	object		skyligth	skyligth	identity	1	1	0
+sliding door frame	object		sliding door frame	sliding door frame	identity	1	1	0
+smartphone	object		smartphone	smartphone	identity	1	1	0
+smok alarm	object		smoke detector	smoke detector	synonym	1	1	0
+smoke alarm	object	smoke detector	smoke detector	smoke detector	official_map	1	1	0
+soap	object		soap	soap	identity	1	1	0
+sofa chair	object		sofa chair	chair	family	1	1	0
+softbox light	object		softbox light	lamp	family	1	1	0
+soldering iron	object		soldering iron	soldering iron	identity	1	1	0
+standing fan	object		standing fan	standing fan	identity	1	1	0
+stationery	object		stationery	stationery	identity	1	1	0
+stick	object		stick	stick	identity	1	1	0
+stools	group		stool	stool	synonym	1	1	0
+storage ecabinet	object		storage cabinet	cabinet	synonym+family	1	1	1
+surface cleaning liquid	object		surface cleaning liquid	surface cleaning liquid	identity	1	1	0
+surfboard	object		surfboard	surfboard	identity	1	1	0
+sweater	object		sweater	sweater	identity	1	1	0
+table mat	object		table mat	table mat	identity	1	1	0
+toilet  brush	object	toilet brush	toilet brush	toilet brush	identity	1	1	0
+toilet cleaner	object		toilet cleaner	toilet cleaner	identity	1	1	0
+toilet paper roll	object		toilet paper	toilet paper	synonym	1	1	0
+toilet seat	object		toilet seat	toilet seat	identity	1	1	0
+tool box	object		tool box	box	family	1	1	0
+tool organizer	object		tool organizer	tool organizer	identity	1	1	0
+tooth paste	object		toothpaste	toothpaste	synonym	1	1	1
+tote bag	object		tote bag	bag	family	1	1	0
+towel warmer	object		towel warmer	towel warmer	identity	1	1	1
+towels	group		towel	towel	synonym	1	1	0
+traz	object		traz	traz	identity	1	1	0
+tube	object		tube	tube	identity	1	1	0
+tube lights	group		ceiling lamp	ceiling lamp	synonym	1	1	0
+tubelight	object		ceiling lamp	ceiling lamp	synonym	1	1	0
+tv receiver	object		tv receiver	tv receiver	identity	1	1	0
+tv remote	object		tv remote	tv remote	identity	1	1	0
+vacuum flask	object		vacuum flask	vacuum flask	identity	1	1	1
+vent	object		vent	vent	identity	1	1	0
+vertical blind control	object		vertical blind control	vertical blind control	identity	1	1	1
+wall cord cover	object		wall cord cover	wall cord cover	identity	1	1	0
+wall hook	object		wall hook	wall hook	identity	1	1	0
+wall lamp	object		wall lamp	lamp	family	1	1	0
+wall unit	object		wall unit	wall unit	identity	1	1	0
+washbasin	object		sink	sink	synonym	1	1	0
+water boiler	object		water boiler	water boiler	identity	1	1	0
+water bubbler	object		water bubbler	water bubbler	identity	1	1	0
+water pitcher	object		water pitcher	water pitcher	identity	1	1	0
+weighing scale	object		weighing scale	weighing scale	identity	1	1	0
+wok pan	object		wok pan	wok pan	identity	1	1	0
+wooden pallet	object		wooden pallet	wooden pallet	identity	1	1	0
+wooden stick	object		wooden stick	wooden stick	identity	1	1	0
+workbench	object		workbench	table	family	1	1	0

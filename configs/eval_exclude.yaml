@@ -1,0 +1,50 @@
+# Questions excluded from the main tables of the evaluation report.
+# The frozen data arkit_only_v0.11 is unchanged: these questions are still shown to the model, answered and recorded as usual; they are only
+# dropped from the main report tables, and an appendix table gives the unfiltered results (actspace_eval.score.load_exclusions / exclude_questions).
+# Rationale: the standpoint and facing direction of direction questions are defined by the horizontal line between object centres, so when
+# objects are stacked (very small horizontal distance) the direction is meaningless.
+# The list matches the question generation rule of the next data version exactly: min_horizontal_sep_m = 0.5, measured from the standpoint only:
+# in T3 / T5 the horizontal distance from the standing object (OBJ1) to the facing object, the target object and every option object, and in T4 the
+# horizontal distance from the object to the START camera, must all be >= 0.5 m.
+# Filtering v0.11 with this rule removes exactly the 12 questions below (checked by the unit test test_exclusions_match_rule). See docs/evaluation_protocol.md.
+version: arkit_only_v0.11
+questions:
+  # Scene arkit_45663164: TV#12 sits on top of refrigerator#1; their centres are 0.07 m apart horizontally
+  - qid: g_000026_q3
+    template: T5
+    reason: Standing at the TV facing the dishwasher, the option refrigerator is directly below the TV (0.07 m horizontally from the standpoint), so "closest on the left" cannot be determined
+  - qid: g_000026_q4
+    template: T5
+    reason: Standing at the TV facing the chair, the option refrigerator is directly below the TV (0.07 m horizontally from the standpoint), so "closest on the left" cannot be determined
+  - qid: g_000028_q1
+    template: T5
+    reason: Standing at the TV facing the oven, the option refrigerator is directly below the TV (0.07 m horizontally from the standpoint), so "closest on the left" cannot be determined
+  - qid: g_000028_q3
+    template: T5
+    reason: Standing at the TV facing the refrigerator, which is 0.07 m away horizontally, so the facing direction is meaningless
+  - qid: g_000028_q4
+    template: T5
+    reason: Standing at the refrigerator facing the TV, which is 0.07 m away horizontally, so the facing direction is meaningless
+  - qid: g_000030_q4
+    template: T5
+    reason: Standing at the TV facing the sink, the option refrigerator is directly below the TV (0.07 m horizontally from the standpoint), so "closest on the left" cannot be determined
+  - qid: g_000032_q1
+    template: T3
+    reason: Standing at the refrigerator facing the TV, which is 0.07 m away horizontally, so the facing direction is meaningless (forms a direction_inverse constraint with q2; the constraint is excluded too)
+  - qid: g_000032_q2
+    template: T3
+    reason: Standing at the TV facing the refrigerator, which is 0.07 m away horizontally, so the facing direction is meaningless (forms a direction_inverse constraint with q1; the constraint is excluded too)
+  # Scene arkit_48018346
+  - qid: g_000089_q1
+    template: T3
+    reason: Standing at the TV facing the chair, which is 0.39 m away horizontally (< 0.5 m), so the facing direction is too sensitive to position errors (forms a direction_inverse constraint with q2; the constraint is excluded too)
+  - qid: g_000089_q2
+    template: T3
+    reason: Standing at the chair facing the TV, which is 0.39 m away horizontally (< 0.5 m), so the facing direction is too sensitive to position errors (forms a direction_inverse constraint with q1; the constraint is excluded too)
+  # T4: object less than 0.5 m horizontally from the START camera
+  - qid: g_000073_q4
+    template: T4
+    reason: The sink is 0.34 m horizontally from the START camera (< 0.5 m), so its direction relative to the start is too sensitive to position errors (this question is a masking-based unanswerable question)
+  - qid: g_000087_q3
+    template: T4
+    reason: The sink is 0.43 m horizontally from the START camera (< 0.5 m), so its direction relative to the start is too sensitive to position errors

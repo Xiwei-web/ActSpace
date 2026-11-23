@@ -1,0 +1,36 @@
+# ARKit + ScanNet++ merge: preparation, evaluation and the merged release build.
+# Layered on top of configs/build.yaml (actspace_build.merge_dryrun.load_merge_config, key-by-key override). It is a separate file so that
+# build.yaml stays unchanged: freeze verify of both frozen source versions checks the hash of build.yaml (scannetpp_only_v0.2 treats a config change as a mismatch).
+questions:
+  # Horizontal separation for direction questions, measured from the standpoint (not pairwise):
+  # T3 / T5: horizontal distance from the standing object (OBJ1) to the facing object, the queried object and every option object; T4: horizontal distance
+  # from the queried object to the start camera; all must be >= this value. Failing questions get DEGENERATE_SEPARATION; a group that no longer meets
+  # the group conditions (3-5 questions, >= 2 templates) is dropped entirely (GROUP_INCOMPLETE).
+  min_horizontal_sep_m: 0.5
+merge:
+  sandbox_root: merge_sandbox   # all trial runs are written here; official outputs under work/ and eval_runs/ are never touched
+  dryrun_version: merged_v1.0_dryrun
+  # Official merged version (actspace_build.merge_build). Written to <paths.work>/merged/:
+  #   <scene>/ are symlinks to the official per-scene outputs of both sources (Step 8 and the integrity check read them with DATASET = merged); _premerge/ and _step7/ hold
+  #   the merged pre-pruning set and the Step 8 input; _step8/<version>_step8/ is the Step 8 output (no removal-based quadrant balancing); _step8/<version>/ is the final
+  #   version (after quadrant balancing, letter balancing and the blind-probe recheck)
+  version: merged_v1.0
+  # Removal-based quadrant balancing: remove the 11 T3 questions computed in the dry run (merged_v1.0_dryrun) (ARKit 3, ScanNet++ 8), reason code QUADRANT_REBALANCE.
+  # Which questions are removed depends on the bias score, which in turn depends on the option-letter assignment, so the chosen list is fixed here; build removes
+  # these 11, checks the quadrants are within +-5%, and records which questions the current algorithm would pick
+  quadrant_rebalance_qids: [arkit_g_000022_q5, arkit_g_000023_q5, arkit_g_000106_q5, scannetpp_g_000030_q2, scannetpp_g_000053_q5,
+                            scannetpp_g_000078_q1, scannetpp_g_000078_q3, scannetpp_g_000083_q5, scannetpp_g_000093_q5,
+                            scannetpp_g_000104_q5, scannetpp_g_000133_q5]
+  release_root: release   # Step 10 release files <release_root>/<version>/ (not in the repository: contains npz and other data files)
+  sources:                                 # the two frozen versions and their pre-pruning question sets (Step 8 input)
+    arkitscenes:
+      version: arkit_only_v0.11
+      pre_prune: work/arkitscenes/_step7/test_groups.jsonl      # relative to the parent of paths.work; SHA-256 must equal source_sha256 in the v0.11 manifest
+      frozen_config_commit: 32a23ff         # configs/build.yaml at freeze time (SHA-256 6eb1cdb7...); used for regression checks
+    scannetpp:
+      version: scannetpp_only_v0.2
+      pre_prune: work/scannetpp/_step8/scannetpp_only_v0.2/pre_prune/step7_test_groups.jsonl
+      frozen_config_commit: 7f0fceb
+  # Dry run, computed only: removal-based quadrant balancing estimated with questions.quadrant_balance_tol (+-5%) and debias.t4_front_back_tol
+  # Dataset-source blind probe: a random forest using the single feature "dataset source", GroupKFold by scene, compared with chance
+  source_probe_trees: 300

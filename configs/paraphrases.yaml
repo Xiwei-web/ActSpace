@@ -1,0 +1,117 @@
+# Step 7 template-level paraphrase bank (written directly by Claude, no external API call).
+# 12 sentences per template; placeholders {OBJn} are kept verbatim, each appears once and is preceded by "the "; meaning unchanged, no added cues.
+# Keys: template ID (T2 split by variant: closest / farthest / pair). `template` is the original template sentence (kept in the question's text_template field).
+# Revised after review: T2_closest #3, T2_farthest #3 (added "among the options" qualifier), T3 #6 (relative to you);
+# after the "option scope" check was added, T2_closest #4 and T2_farthest #4 failed and were minimally changed to "these listed objects" (0-based numbering).
+
+T1:
+  template: "What is the distance between the center of the {OBJ1} and the center of the {OBJ2}, in meters?"
+  paraphrases:
+    - "How far is the center of the {OBJ1} from the center of the {OBJ2}, in meters?"
+    - "In meters, how far apart are the center of the {OBJ1} and the center of the {OBJ2}?"
+    - "Give the distance in meters from the center of the {OBJ1} to the center of the {OBJ2}."
+    - "Measure the distance between the center of the {OBJ1} and the center of the {OBJ2}, and answer in meters."
+    - "How many meters separate the center of the {OBJ1} from the center of the {OBJ2}?"
+    - "What is the center-to-center distance between the {OBJ1} and the {OBJ2}, in meters?"
+    - "Report the distance, in meters, between the center of the {OBJ1} and the center of the {OBJ2}."
+    - "Find the distance between the centers of the {OBJ1} and the {OBJ2}, expressed in meters."
+    - "What's the distance from the center of the {OBJ1} to the center of the {OBJ2}, measured in meters?"
+    - "Tell me how far the center of the {OBJ1} is from the center of the {OBJ2}, in meters."
+    - "In meters, what is the distance separating the center of the {OBJ1} and the center of the {OBJ2}?"
+    - "How long is the straight line from the center of the {OBJ1} to the center of the {OBJ2}, in meters?"
+
+T2_pair:
+  template: "Which is closer to the {OBJ1}: the {OBJ2} or the {OBJ3}?"
+  paraphrases:
+    - "Which one is closer to the {OBJ1}, the {OBJ2} or the {OBJ3}?"
+    - "Between the {OBJ2} and the {OBJ3}, which is closer to the {OBJ1}?"
+    - "Is the {OBJ2} or the {OBJ3} closer to the {OBJ1}?"
+    - "Of the {OBJ2} and the {OBJ3}, which one sits closer to the {OBJ1}?"
+    - "Tell me which is closer to the {OBJ1}: the {OBJ2} or the {OBJ3}."
+    - "Which object is closer to the {OBJ1}, the {OBJ2} or the {OBJ3}?"
+    - "Pick the object that is closer to the {OBJ1}: the {OBJ2} or the {OBJ3}."
+    - "Comparing the {OBJ2} and the {OBJ3}, which one is closer to the {OBJ1}?"
+    - "Which lies closer to the {OBJ1}: the {OBJ2}, or the {OBJ3}?"
+    - "The {OBJ2} or the {OBJ3}: which of the two is closer to the {OBJ1}?"
+    - "Decide which of these two is closer to the {OBJ1}: the {OBJ2} or the {OBJ3}."
+    - "Of these two, the {OBJ2} and the {OBJ3}, which is closer to the {OBJ1}?"
+
+T2_closest:
+  template: "Which of the following objects is closest to the {OBJ1}?"
+  paraphrases:
+    - "Which object listed below is closest to the {OBJ1}?"
+    - "Among the following objects, which one is closest to the {OBJ1}?"
+    - "Of the options below, which object is closest to the {OBJ1}?"
+    - "Select, from the options below, the object that is closest to the {OBJ1}."
+    - "Which of these listed objects is the closest to the {OBJ1}?"
+    - "Identify which of the following objects lies closest to the {OBJ1}."
+    - "From the choices below, pick the object closest to the {OBJ1}."
+    - "Which one of the listed objects is closest to the {OBJ1}?"
+    - "Choose the option that is closest to the {OBJ1}."
+    - "Out of the following objects, which is closest to the {OBJ1}?"
+    - "Which of the objects below sits closest to the {OBJ1}?"
+    - "Tell me which of the following objects is closest to the {OBJ1}."
+
+T2_farthest:
+  template: "Which of the following objects is farthest from the {OBJ1}?"
+  paraphrases:
+    - "Which object listed below is farthest from the {OBJ1}?"
+    - "Among the following objects, which one is farthest from the {OBJ1}?"
+    - "Of the options below, which object is farthest from the {OBJ1}?"
+    - "Select, from the options below, the object that is farthest from the {OBJ1}."
+    - "Which of these listed objects is the farthest from the {OBJ1}?"
+    - "Identify which of the following objects lies farthest from the {OBJ1}."
+    - "From the choices below, pick the object farthest from the {OBJ1}."
+    - "Which one of the listed objects is farthest from the {OBJ1}?"
+    - "Choose the option that is farthest from the {OBJ1}."
+    - "Out of the following objects, which is farthest from the {OBJ1}?"
+    - "Which of the objects below sits farthest from the {OBJ1}?"
+    - "Tell me which of the following objects is farthest from the {OBJ1}."
+
+T3:
+  template: "Imagine you are standing at the {OBJ1} and facing the {OBJ2}. Where is the {OBJ3} relative to you?"
+  paraphrases:
+    - "Suppose you are standing at the {OBJ1}, facing the {OBJ2}. Where is the {OBJ3} relative to you?"
+    - "Picture yourself standing at the {OBJ1} and facing the {OBJ2}. Where is the {OBJ3} from your point of view?"
+    - "If you stood at the {OBJ1} while facing the {OBJ2}, where would the {OBJ3} be relative to you?"
+    - "You are standing at the {OBJ1} and facing the {OBJ2}. In which direction is the {OBJ3} relative to you?"
+    - "Stand at the {OBJ1} and face the {OBJ2}. Where is the {OBJ3} relative to you?"
+    - "Imagine standing at the {OBJ1} while facing the {OBJ2}. Where does the {OBJ3} lie relative to you?"
+    - "Consider standing at the {OBJ1}, facing toward the {OBJ2}. Where is the {OBJ3} relative to you?"
+    - "If you were standing at the {OBJ1} and facing the {OBJ2}, which direction would the {OBJ3} be in relative to you?"
+    - "Standing at the {OBJ1} and facing the {OBJ2}, where would you find the {OBJ3} relative to yourself?"
+    - "Imagine you stand at the {OBJ1}, facing the {OBJ2}. Describe where the {OBJ3} is relative to you."
+    - "Put yourself at the {OBJ1}, standing and facing the {OBJ2}. Where is the {OBJ3} relative to you?"
+    - "Say you are standing at the {OBJ1} and facing the {OBJ2}. Relative to you, where is the {OBJ3}?"
+
+T4:
+  template: "Relative to your starting position and viewing direction, where is the {OBJ1}?"
+  paraphrases:
+    - "Relative to where you started and the direction you were initially facing, where is the {OBJ1}?"
+    - "Based on your starting position and initial viewing direction, where is the {OBJ1}?"
+    - "Where is the {OBJ1} relative to your starting position and the direction you were facing at the start?"
+    - "Taking your starting position and starting view direction as reference, where is the {OBJ1}?"
+    - "With respect to your starting position and viewing direction, where is the {OBJ1} located?"
+    - "From your starting position, facing your initial viewing direction, where is the {OBJ1}?"
+    - "Using your starting position and viewing direction as the frame of reference, locate the {OBJ1}."
+    - "Where would the {OBJ1} be relative to your starting position and initial viewing direction?"
+    - "Considering where you started and which way you were initially looking, where is the {OBJ1}?"
+    - "Describe where the {OBJ1} is relative to your starting position and viewing direction."
+    - "Relative to your original starting point and the direction you were first looking, where is the {OBJ1}?"
+    - "In terms of your starting position and the direction you initially faced, where is the {OBJ1}?"
+
+T5:
+  template: "Imagine you are standing at the {OBJ1} and facing the {OBJ2}. Among the objects on your left, which one is closest to you?"
+  paraphrases:
+    - "Suppose you are standing at the {OBJ1}, facing the {OBJ2}. Of the objects on your left, which is closest to you?"
+    - "Picture yourself standing at the {OBJ1} and facing the {OBJ2}. Which object on your left is closest to you?"
+    - "If you stood at the {OBJ1} facing the {OBJ2}, which of the objects to your left would be closest to you?"
+    - "You are standing at the {OBJ1} and facing the {OBJ2}. Considering only objects on your left, which one is closest to you?"
+    - "Stand at the {OBJ1} and face the {OBJ2}. Among the objects on your left, which is the closest to you?"
+    - "Imagine standing at the {OBJ1} while facing the {OBJ2}. Which object to your left is closest to you?"
+    - "Standing at the {OBJ1} and facing the {OBJ2}, consider only the objects on your left: which one is closest to you?"
+    - "Assume you are standing at the {OBJ1}, facing the {OBJ2}. Among the objects to your left, which one is closest to you?"
+    - "If you were standing at the {OBJ1} and facing the {OBJ2}, which object on your left side would be closest to you?"
+    - "Say you stand at the {OBJ1}, facing the {OBJ2}. Of the objects positioned on your left, which is closest to you?"
+    - "Put yourself at the {OBJ1}, standing and facing the {OBJ2}. Which of the objects on your left is closest to you?"
+    - "Consider standing at the {OBJ1}, facing toward the {OBJ2}. Among the objects on your left, identify the one closest to you."

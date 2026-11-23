@@ -1,0 +1,474 @@
+category	allowed	name_ok	display_name	source	level	merged_into	instances_50_fine	instances_50_merged	source_labels	note
+object	false	false	object		fine+merged		564	564	object(561); objects(3)	指南禁止出题类别
+wall	false	false	wall		fine+merged		438	438	wall(438)	指南禁止出题类别
+book	false	false	book		fine+merged		283	283	book(258); books(25)	GATE B：容易被挪动的杂物 / 个人物品
+chair	true	false	chair	scannetpp_top100_instance+arkit17	fine+merged		244	314	chair(244)	
+box	true	false	box	scannetpp_top100_instance	fine+merged		183	222	box(149); cardboard box(31); carboard box(1); cardbox(1); carton(1)	
+ceiling lamp	false	false	ceiling lamp		fine+merged		186	186	ceiling lamp(122); ceiling light(53); ceilng light(7); celing lamp(2); tube lights(1); tubelight(1)	GATE B：单独成类且禁止（灯带最长约 3 m，中心难判断；几乎每个场景都有，并入 lamp 会让台灯全部不唯一）
+table	true	false	table	scannetpp_top100_instance+arkit17	fine+merged		147	172	table(127); joined tables(10); desk(5); office table(4); computer desk(1)	
+socket	false	false	socket		fine+merged		159	159	power socket(128); outlet(15); power sockets(6); socket(5); wall outlet(3); covered power socket(1); power socker(1)	GATE B：太小
+bottle	false	false	bottle		fine+merged		96	113	bottle(83); plastic bottle(8); bottles(4); chemical bottle(1)	GATE B：容易被挪动的杂物 / 个人物品
+cabinet	true	false	cabinet	scannetpp_top100_instance+arkit17	fine+merged		68	133	cabinet(67); laboratory cabinet(1)	
+window	true	false	window	scannetpp_top100_instance	fine+merged		92	92	window(92)	
+door	true	false	door	scannetpp_top100_instance	fine+merged		79	82	door(79)	
+light switch	false	false	light switch		fine+merged		80	80	light switch(80)	GATE B：太小
+paper	false	false	paper		fine+merged		74	74	paper(68); papers(6)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+doorframe	false	false	doorframe		fine+merged		70	70	doorframe(41); door frame(29)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+trash can	true	false	trash can	scannetpp_top100_instance	fine+merged		69	69	trash bin(35); trash can(30); bin(2); garbage bin(2)	
+ceiling	false	false	ceiling		fine+merged		66	66	ceiling(62); fake ceiling(3); false ceiling(1)	指南禁止出题类别
+floor	false	false	floor		fine+merged		64	64	floor(64)	指南禁止出题类别
+whiteboard	true	false	whiteboard	scannetpp_top100_instance	fine+merged		35	61	whiteboard(35)	
+picture	true	false	picture	scannetpp_top100_instance	fine+merged		39	53	picture(39)	
+pipe	false	false	pipe		fine+merged		45	45	pipe(45)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+towel	true	false	towel	scannetpp_top100_instance	fine+merged		39	51	towel(38); towels(1)	
+shoes	false	false	shoes		fine+merged		41	48	shoe(26); shoes(15)	GATE B：容易被挪动的杂物 / 个人物品
+cup	false	false	cup		fine+merged		44	44	mug(29); cup(15)	GATE B：太小
+computer tower	true	false	computer tower	scannetpp_top100_instance	fine+merged		43	43	computer tower(42); pc(1)	
+shelf	true	false	shelf	scannetpp_top100_instance+arkit17	fine+merged		31	53	shelf(30); shelve(1)	
+window frame	false	false	window frame		fine+merged		42	42	window frame(34); windowframe(8)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+TV	true	false	TV	scannetpp_top100_instance+arkit17	fine+merged		6	77	tv(6)	
+electrical duct	false	false	electrical duct		fine+merged		39	39	electrical duct(39)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+keyboard	true	false	keyboard	scannetpp_top100_instance	fine+merged		39	39	keyboard(39)	
+heater	true	false	heater	scannetpp_top100_instance	fine+merged		38	38	heater(38)	
+bag	false	false	bag		fine+merged		27	47	bag(27)	GATE B：容易被挪动的杂物 / 个人物品
+monitor	true	true	monitor	scannetpp_top100_instance	fine	TV	71	0	monitor(70); flat panel display(1)	称 TV 是误称
+mouse	false	false	mouse		fine+merged		33	33	mouse(33)	GATE B：太小
+structure	false	false	structure		fine+merged		33	33	structure(33)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+smoke detector	false	false	smoke detector		fine+merged		26	26	smoke detector(24); smok alarm(1); smoke alarm(1)	GATE B：太小
+windowsill	false	false	windowsill		fine+merged		26	26	windowsill(19); window sill(7)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+office chair	true	false	office chair	scannetpp_top100_instance	fine	chair	48	0	office chair(48)	
+blinds	true	false	window blind	scannetpp_top100_instance	fine+merged		23	23	blinds(23)	
+lamp	true	false	lamp	merged_parent	fine+merged		5	41	lamp(5)	
+sink	true	false	sink	scannetpp_top100_instance+arkit17	fine+merged		23	23	sink(22); washbasin(1)	
+shower wall	false	false	shower wall		fine+merged		20	20	shower wall(20)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+toilet paper	false	false	toilet paper		fine+merged		20	20	toilet paper(17); toilet paper rolls(2); toilet paper roll(1)	GATE B：太小
+pillow	true	false	pillow	scannetpp_top100_instance	fine+merged		19	19	pillow(19)	
+telephone	true	false	telephone	scannetpp_top100_instance	fine+merged		19	19	telephone(17); phone(2)	
+plant	true	false	plant	scannetpp_top100_instance	fine+merged		18	18	plant(18)	
+file	false	false	file		fine+merged		17	17	file(11); files(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+machine	false	false	machine		fine+merged		17	17	machine(17)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+exhaust fan	false	false	exhaust fan		fine+merged		15	15	exhaust fan(15)	GATE B：太小
+jar	false	false	jar		fine+merged		15	15	jar(15)	GATE B：太小
+tap	true	false	tap	scannetpp_top100_instance	fine+merged		15	15	tap(9); faucet(4); water tap(2)	
+crate	true	false	crate	scannetpp_top100_instance	fine+merged		11	17	crate(11)	
+curtain	true	false	curtain	scannetpp_top100_instance	fine+merged		12	16	curtain(12)	
+stool	true	false	stool	arkit17	fine+merged		11	17	stool(10); stools(1)	
+kettle	true	false	kettle	scannetpp_top100_instance	fine+merged		13	13	water kettle(7); kettle(6)	
+plate	false	false	plate		fine+merged		13	13	plate(11); plates(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pot	true	false	pot	scannetpp_top100_instance	fine+merged		1	25	pot(1)	
+power strip	true	false	power strip	scannetpp_top100_instance	fine+merged		13	13	power strip(10); multiplug(2); powerstrip(1)	
+storage cabinet	true	false	storage cabinet	scannetpp_top100_instance	fine	cabinet	26	0	storage cabinet(25); storage ecabinet(1)	
+switch	false	false	switch		fine+merged		13	13	switch(13)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen cabinet	true	false	kitchen cabinet	scannetpp_top100_instance	fine	cabinet	25	0	kitchen cabinet(25)	
+sofa	true	false	sofa	scannetpp_top100_instance+arkit17	fine+merged		12	13	sofa(12)	
+speaker	true	false	speaker	scannetpp_top100_instance	fine+merged		11	14	speaker(11)	
+blanket	false	false	blanket		fine+merged		11	13	blanket(11)	S30（负责人 2026-11-03）：毯子都铺在床上，框与床几乎重合
+jacket	false	false	jacket		fine+merged		11	11	jacket(11)	GATE B：容易被挪动的杂物 / 个人物品
+kitchen utensil	false	false	kitchen utensil		fine+merged		11	11	kitchen utensil(5); utensils(5); kitchen utensils(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+printer	true	false	printer	scannetpp_top100_instance	fine+merged		9	13	printer(9)	
+laboratory equipment	false	false	laboratory equipment		fine+merged		10	10	laboratory equipment(10)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cloth	false	false	cloth		fine+merged		9	9	cloth(9)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+refrigerator	true	false	refrigerator	scannetpp_top100_instance+arkit17	fine+merged		9	9	refrigerator(7); fridge(2)	
+toilet	true	false	toilet	scannetpp_top100_instance+arkit17	fine+merged		9	9	toilet(9)	
+plastic case	false	false	plastic case		fine	box	17	0	plastic case(17)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+basket	true	false	basket	scannetpp_top100_instance	fine+merged		7	9	basket(7)	
+bed	true	false	bed	scannetpp_top100_instance+arkit17	fine+merged		8	8	bed(8)	
+cable	false	false	cable		fine+merged		8	8	cable(4); cables(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cable raceway	false	false	cable raceway		fine+merged		8	8	cable raceway(8)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ceiling vent	false	false	ceiling vent		fine+merged		8	8	ceiling vent(8)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+laptop	true	false	laptop	scannetpp_top100_instance	fine+merged		8	8	laptop(8)	
+microwave	true	false	microwave	scannetpp_top100_instance	fine+merged		8	8	microwave(8)	
+pen	false	false	pen		fine+merged		8	8	pen(7); pens(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pillar	false	false	pillar		fine+merged		8	8	pillar(8)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plant pot	false	false	plant pot		fine	pot	16	0	plant pot(16)	GATE B：与 plant 位置几乎相同
+air conditioner	false	false	air conditioner		fine+merged		7	7	air conditioner(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+beanbag	false	false	beanbag		fine+merged		7	7	beanbag(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bucket	true	false	bucket	scannetpp_top100_instance	fine+merged		7	7	bucket(7)	
+clock	true	false	clock	scannetpp_top100_instance	fine+merged		7	7	wall clock(4); clock(3)	
+paper stapler	false	false	paper stapler		fine+merged		7	7	paper stapler(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pen holder	false	false	pen holder		fine+merged		7	7	pen holder(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+reflection	false	false	reflection		fine+merged		7	7	reflection(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower floor	false	false	shower floor		fine+merged		7	7	shower floor(7)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+suitcase	true	false	suitcase	scannetpp_top100_instance	fine+merged		7	7	suitcase(7)	
+toilet brush	true	false	toilet brush	scannetpp_top100_instance	fine+merged		7	7	toilet brush(6); toilet  brush(1)	
+whiteboard eraser	false	false	whiteboard eraser		fine+merged		7	7	whiteboard eraser(7)	GATE B：容易被挪动的杂物 / 个人物品
+backpack	false	false	backpack		fine	bag	13	0	backpack(13)	GATE B：容易被挪动的杂物 / 个人物品
+board	false	false	board		fine	whiteboard	13	0	board(13)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+bookshelf	true	false	bookshelf	scannetpp_top100_instance	fine	shelf	12	0	bookshelf(11); book shelf(1)	
+carpet	false	false	carpet		fine+merged		6	6	carpet(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coat hanger	true	false	coat hanger	scannetpp_top100_instance	fine+merged		4	8	coat hanger(4)	
+cushion	true	false	cushion	scannetpp_top100_instance	fine+merged		6	6	cushion(6)	
+fire extinguisher	false	false	fire extinguisher		fine+merged		6	6	fire extinguisher(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+light	false	false	light		fine	lamp	12	0	light(12)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+notice	false	false	notice		fine+merged		6	6	notice(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pedestal fan	false	false	pedestal fan		fine+merged		6	6	pedestal fan(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plug	false	false	plug		fine+merged		6	6	plug(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+projector	false	false	projector		fine+merged		6	6	projector(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+soap dispenser	true	false	soap dispenser	scannetpp_top100_instance	fine+merged		6	6	soap dispenser(5); hand soap dispenser(1)	
+cardboard	false	false	cardboard		fine	box	11	0	cardboard(11)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+alligator clips	false	false	alligator clips		fine+merged		5	5	alligator clips(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+broom	false	false	broom		fine+merged		5	5	broom(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+clothes	false	false	clothes		fine+merged		5	5	clothes(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coffee maker	false	false	coffee maker		fine+merged		5	5	coffee maker(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cutting board	true	false	cutting board	scannetpp_top100_instance	fine+merged		5	5	cutting board(4); chopping board(1)	
+headphones	false	false	headphones		fine+merged		5	5	headphone(3); headphones(2)	GATE B：容易被挪动的杂物 / 个人物品
+helmet	false	false	helmet		fine+merged		5	5	helmet(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+knife	false	false	knife		fine+merged		5	5	knife(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mirror	false	false	mirror		fine+merged		5	5	mirror(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper towel	false	false	paper towel		fine	towel	10	0	paper towel(8); paper towels(2)	GATE B：容易被挪动的杂物 / 个人物品
+toothpaste	false	false	toothpaste		fine+merged		5	5	toothpaste(4); tooth paste(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+armchair	true	false	armchair	inherit:chair	fine	chair	9	0	arm chair(8); armchair(1)	
+kitchen counter	false	false	kitchen counter		fine	table	9	0	kitchen counter(9)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+poster	true	false	poster	scannetpp_top100_instance	fine	picture	9	0	poster(9)	
+air vent	false	false	air vent		fine+merged		4	4	air vent(4)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+bathtub	true	false	bathtub	arkit17	fine+merged		4	4	bathtub(4)	
+bench	false	false	bench		fine+merged		4	4	bench(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coat	false	false	coat		fine+merged		4	4	coat(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+dishwasher	true	false	dishwasher	arkit17	fine+merged		4	4	dishwasher(4)	
+dumbbell	false	false	dumbbell		fine+merged		4	4	dumbbell(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+electrical pipe	false	false	electrical pipe		fine+merged		4	4	electrical pipe(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+folder	false	false	folder		fine+merged		4	4	folder(3); folders(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mouse pad	false	false	mouse pad		fine+merged		4	4	mouse pad(2); mousepad(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pan	true	false	pan	scannetpp_top100_instance	fine+merged		4	4	pan(4)	
+soap bottle	false	false	soap bottle		fine	bottle	8	0	soap bottle(8)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bottle）
+stove	true	false	stove	arkit17	fine+merged		4	4	stove(3); electric stove(1)	
+toothbrush	false	false	toothbrush		fine+merged		4	4	toothbrush(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+table lamp	true	false	table lamp	scannetpp_top100_instance	fine	lamp	7	0	desk lamp(3); bedside lamp(2); table lamp(2)	
+air duct	false	false	air duct		fine+merged		3	3	air duct(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bedframe	false	false	bedframe		fine+merged		3	3	bedframe(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bicycle	false	false	bicycle		fine+merged		3	3	bicycle(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+binder	false	false	binder		fine+merged		3	3	binder(3)	GATE B：容易被挪动的杂物 / 个人物品
+bottle crate	false	false	bottle crate		fine	crate	6	0	bottle crate(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bunny chocolate	false	false	bunny chocolate		fine+merged		3	3	bunny chocolate(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cable duct	false	false	cable duct		fine+merged		3	3	cable duct(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cable tray	false	false	cable tray		fine+merged		3	3	cable tray(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+calendar	false	false	calendar		fine+merged		3	3	calendar(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coffee machine	false	false	coffee machine		fine+merged		3	3	coffee machine(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+counter	false	false	counter		fine	table	6	0	counter(6)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+decoration	false	false	decoration		fine+merged		3	3	decoration(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+drying rack	false	false	drying rack		fine+merged		3	3	drying rack(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+flush button	false	false	flush button		fine+merged		3	3	flush button(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+grab bar	false	false	grab bar		fine+merged		3	3	grab bar(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hammer	false	false	hammer		fine+merged		3	3	hammer(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+jug	false	false	jug		fine+merged		3	3	jug(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+knife set	false	false	knife set		fine+merged		3	3	knife set(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+marker	false	false	marker		fine+merged		3	3	marker(3)	GATE B：太小
+metal sheet	false	false	metal sheet		fine+merged		3	3	metal sheet(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+oven	true	false	oven	arkit17	fine+merged		3	3	oven(3)	
+overhead projector	false	false	overhead projector		fine+merged		3	3	overhead projector(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper ram	false	false	paper ram		fine+merged		3	3	paper ram(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper towel dispenser	false	false	paper towel dispenser		fine+merged		3	3	paper towel dispenser(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plant pot mat	false	false	plant pot mat		fine+merged		3	3	plant pot mat(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+remote controller	false	false	remote controller		fine+merged		3	3	remote controller(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+roof	false	false	roof		fine+merged		3	3	roof(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+rug	false	false	rug		fine+merged		3	3	rug(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower	false	false	shower		fine+merged		3	3	shower(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+stapler	false	false	stapler		fine+merged		3	3	stapler(3)	GATE B：太小
+toilet paper holder	false	false	toilet paper holder		fine+merged		3	3	toilet paper holder(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tools	false	false	tools		fine+merged		3	3	tools(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ventilation	false	false	ventilation		fine+merged		3	3	ventilation(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+washing machine	true	false	washing machine	arkit17	fine+merged		3	3	washing machine(3)	
+wooden brush	false	false	wooden brush		fine+merged		3	3	wooden brush(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+blackboard	false	false	blackboard		fine	whiteboard	5	0	blackboard(5)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+dining chair	true	false	dining chair	inherit:chair	fine	chair	5	0	dining chair(5)	
+floor lamp	true	false	floor lamp	inherit:lamp	fine	lamp	5	0	floor lamp(5)	
+spray bottle	false	false	spray bottle		fine	bottle	5	0	spray bottle(4); bottle spray(1)	GATE B：容易被挪动的杂物 / 个人物品
+bar stool	true	false	bar stool	inherit:stool	fine	stool	4	0	bar stool(4)	
+bedside table	true	false	bedside table	inherit:table	fine	table	4	0	bedside table(2); nightstand(2)	
+blind rail	false	false	blind rail		fine+merged		2	2	blind rail(2)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+cap	false	false	cap		fine+merged		2	2	cap(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cheese	false	false	cheese		fine+merged		2	2	cheese(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+clothes dryer	false	false	clothes dryer		fine+merged		2	2	clothes dryer(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coaster	false	false	coaster		fine+merged		2	2	coaster(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coax outlet	false	false	coax outlet		fine+merged		2	2	coax outlet(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coax socket	false	false	coax socket		fine+merged		2	2	coax socket(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+copier	true	true	copier	inherit:printer	fine	printer	4	0	copier(2); copy machine(1); photocopy machine(1)	称 printer 是误称
+door mat	false	false	door mat		fine+merged		2	2	door mat(1); doormat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+floor mounted air conditioner	false	false	floor mounted air conditioner		fine+merged		2	2	floor mounted air conditioner(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+fruit	false	false	fruit		fine+merged		2	2	fruit(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hair dryer	false	false	hair dryer		fine+merged		2	2	hair dryer(1); hairdryer(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+headset	false	false	headset		fine+merged		2	2	headset(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hole puncher	false	false	hole puncher		fine+merged		2	2	hole puncher(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+jeans	false	false	jeans		fine+merged		2	2	jeans(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+lab equipment	false	false	lab equipment		fine+merged		2	2	lab equipment(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+lan	false	false	lan		fine+merged		2	2	lan(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+milling machine	false	false	milling machine		fine+merged		2	2	milling machine(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+notebook	false	false	notebook		fine+merged		2	2	notebook(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+oscilloscope	false	false	oscilloscope		fine+merged		2	2	oscilloscope(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+package	false	false	package		fine+merged		2	2	package(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+panel	false	false	panel		fine+merged		2	2	panel(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pants	false	false	pants		fine+merged		2	2	pants(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper holder	false	false	paper holder		fine+merged		2	2	paper holder(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plant pot coaster	false	false	plant pot coaster		fine+merged		2	2	plant pot coaster(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plastic drum	false	false	plastic drum		fine+merged		2	2	plastic drum(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+post-it	false	false	post-it		fine+merged		2	2	post it(1); post-it(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+scissors	false	false	scissors		fine+merged		2	2	scissor(1); scissors(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+screwdriver	false	false	screwdriver		fine+merged		2	2	screwdriver(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sculpture	false	false	sculpture		fine+merged		2	2	sculpture(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shoe rack	true	false	shoe rack	scannetpp_top100_instance	fine+merged		2	2	shoe rack(2)	
+shower curtain	false	false	shower curtain		fine	curtain	4	0	shower curtain(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower faucet	false	false	shower faucet		fine+merged		2	2	shower faucet(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower gel	false	false	shower gel		fine+merged		2	2	shower gel(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower head	false	false	shower head		fine+merged		2	2	shower head(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower rug	false	false	shower rug		fine+merged		2	2	shower rug(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower valve	false	false	shower valve		fine+merged		2	2	shower valve(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sink pipe	false	false	sink pipe		fine+merged		2	2	sink pipe(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sponge	false	false	sponge		fine+merged		2	2	sponge(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+spotlight	false	false	spotlight		fine	lamp	4	0	spotlight(4)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toaster	false	false	toaster		fine+merged		2	2	toaster(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toilet flush button	false	false	toilet flush button		fine+merged		2	2	toilet flush button(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toilet paper dispenser	false	false	toilet paper dispenser		fine+merged		2	2	toilet paper dispenser(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toothbrush holder	false	false	toothbrush holder		fine+merged		2	2	toothbrush holder(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toy	false	false	toy		fine+merged		2	2	toy(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tray	false	false	tray		fine+merged		2	2	tray(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tripod	false	false	tripod		fine+merged		2	2	tripod(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+trousers	false	false	trousers		fine+merged		2	2	trousers(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tv stand	false	false	tv stand		fine+merged		2	2	tv stand(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+umbrella	false	false	umbrella		fine+merged		2	2	umbrella(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+vacuum cleaner	false	false	vacuum cleaner		fine+merged		2	2	vacuum cleaner(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ventilator	false	false	ventilator		fine+merged		2	2	ventilator(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wall hooks	false	false	wall hooks		fine+merged		2	2	wall hooks(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+water filter	false	false	water filter		fine+merged		2	2	water filter(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+water pipe	false	false	water pipe		fine+merged		2	2	water pipe(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+whiteboard stand	false	false	whiteboard stand		fine+merged		2	2	whiteboard stand(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wooden plank	false	false	wooden plank		fine+merged		2	2	wooden plank(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+workshop tool	false	false	workshop tool		fine+merged		2	2	workshop tool(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+yoga mat	false	false	yoga mat		fine+merged		2	2	yoga mat(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bathroom cabinet	true	false	bathroom cabinet	inherit:cabinet	fine	cabinet	3	0	bathroom cabinet(3)	
+bowl	false	false	bowl		fine	pot	3	0	bowl(3)	GATE B：容易被挪动的杂物 / 个人物品
+container	false	false	container		fine	box	3	0	container(3)	含义模糊（任何容器都可称 container）
+cosmetic bag	false	false	cosmetic bag		fine	bag	3	0	cosmetic bag(3)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bag）
+light fixture	false	false	light fixture		fine	lamp	3	0	light fixture(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ottoman chair	true	false	ottoman chair	inherit:chair	fine	chair	3	0	ottoman chair(3)	
+pinboard	false	false	pinboard		fine	whiteboard	3	0	pinboard(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sliding door	false	false	sliding door		fine	door	3	0	sliding door(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+slippers	false	false	slippers		fine	shoes	3	0	slipper(3)	GATE B：容易被挪动的杂物 / 个人物品
+storage rack	false	false	storage rack		fine	shelf	3	0	storage rack(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wall board	false	false	wall board		fine	whiteboard	3	0	wall board(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wardrobe	false	false	wardrobe		fine	cabinet	3	0	wardrobe(3)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+apple	false	false	apple		fine+merged		1	1	apple(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ball	false	false	ball		fine+merged		1	1	ball(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+banana	false	false	banana		fine+merged		1	1	bananas(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bar soap	false	false	bar soap		fine+merged		1	1	bar soap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+barcode scanner	false	false	barcode scanner		fine+merged		1	1	barcode scanner(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+baseball cap	false	false	baseball cap		fine+merged		1	1	baseball cap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bath mat	false	false	bath mat		fine+merged		1	1	bath mat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bathroom mat	false	false	bathroom mat		fine+merged		1	1	bathroom mat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bathroom shelf	true	false	bathroom shelf	inherit:shelf	fine	shelf	2	0	bathroom shelf(2)	
+billboard	false	false	billboard		fine+merged		1	1	billboard(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+blackboard frame	false	false	blackboard frame		fine+merged		1	1	blackboard frame(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+boot	false	false	boot		fine	shoes	2	0	boot(2)	GATE B：容易被挪动的杂物 / 个人物品（随父类 shoes）
+buket	false	false	buket		fine+merged		1	1	buket(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+button	false	false	button		fine+merged		1	1	button(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cabinet door	false	false	cabinet door		fine+merged		1	1	cabinet door(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cable socket	false	false	cable socket		fine+merged		1	1	cable socket(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+calculator	false	false	calculator		fine+merged		1	1	calculator(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+car door	false	false	car door		fine+merged		1	1	car door(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cart	false	false	cart		fine+merged		1	1	cart(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ceiling beam	false	false	ceiling beam		fine+merged		1	1	ceiling beam(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+chessboard	false	false	chessboard		fine+merged		1	1	chessboard(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cleaner	false	false	cleaner		fine+merged		1	1	cleaner(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cleaning brush	false	false	cleaning brush		fine+merged		1	1	cleaning brush(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cleaning liquid	false	false	cleaning liquid		fine+merged		1	1	cleaning liquid(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+column	false	false	column		fine+merged		1	1	column(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+construction materials	false	false	construction materials		fine+merged		1	1	construction materials(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cooking pot	false	false	cooking pot		fine	pot	2	0	cooking pot(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cord cover	false	false	cord cover		fine+merged		1	1	cord cover(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+curtain rail	false	false	curtain rail		fine+merged		1	1	curtain rail(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+curtain rod	false	false	curtain rod		fine+merged		1	1	curtain rod(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+desk fan	false	false	desk fan		fine+merged		1	1	desk fan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+detergent bottle	false	false	detergent bottle		fine	bottle	2	0	detergent bottle(2)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bottle）
+dish drainer	false	false	dish drainer		fine+merged		1	1	dish drainer(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+dish drying rack	false	false	dish drying rack		fine+merged		1	1	dish drying rack(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+dishwashing sponge	false	false	dishwashing sponge		fine+merged		1	1	dishwashing sponge(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+disinfectant dispenser	false	false	disinfectant dispenser		fine+merged		1	1	disinfectant dispenser(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+door handle	false	false	door handle		fine+merged		1	1	door handle(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+door stopper	false	false	door stopper		fine+merged		1	1	door stopper(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+door vent	false	false	door vent		fine+merged		1	1	door vent(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+dustpan	false	false	dustpan		fine+merged		1	1	dustpan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+electric box	false	false	electric box		fine+merged		1	1	electric box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+electric duct	false	false	electric duct		fine+merged		1	1	electric duct(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+emergency kit	false	false	emergency kit		fine+merged		1	1	emergency kit(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+eraser	false	false	eraser		fine+merged		1	1	eraser(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+espresso machine	false	false	espresso machine		fine+merged		1	1	espresso machine(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+fabric	false	false	fabric		fine+merged		1	1	fabric(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+fan	false	false	fan		fine+merged		1	1	fan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+filter jug	false	false	filter jug		fine+merged		1	1	filter jug(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+first aid kit	false	false	first aid kit		fine+merged		1	1	first aid kit(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+flip flop	false	false	flip flop		fine	shoes	2	0	flip flop(2)	GATE B：容易被挪动的杂物 / 个人物品（随父类 shoes）
+flour bag	false	false	flour bag		fine+merged		1	1	flour bag(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+flushes	false	false	flushes		fine+merged		1	1	flushes(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+folder holder	false	false	folder holder		fine+merged		1	1	folder holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+folding screen	false	false	folding screen		fine+merged		1	1	folding screen(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+food container	false	false	food container		fine+merged		1	1	food container(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+footstool	true	false	footstool	inherit:stool	fine	stool	2	0	footstool(2)	
+french press	false	false	french press		fine+merged		1	1	french press(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+garbage bin cover	false	false	garbage bin cover		fine+merged		1	1	garbage bin cover(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+glass	false	false	glass		fine+merged		1	1	glass(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+glass pane	false	false	glass pane		fine+merged		1	1	glass pane(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+glass wall	false	false	glass wall		fine+merged		1	1	glass wall(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+guitar	false	false	guitar		fine+merged		1	1	guitar(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hammer holder	false	false	hammer holder		fine+merged		1	1	hammer holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hand shower	false	false	hand shower		fine+merged		1	1	hand shower(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hand soap	false	false	hand soap		fine+merged		1	1	hand soap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hand vacuum	false	false	hand vacuum		fine+merged		1	1	hand vacuum(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hand washing soap	false	false	hand washing soap		fine+merged		1	1	hand washing soap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+hat	false	false	hat		fine+merged		1	1	hat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+headboard	false	false	headboard		fine+merged		1	1	headboard(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+headphone case	false	false	headphone case		fine+merged		1	1	headphone case(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+headphone holder	false	false	headphone holder		fine+merged		1	1	headphone holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+intercom device	false	false	intercom device		fine+merged		1	1	intercom device(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+jerrycan	false	false	jerrycan		fine+merged		1	1	jerrycan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+junction box	false	false	junction box		fine+merged		1	1	junction box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen brush	false	false	kitchen brush		fine+merged		1	1	kitchen brush(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen drawer	false	false	kitchen drawer		fine	cabinet	2	0	kitchen drawer(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen glove	false	false	kitchen glove		fine+merged		1	1	kitchen glove(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen hood	false	false	kitchen hood		fine+merged		1	1	kitchen hood(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen object	false	false	kitchen object		fine+merged		1	1	kitchen object(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+kitchen towel	true	false	kitchen towel	inherit:towel	fine	towel	2	0	kitchen towel(2)	
+knife holder	false	false	knife holder		fine+merged		1	1	knife holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ladder	false	false	ladder		fine+merged		1	1	ladder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+laundry basket	false	false	laundry basket		fine	basket	2	0	laundry basket(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+laundry hamper	false	false	laundry hamper		fine+merged		1	1	laundry hamper(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+led ceiling fan	false	false	led ceiling fan		fine+merged		1	1	led ceiling fan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+lint roller	false	false	lint roller		fine+merged		1	1	lint roller(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+liquid soap	false	false	liquid soap		fine+merged		1	1	liquid soap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+magnets	false	false	magnets		fine+merged		1	1	magnets(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mattress	false	false	mattress		fine+merged		1	1	mattress(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+metal saw	false	false	metal saw		fine+merged		1	1	metal saw(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+microphone	false	false	microphone		fine+merged		1	1	microphone(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+monitor holder	false	false	monitor holder		fine+merged		1	1	monitor holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+monitor light	false	false	monitor light		fine+merged		1	1	monitor light(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+monitor stand	false	false	monitor stand		fine+merged		1	1	monitor stand(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mop	false	false	mop		fine+merged		1	1	mop(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mop cloth	false	false	mop cloth		fine+merged		1	1	mop cloth(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pallet	false	false	pallet		fine+merged		1	1	pallet(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pan set	false	false	pan set		fine+merged		1	1	pan set(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper rack	false	false	paper rack		fine	shelf	2	0	paper rack(2)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper shredder	false	false	paper shredder		fine+merged		1	1	paper shredder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+paper towel package	false	false	paper towel package		fine+merged		1	1	paper towel package(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pencil holder	false	false	pencil holder		fine+merged		1	1	pencil holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pencil stande	false	false	pencil stande		fine+merged		1	1	pencil stande(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+photo frame	true	false	photo frame	inherit:picture	fine	picture	2	0	photo frame(2)	
+piano	false	false	piano		fine+merged		1	1	piano(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+piano book	false	false	piano book		fine+merged		1	1	piano book(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+platform trolley	false	false	platform trolley		fine+merged		1	1	platform trolley(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pliers	false	false	pliers		fine+merged		1	1	pliers(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+plushie	false	false	plushie		fine+merged		1	1	plushie(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+postcards	false	false	postcards		fine+merged		1	1	postcards(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pot cover	false	false	pot cover		fine+merged		1	1	pot cover(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+power brick	false	false	power brick		fine+merged		1	1	power brick(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+power panel	false	false	power panel		fine+merged		1	1	power panel(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+power plug	false	false	power plug		fine+merged		1	1	power plug(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+printer paper	false	false	printer paper		fine+merged		1	1	printer paper(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+projector holder	false	false	projector holder		fine+merged		1	1	projector holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+projector screen	false	false	projector screen		fine+merged		1	1	projector screen(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+pumper	false	false	pumper		fine+merged		1	1	pumper(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+range hood	false	false	range hood		fine+merged		1	1	range hood(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+razor	false	false	razor		fine+merged		1	1	razor(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+receipt	false	false	receipt		fine+merged		1	1	receipt(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+recessed shelf	true	false	recessed shelf	inherit:shelf	fine	shelf	2	0	recessed shelve(1); recessed shower shelve(1)	
+robot vacuum cleaner	false	false	robot vacuum cleaner		fine+merged		1	1	robot vaccuum cleaner(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+rods	false	false	rods		fine+merged		1	1	rods(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+rolling cart	false	false	rolling cart		fine+merged		1	1	rolling cart(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+rolling chair	true	false	rolling chair	inherit:chair	fine	chair	2	0	rolling chair(2)	
+rolling stand	false	false	rolling stand		fine+merged		1	1	rolling stand(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+router	false	false	router		fine+merged		1	1	router(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+salad spinner	false	false	salad spinner		fine+merged		1	1	salad spinner(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+scarf	false	false	scarf		fine+merged		1	1	scarf(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+serving trolley	false	false	serving trolley		fine+merged		1	1	serving trolley(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shampoo bottle	false	false	shampoo bottle		fine	bottle	2	0	shampoo bottle(2)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bottle）
+shaving foam	false	false	shaving foam		fine+merged		1	1	shaving foam(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shoes holder	false	false	shoes holder		fine+merged		1	1	shoes holder(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower ceiling	false	false	shower ceiling		fine+merged		1	1	shower ceiling(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower curtain rod	false	false	shower curtain rod		fine+merged		1	1	shower curtain rod(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower handle	false	false	shower handle		fine+merged		1	1	shower handle(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower loofah	false	false	shower loofah		fine+merged		1	1	shower loofah(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower rod	false	false	shower rod		fine+merged		1	1	shower rod(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower seating	false	false	shower seating		fine+merged		1	1	shower seating(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+shower tap	false	false	shower tap		fine+merged		1	1	shower tap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+silicon gun	false	false	silicon gun		fine+merged		1	1	silicon gun(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sink counter	false	false	sink counter		fine+merged		1	1	sink counter(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sit-up pillow	false	false	sit-up pillow		fine+merged		1	1	sit-up pillow(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+skyligth	false	false	skyligth		fine+merged		1	1	skyligth(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sliding door frame	false	false	sliding door frame		fine+merged		1	1	sliding door frame(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+smartphone	false	false	smartphone		fine+merged		1	1	smartphone(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+soap	false	false	soap		fine+merged		1	1	soap(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+soldering iron	false	false	soldering iron		fine+merged		1	1	soldering iron(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+standing fan	false	false	standing fan		fine+merged		1	1	standing fan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+standing lamp	true	false	standing lamp	inherit:lamp	fine	lamp	2	0	standing lamp(2)	
+stationery	false	false	stationery		fine+merged		1	1	stationery(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+stick	false	false	stick		fine+merged		1	1	stick(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+surface cleaning liquid	false	false	surface cleaning liquid		fine+merged		1	1	surface cleaning liquid(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+surfboard	false	false	surfboard		fine+merged		1	1	surfboard(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sweater	false	false	sweater		fine+merged		1	1	sweater(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+table mat	false	false	table mat		fine+merged		1	1	table mat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tissue box	false	false	tissue box		fine	box	2	0	tissue box(2)	GATE B：容易被挪动的杂物 / 个人物品
+toilet cleaner	false	false	toilet cleaner		fine+merged		1	1	toilet cleaner(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+toilet seat	false	false	toilet seat		fine+merged		1	1	toilet seat(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tool organizer	false	false	tool organizer		fine+merged		1	1	tool organizer(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+towel warmer	false	false	towel warmer		fine+merged		1	1	towel warmer(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+traz	false	false	traz		fine+merged		1	1	traz(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tube	false	false	tube		fine+merged		1	1	tube(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tv receiver	false	false	tv receiver		fine+merged		1	1	tv receiver(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tv remote	false	false	tv remote		fine+merged		1	1	tv remote(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+vacuum flask	false	false	vacuum flask		fine+merged		1	1	vacuum flask(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+vent	false	false	vent		fine+merged		1	1	vent(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+vertical blind control	false	false	vertical blind control		fine+merged		1	1	vertical blind control(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wall cord cover	false	false	wall cord cover		fine+merged		1	1	wall cord cover(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wall hook	false	false	wall hook		fine+merged		1	1	wall hook(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wall unit	false	false	wall unit		fine+merged		1	1	wall unit(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+water boiler	false	false	water boiler		fine+merged		1	1	water boiler(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+water bubbler	false	false	water bubbler		fine+merged		1	1	water bubbler(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+water pitcher	false	false	water pitcher		fine+merged		1	1	water pitcher(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+weighing scale	false	false	weighing scale		fine+merged		1	1	weighing scale(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wok pan	false	false	wok pan		fine+merged		1	1	wok pan(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wooden pallet	false	false	wooden pallet		fine+merged		1	1	wooden pallet(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+wooden stick	false	false	wooden stick		fine+merged		1	1	wooden stick(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bath cabinet	true	false	bath cabinet	inherit:cabinet	fine	cabinet	1	0	bath cabinet(1)	
+bathroom counter	false	false	bathroom counter		fine	table	1	0	bathroom counter(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bedside cabinet	true	false	bedside cabinet	inherit:cabinet	fine	cabinet	1	0	bedside cabinet(1)	
+bedside counter	false	false	bedside counter		fine	table	1	0	bedside counter(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+bluetooth speaker	true	false	bluetooth speaker	inherit:speaker	fine	speaker	1	0	bluetooth speaker(1)	
+case	false	false	case		fine	box	1	0	case(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+ceiling speaker	true	false	ceiling speaker	inherit:speaker	fine	speaker	1	0	ceiling speaker(1)	
+cereal box	false	false	cereal box		fine	box	1	0	cereal box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+closet	false	false	closet		fine	cabinet	1	0	closet(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+cloth hanger	false	false	cloth hanger		fine	coat hanger	1	0	cloth hanger(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+clothes hanger	false	false	clothes hanger		fine	coat hanger	1	0	clothes hanger(1)	官方 top100 中的结构 / 杂项类别（不在实例基准中）
+clothes rack	false	false	clothes rack		fine	coat hanger	1	0	clothes rack(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coat rack	false	false	coat rack		fine	coat hanger	1	0	coat rack(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+coffee table	true	false	coffee table	inherit:table	fine	table	1	0	coffee table(1)	
+comforter	false	false	comforter		fine	blanket	1	0	comforter(1)	S30（负责人 2026-11-03）：毯子都铺在床上，框与床几乎重合（随父类 blanket）
+delivery bag	false	false	delivery bag		fine	bag	1	0	delivery bag(1)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bag）
+dining table	true	false	dining table	inherit:table	fine	table	1	0	dining table(1)	
+duffle bag	false	false	duffle bag		fine	bag	1	0	duffle bag(1)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bag）
+duvet	false	false	duvet		fine	blanket	1	0	duvet(1)	S30（负责人 2026-11-03）：毯子都铺在床上，框与床几乎重合（随父类 blanket）
+egg carton	false	false	egg carton		fine	box	1	0	egg carton(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+electric pot	false	false	electric pot		fine	pot	1	0	electric pot(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+first aid box	false	false	first aid box		fine	box	1	0	first aid box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+first aid cabinet	true	false	first aid cabinet	inherit:cabinet	fine	cabinet	1	0	first aid cabinet(1)	
+fitted wardrobe	false	false	fitted wardrobe		fine	cabinet	1	0	fitted wardrobe(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+foldable closet	false	false	foldable closet		fine	cabinet	1	0	foldable closet(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+folding chair	true	false	folding chair	inherit:chair	fine	chair	1	0	folding chair(1)	
+folding sofa	true	false	folding sofa	inherit:sofa	fine	sofa	1	0	folding sofa(1)	
+frame	false	false	frame		fine	picture	1	0	frame(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+instant pot	false	false	instant pot		fine	pot	1	0	instant pot(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+interactive whiteboard	true	false	interactive whiteboard	inherit:whiteboard	fine	whiteboard	1	0	interactive whiteboard(1)	
+laboratory bench	false	false	laboratory bench		fine	table	1	0	laboratory bench(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+magazine rack	false	false	magazine rack		fine	shelf	1	0	magazine rack(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+mirror lamp	true	false	mirror lamp	inherit:lamp	fine	lamp	1	0	mirror lamp(1)	
+moka pot	false	false	moka pot		fine	pot	1	0	moka pot(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+painting	true	false	painting	scannetpp_top100_instance	fine	picture	1	0	painting(1)	
+paper bag	false	false	paper bag		fine	bag	1	0	paper bag(1)	GATE B：容易被挪动的杂物 / 个人物品
+pegboard	false	false	pegboard		fine	whiteboard	1	0	pegboard(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+photo	true	false	photo	inherit:picture	fine	picture	1	0	photo(1)	
+piano chair	true	false	piano chair	inherit:chair	fine	chair	1	0	piano chair(1)	
+portable speaker	true	false	portable speaker	inherit:speaker	fine	speaker	1	0	portable speaker(1)	
+safe box	false	false	safe box		fine	box	1	0	safe box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+sofa chair	true	false	sofa chair	inherit:chair	fine	chair	1	0	sofa chair(1)	
+softbox light	false	false	softbox light		fine	lamp	1	0	softbox light(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tool box	false	false	tool box		fine	box	1	0	tool box(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）
+tote bag	false	false	tote bag		fine	bag	1	0	tote bag(1)	GATE B：容易被挪动的杂物 / 个人物品（随父类 bag）
+wall lamp	true	false	wall lamp	inherit:lamp	fine	lamp	1	0	wall lamp(1)	
+workbench	false	false	workbench		fine	table	1	0	workbench(1)	不在基础类别中（官方实例基准 84 类 + ARKit 17 类）

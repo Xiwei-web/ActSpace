@@ -1,0 +1,442 @@
+# ActSpace evaluation config (evaluation protocol: see docs/evaluation_protocol.md)
+version: merged_v1.0                 # merged ARKit + ScanNet++ version (work/merged/_step8/merged_v1.0/); verified at startup with
+                                     # actspace_build.merge_build's verify; the older single-dataset version arkit_only_v0.11 can still be read
+build_config: configs/build.yaml     # data paths (work, arkit_3dod_root) come from the build config
+seed: 20261102                       # photo IDs and the randomness of mock agents derive from seed, run seed and group ID
+paths:
+  eval_runs: results/eval_runs        # trajectories and results (not in the repository); <results>/eval_runs when results is set in paths.yaml
+  # machine-specific paths all go in configs/paths.yaml (see configs/paths.example.yaml): work -> data_root, frames -> frames_root, models -> model_root
+  data_root: null                    # frozen data root (replaces paths.work of build.yaml): merged/_step8/merged_v1.0/, <dataset>/<scene>/
+  frames_root: null                  # evaluation photos: rebuild_frames.py output <scene id>/<frame id>.png|.jpg, or <dataset>/<scene id>/<frame id>.jpg
+  model_root: null                   # model weights directory: each model's path becomes <model_root>/<directory name>
+env:
+  budget: 40                         # main budget 40 steps (covers all groups; the longest group-level route is 36 steps); moves and "cannot move" both count 1 step
+  budgets_supported: [10, 20, 40]    # budget curve points
+  # The budget stays at 40 steps. The 7 ScanNet++ groups whose shortest evidence route (group_route_steps) exceeds 40 steps are run as usual
+  # and marked budget_infeasible; report_eval excludes them from the main tables and lists them in an appendix table, noting that even the
+  # ideal route cannot be completed within 40 steps; efficiency metrics are computed on completable groups only. Route steps: _000000 41,
+  # _000002 42, _000005 45, _000006 46, _000007 41, _000035 42, _000036 50
+  budget_infeasible: [scannetpp_g_000000, scannetpp_g_000002, scannetpp_g_000005, scannetpp_g_000006, scannetpp_g_000007,
+                      scannetpp_g_000035, scannetpp_g_000036]
+  odometry: true                     # per-step feedback of relative displacement and turn angle; can be switched off
+  odometry_round_m: 0.1
+  odometry_round_deg: 5
+  photo_id_digits: 6
+  render: true                       # false: do not load images (for mock agents that do not look at images)
+  max_consecutive_invalid: 3         # an invalid reply counts 1 step; 3 invalid replies in a row end the episode (unanswered questions are wrong)
+  notes_max_chars: 300               # optional notes field, not scored, truncated when too long
+  # ScanNet++ frames (1920×1440) are downsampled to 640×480 for evaluation and display, the same size as ARKit: after rotating upright,
+  # images whose long side exceeds this value are scaled down proportionally (INTER_AREA). Visibility and other annotations are computed
+  # at the original resolution and are not affected
+  max_image_long_side: 640
+  # The active_v2 prompt gives the single-step scale, taken as the median measured on the v0.11 viewpoint graphs (all edges of 41 scenes:
+  # median horizontal displacement of 11162 translation edges 0.314 m, median turn angle of 6481 rotation edges 44.2°), rounded to 0.1 m / 5°.
+  # The step scale is given per dataset and filled into the prompt according to the episode's dataset (translation rounded to 0.1 m, turns to 5°).
+  # Measured on the merged_v1.0 viewpoint graphs (all edges of the scenes each dataset uses in this version, masked nodes not removed):
+  #   ARKit 41 scenes, median horizontal displacement of 11577 translation edges 0.315 m, median turn angle of 6682 rotation edges 44.2°;
+  #   ScanNet++ 31 scenes, 11696 translation edges 0.309 m, 6980 rotation edges 44.3°. Both round to the same values
+  step_scale:
+    arkitscenes: {move_m: 0.3, turn_deg: 45}
+    scannetpp: {move_m: 0.3, turn_deg: 45}
+  # active_v2 additionally gives the cumulative pose relative to START with every observation (enabled by --mode active_v2; not in active_v1). See env.py
+agents:
+  random:
+    t1_range_m: [0.5, 5.0]
+scoring:
+  mra_thresholds: [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]
+cost_cap_usd: 15.0                   # cumulative cost cap of one run (including resumes); exceeding it stops immediately; completed episodes are
+                                     # saved and the run can be resumed. The cap is shared by all jobs with the same CAP_SCOPE
+llm:
+  # main setting (b): the last K = 8 photos + the full text record; comparison (a): full history (one model, budget 40)
+  # the START image is always kept as the first image, plus the last K = 8 photos (at most 9 images)
+  history: {mode: last_k, k: 8, pin_start: true}
+  # the evaluation always uses reasoning_effort = high, for all models and all settings (llm_run.default_effort; --effort only for comparison
+  # experiments); written into every trajectory record and status.json
+  reasoning_effort: high
+  allow_real_calls: true             # master switch for real API calls; switched on after the smoke test passed
+  prompts_approved: true             # the prompts (docs/evaluation_protocol.md) were reviewed; switched on after the smoke test passed
+  # smoke test: before the two switches above are on, only --smoke may make real calls, on these 3 groups (confirmed prices and an existing key are still required)
+  smoke_groups: [arkit_g_000000, arkit_g_000072, scannetpp_g_000009]   # merged_v1.0: both datasets; together they cover T1–T5,
+                                     # unanswerable T1 / T4, masked groups of both datasets, both constraint types. For v0.11: [g_000000, g_000017, g_000082]
+  request_timeout_s: 120
+  # Wall-clock limit of a single model call: 600 s (open and closed models). A timeout counts as truncation with no answer, scored like hitting
+  # max_tokens, recorded as timeout_truncated, not retried. The model config's call_timeout_s takes precedence (null = no limit).
+  call_timeout_s: 600
+  # The time limit only stops stuck or runaway requests and does not limit normal reasoning length. Closed APIs and Cambrian-S use 600 s;
+  # other vLLM models use call_timeout_s: auto, limit = factor × tokens ÷ the model's normal decoding speed (median generation speed of completed
+  # calls, excluding time to first token, only calls with output >= min_output_tokens); models without calls yet use their smoke data first
+  # (or call_timeout_proxy if there is none), and the limit is updated once automatically after min_calls calls of the evaluation run.
+  call_timeout_auto: {factor: 3, tokens: 32768, min_calls: 50, min_output_tokens: 100}
+  retry: {max_retries: 6, base_delay_s: 2.0, max_delay_s: 60.0, jitter: 0.25}   # exponential backoff: 2, 4, 8… s, at most 60 s
+  # (v0.11, retired) tiny subset: 24 of 104 groups, stratified (actspace_eval.tiny, seeds [20261102, 2]), for pilot runs and prompt tuning; fixed.
+  # Coverage: 21 scenes, 99 questions (T1 24, T2 27, T3 17, T4 23, T5 8; unanswerable 6), easy / medium / hard 28 / 32 / 33,
+  # masked groups 6, unconstrained 12, numeric_vs_comparison 6, direction_inverse 6; group_route_steps 6–25
+  # The merged_v1.0 tiny set has 32 groups, 16 each from ARKit and ScanNet++ (actspace_eval.tiny.select_merged, seeds [20261103, 76]):
+  # within each dataset, allocated proportionally by stratum (contains masked questions, constrained or not), choosing the seed whose question-type
+  # mix is closest to the full set; covers T1–T5, unanswerable T1 / T4, masked groups and both constraint types.
+  # ARKit: 14 scenes, 65 questions (4 masked groups); ScanNet++: 14 scenes, 69 questions (5 masked groups)
+  tiny_groups: [arkit_g_000000, arkit_g_000003, arkit_g_000005, arkit_g_000007, arkit_g_000008, arkit_g_000031, arkit_g_000037, arkit_g_000045,
+                arkit_g_000058, arkit_g_000063, arkit_g_000064, arkit_g_000072, arkit_g_000082, arkit_g_000095, arkit_g_000098, arkit_g_000104,
+                scannetpp_g_000009, scannetpp_g_000016, scannetpp_g_000033, scannetpp_g_000038, scannetpp_g_000055, scannetpp_g_000059, scannetpp_g_000060, scannetpp_g_000074,
+                scannetpp_g_000079, scannetpp_g_000082, scannetpp_g_000084, scannetpp_g_000106, scannetpp_g_000108, scannetpp_g_000109, scannetpp_g_000113, scannetpp_g_000138]
+# Open-model evaluation. Settings, prompts, budget, image history (K = 8 + START), 640×480 images and scoring rules are exactly the same as for
+# the closed models; prompts and protocol are not changed for individual models. What a model cannot do (insufficient context, limited number of
+# images per request) is recorded as N/A for that setting, with the reason.
+# Inference: each model is served by vLLM's OpenAI-compatible server (vLLM 0.19.1, torch 2.10.0+cu128), bf16, no quantisation;
+# tensor parallelism for models that do not fit on one 40 GB GPU. Requests are the same as for the closed models (models_vllm.VLLMClient
+# inherits OpenAIClient).
+open_models:
+  results_root: results               # results root (not in git; results in paths.yaml): <model>/<setting>/<run>/; weight SHA-256 manifests in _manifests/
+  model_dir: models                    # model directory (models in paths.yaml); model files are read-only
+  vllm_env: null                       # conda environment directory with vLLM (contains bin/vllm, bin/python); vllm_env in paths.yaml
+  hf_home: null                        # HF_HOME (offline) set for server processes in local runs (open_queue run-local)
+  cambrian_serve: scripts/cambrian/serve_cambrian.sh   # start script of the Cambrian-S server (separate environment, see cambrian_python)
+  cambrian_python: null                # python of the Cambrian-S environment; cambrian_python in paths.yaml
+  cambrian_repo: third_party/cambrian-s   # official code github.com/cambrian-mllm/cambrian-s, commit 058b1b4
+  limit_images_per_prompt: 48        # vLLM --limit-mm-per-prompt (at least 45 images; Passive-40 has 41)
+  # All open models use max_model_len = min(native context of the model, 65536). Rationale: the largest input of a normal conversation is
+  # 43,150 tokens, and 4 × A100-40GB cannot hold a larger KV cache. Native and effective context per model are listed in open_models_full.md
+  # (report_open_full.context_rows).
+  max_model_len_cap: 65536           # max_model_len = min(maximum context declared by the model, this value)
+  gpu_memory_utilization: 0.90
+  mm_processor_cache_gb: 0           # disables the multimodal processor cache (see the open_serve.py module docstring)
+  # evaluation runs: one allocation, tasks run back to back on the node (actspace_eval.open_queue, scripts/run_open_queue.sbatch)
+  queue:
+    # Freed GPUs go to running models in this order to add instances (see the open_queue module docstring).
+    # Cambrian comes before 27B: a second Cambrian instance is started first, and a second 27B instance after Cambrian finishes.
+    # gemma does not work well on 2 GPUs (KV cache only 1/8 of the 4-GPU setup, a single request at a time): after 27B, 35B -> Gemma -> Qwen3.8
+    # use 4 GPUs in turn (Qwen3.8 as 2 instances of 2 GPUs)
+    order: [VST-7B-RL, SenseNova-SI-1.2-InternVL3-8B, SenseNova-SI-1.3-InternVL3-8B, InternVL3_5-8B,
+            Qwen3.5-4B, Qwen3.5-9B, Cambrian-S-7B, Qwen3.6-27B, Qwen3.6-35B-A3B, gemma-4-31B-it, Qwen3.8-27B,
+            # additional models: fast non-thinking models first, then thinking models
+            LLaVA-OneVision-7B, RoboBrain2.0-7B, SenseNova-SI-1.1-InternVL3-2B, MiniCPM-V-4_5, Qwen3.5-2B, GLM-4.6V-Flash]
+    max_instances: 4                          # maximum number of server instances per model (same model, same parameters)
+    workers: {static: 4, active_v2: 8}        # concurrent episodes per run on each instance; 36 per model in total, slightly above max_num_seqs 32
+    workers_by_model:
+      Qwen3.6-27B: {static: 3, active_v2: 8}  # with TP2 the KV cache only holds about 10 long replies; higher concurrency only queues (measured: KV 97–99%, 11–13 running, 16–18 waiting, GPU 98–100%)
+      Qwen3.8-27B: {static: 3, active_v2: 8}  # same architecture as 3.6-27B
+      Cambrian-S-7B: {static: 1, active_v2: 1}  # serial server
+    # Smoke runs before the evaluation runs (run name prefix); released only if tokens per image agree. Gate checks (3 groups × 8 settings):
+    # complete records, no server errors, tokens per image consistent between landscape and portrait, correct image/text interleaving order
+    # (content_order); see open_queue.gate. LLaVA and MiniCPM re-ran the smoke test (smoke2) after switching to format-adapted chat templates
+    smoke_gate: {InternVL3_5-8B: smoke4, Qwen3.8-27B: smoke1, LLaVA-OneVision-7B: smoke2, RoboBrain2.0-7B: smoke1, SenseNova-SI-1.1-InternVL3-2B: smoke1,
+                 MiniCPM-V-4_5: smoke2, Qwen3.5-2B: smoke1, GLM-4.6V-Flash: smoke1}
+    stop_margin_s: 1800                       # this long before the job time limit: stop, save progress, submit the continuation job
+    no_start_margin_s: 3600                   # with less than this left before the limit, no new model is started
+    max_server_tries: 3                       # maximum restarts when a server fails to start or exits midway; reruns of failed tasks count too
+    foreign_wait_s: 900                       # if all allocated GPUs are held by processes outside this job (or disabled after env_error) this long, stop; the continuation job gets --exclude for the current node; environment failures do not count towards max_server_tries
+models:
+  # ---------------- open models. Shared settings: anchor open_common
+  # Thinking mode: on in the main setting for every model that supports it (corresponding to high for the closed models), otherwise the default;
+  # recorded in every record (thinking field).
+  # Sampling parameters: the recommended values in each model's generation_config.json; otherwise temperature 0.7, top_p 0.9 (sampling_source gives the source).
+  # seed: derived per call from the run seed (0 / 1 / 2 for the 3 repeats of Active and random_walk), the group and the call index (models_vllm.sample_seed).
+  # Output format: JSON mode (response_format json_object, vLLM structured outputs); for thinking models --reasoning-parser separates reasoning and reply,
+  # and structured outputs constrain only the reply after the reasoning. logprobs: top-5 for every generated token.
+  Qwen3.5-4B: &open_common
+    provider: vllm
+    model: Qwen3.5-4B                # vLLM --served-model-name
+    path: models/Qwen3.5-4B
+    vllm: {tp: 1, max_model_len: 65536, reasoning_parser: qwen3, trust_remote_code: false}
+    thinking: {supported: true, enabled: true, switch: "chat_template_kwargs.enable_thinking"}
+    chat_template_kwargs: {enable_thinking: true}
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (no generation_config.json in the model directory)"
+    max_output_tokens: 32768         # 32768 for all models (including reasoning tokens); narrowed to the remaining space (and recorded) when the context would be exceeded
+    call_timeout_s: auto             # see llm.call_timeout_auto (Cambrian-S uses 600)
+    min_output_tokens: 256           # remaining space below this value counts as insufficient context (N/A)
+    json_mode: true
+    image_detail: high               # same as in the closed-model requests (ignored by vLLM)
+    logprobs_top: 5
+    stream: true
+    read_timeout_s: 3600             # no data before the first byte while queued; evaluation concurrency exceeds max_num_seqs, 900 s is not enough
+    tokens_per_image: 300            # estimate (640×480, patch 16, 2×2 merge -> 20×15)
+    prices_usd_per_mtok: {input: 0.0, cached_input: 0.0, output: 0.0}
+    prices_confirmed: true
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  Qwen3.5-9B:
+    <<: *open_common
+    model: Qwen3.5-9B
+    path: models/Qwen3.5-9B
+  Qwen3.6-27B:
+    <<: *open_common
+    model: Qwen3.6-27B
+    path: models/Qwen3.6-27B
+    vllm: {tp: 2, max_model_len: 65536, reasoning_parser: qwen3, trust_remote_code: false}   # bf16 weights 55.6 GB: 2 × 40 GB
+    sampling: {temperature: 1.0, top_p: 0.95, top_k: 20}
+    sampling_source: generation_config.json
+  # Its chat template defaults to reasoning_effort = xhigh (3.6 has no such option). Not passed here: the model default is used, with no extra
+  # setting, as for the other models.
+  Qwen3.8-27B:
+    <<: *open_common
+    model: Qwen3.8-27B
+    path: models/Qwen3.8-27B
+    vllm: {tp: 2, max_model_len: 65536, reasoning_parser: qwen3, trust_remote_code: false}   # bf16 weights 55.6 GB: 2 × 40 GB
+    sampling: {temperature: 1.0, top_p: 0.95, top_k: 20}
+    sampling_source: generation_config.json
+    call_timeout_proxy: Qwen3.6-27B  # until it has its own call data, the initial limit uses the decoding speed of 3.6-27B (same architecture)
+    report_note: "This model has no high level: thinking uses its default mode (xhigh)."
+  Qwen3.6-35B-A3B:
+    <<: *open_common
+    model: Qwen3.6-35B-A3B
+    path: models/Qwen3.6-35B-A3B
+    vllm: {tp: 4, max_model_len: 65536, reasoning_parser: qwen3, trust_remote_code: false}   # bf16 weights 71.9 GB: 4 × 40 GB
+    sampling: {temperature: 1.0, top_p: 0.95, top_k: 20}
+    sampling_source: generation_config.json
+  gemma-4-31B-it:
+    <<: *open_common
+    model: gemma-4-31B-it
+    path: models/gemma-4-31B-it
+    vllm: {tp: 4, max_model_len: 65536, reasoning_parser: gemma4, trust_remote_code: false}  # bf16 weights 62.5 GB: 4 × 40 GB
+    thinking: {supported: true, enabled: true, switch: "chat_template_kwargs.enable_thinking"}
+    chat_template_kwargs: {enable_thinking: true}
+    sampling: {temperature: 1.0, top_p: 0.95, top_k: 64}
+    sampling_source: generation_config.json
+    tokens_per_image: 280            # processor_config: image_seq_length 280
+    # The 69 context_overflow episodes of Active v2 come from the model's own runaway generation; the results stay as they are: no rerun, no larger
+    # context, no change to the official stop tokens
+    report_note: "In Active, 162 calls did not stop after emitting <tool_call|> and ran to the limit (93 hit 32,768 tokens, 69 hit the remaining context); 69 episodes therefore ended early with context overflow. The Active score without truncated groups is given below under \"Selective score without truncated groups\" (analysis only, does not replace the main table). The results are kept as they are, without rerunning."
+  InternVL3_5-8B:
+    <<: *open_common
+    model: InternVL3_5-8B
+    path: models/InternVL3_5-8B
+    # The tile count is given via hf_overrides (changes only the in-memory config, model files untouched); vLLM 0.19.1 also passes mm_processor_kwargs
+    # to the video processor, which makes the server fail at startup.
+    # Image tiling uses the largest value that fits Passive-40 into the native context. Computed exactly for all 234 groups (tokenizer + placeholder
+    # tokens per image, matching the lengths reported by the server): with 2–4, a landscape image is 1 tile of 256 tokens and a portrait image 2 tiles
+    # + thumbnail = 768 tokens, longest Passive-40 32643; with 5 or more every image has 1792 tokens and even the shortest is 74k, over 40960
+    vllm: {tp: 1, max_model_len: 40960, reasoning_parser: null, trust_remote_code: true, hf_overrides: {max_dynamic_patch: 1}}
+    # thinking can only be enabled by replacing the system prompt with the official R1_SYSTEM_PROMPT (README "Thinking Mode"), which conflicts with
+    # "no prompt changes for individual models": default (off)
+    thinking: {supported: system_prompt_only, enabled: false, switch: "system prompt R1_SYSTEM_PROMPT (not used)"}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (generation_config.json has no sampling parameters)"
+    tokens_per_image: 257            # same for landscape and portrait (tile limit 1): includes 1 separator token
+  SenseNova-SI-1.2-InternVL3-8B:
+    <<: *open_common
+    model: SenseNova-SI-1.2-InternVL3-8B
+    path: models/SenseNova-SI-1.2-InternVL3-8B
+    # Image tiling 1 (256 tokens per image). With 2–4, Passive-40 with 41 portrait images reaches 32643 tokens, leaving only 125 tokens for the answer
+    # (the longest InternVL3.5 answer in the smoke test was 136), so the answer does not fit; with 1 the longest is 11669. Template: the chat template in
+    # tokenizer_config only concatenates the system prompt as a string, whereas vLLM passes a list (openai format);
+    # configs/chat_templates/sensenova_internvl3.jinja changes only this, the content is identical
+    vllm: {tp: 1, max_model_len: 32768, reasoning_parser: null, trust_remote_code: true, hf_overrides: {max_dynamic_patch: 1},
+           chat_template: configs/chat_templates/sensenova_internvl3.jinja}
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (generation_config.json has no sampling parameters)"
+    tokens_per_image: 257
+  SenseNova-SI-1.3-InternVL3-8B:
+    <<: *open_common
+    model: SenseNova-SI-1.3-InternVL3-8B
+    path: models/SenseNova-SI-1.3-InternVL3-8B
+    # Image tiling 1 (256 tokens per image). With 2–4, Passive-40 with 41 portrait images reaches 32643 tokens, leaving only 125 tokens for the answer
+    # (the longest InternVL3.5 answer in the smoke test was 136), so the answer does not fit; with 1 the longest is 11669. Template: the chat template in
+    # tokenizer_config only concatenates the system prompt as a string, whereas vLLM passes a list (openai format);
+    # configs/chat_templates/sensenova_internvl3.jinja changes only this, the content is identical
+    vllm: {tp: 1, max_model_len: 32768, reasoning_parser: null, trust_remote_code: true, hf_overrides: {max_dynamic_patch: 1},
+           chat_template: configs/chat_templates/sensenova_internvl3.jinja}
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (generation_config.json has no sampling parameters)"
+    tokens_per_image: 257
+  VST-7B-RL:
+    <<: *open_common
+    model: VST-7B-RL
+    path: models/VST-7B-RL
+    vllm: {tp: 1, max_model_len: 65536, reasoning_parser: null, trust_remote_code: false}
+    # thinking can only be enabled by inserting the official THINK_SYSTEM_PROMPT as an extra system message (README), which conflicts with
+    # "no prompt changes for individual models": default (off)
+    thinking: {supported: system_prompt_only, enabled: false, switch: "extra system message THINK_SYSTEM_PROMPT (not used)"}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (generation_config.json has no sampling parameters)"
+    tokens_per_image: 391            # estimate: Qwen2.5-VL, 640×480 -> 644×476 -> 23×17
+  Cambrian-S-7B:
+    <<: *open_common
+    model: Cambrian-S-7B
+    path: models/Cambrian-S-7B
+    vllm: null                       # vLLM does not support cambrian_qwen: a server with the same API wrapping the official code (scripts/cambrian/)
+    server: cambrian
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.8, top_k: 20, repetition_penalty: 1.05}
+    sampling_source: generation_config.json
+    stream: false                    # the wrapper server does not stream; time to first token comes from x_timing.ttft_s returned by the server
+    read_timeout_s: 7200             # the server generates serially and queueing counts as waiting: 8 runs × 600 s
+    call_timeout_s: 600              # timed on the server side, excluding serial queueing
+    max_model_len: 32768             # maximum positions of the base model Qwen2.5-7B (the server checks the same limit)
+    tokens_per_image: 588            # measured with several images (portrait 594); with a single image in the whole conversation anyres applies: 2788
+  # ---------------- six additional open models. Same protocol as the first 11 open models.
+  # Thinking: on where supported (MiniCPM-V 4.5, Qwen3.5-2B, GLM-4.6V-Flash; none has a high level, the default level is used); sampling: the values
+  # in generation_config.json, otherwise 0.7 / 0.9.
+  LLaVA-OneVision-7B:
+    <<: *open_common
+    model: LLaVA-OneVision-7B
+    path: models/LLaVA-OneVision-7B      # llava-hf/llava-onevision-qwen2-7b-ov-hf (official conversion, same weights as the lmms-lab original)
+    # Runs in its stored precision float16 (not converted to bf16); anyres is disabled and every image uses the base resolution only (plugin
+    # vllm_plugins/actspace_vllm_plugins/llava_ov_base.py; 730 tokens per image = 27×27 + image_newline), the same for all settings. Native context 32,768 (Qwen2-7B).
+    # The official template (chat_template.json) emits all <image> first and then all text, moving the images in front of the text;
+    # configs/chat_templates/llava_onevision_interleaved.jinja emits them in the original content order with identical placeholders and text (only the order changes),
+    # so the model receives the same interleaved image/text content as the other models
+    vllm: {tp: 1, max_model_len: 32768, dtype: float16, reasoning_parser: null, trust_remote_code: false, plugins: true,
+           hf_overrides: {architectures: [LlavaOnevisionBaseOnly], image_grid_pinpoints: [[384, 384]]},
+           chat_template: configs/chat_templates/llava_onevision_interleaved.jinja}
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (generation_config.json has no sampling parameters)"
+    tokens_per_image: 730
+    report_note: "llava-hf/llava-onevision-qwen2-7b-ov-hf (official Hugging Face conversion, same weights as the lmms-lab original); runs in its stored precision float16; anyres high-resolution tiling disabled, every image uses the base resolution only (730 tokens), the same for all settings. Chat template adapted in format: images are interleaved with the text in the original content order (the official template puts all images first); placeholders and text are unchanged, so the model receives the same content in the same order as the other models."
+  RoboBrain2.0-7B:
+    <<: *open_common
+    model: RoboBrain2.0-7B
+    path: models/RoboBrain2.0-7B          # BAAI/RoboBrain2.0-7B (Qwen2.5-VL-7B architecture)
+    vllm: {tp: 1, max_model_len: 65536, reasoning_parser: null, trust_remote_code: false}   # native 128,000
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.000001, repetition_penalty: 1.05}   # the values in generation_config.json, not other defaults from the inference code
+    sampling_source: generation_config.json
+    tokens_per_image: 391
+  SenseNova-SI-1.1-InternVL3-2B:
+    <<: *open_common
+    model: SenseNova-SI-1.1-InternVL3-2B
+    path: models/SenseNova-SI-1.1-InternVL3-2B
+    # version 1.1 (the 2B model only exists as 1.1); tile limit 1 (same for the whole InternVL family); its chat template is identical to the 8B one,
+    # so the 8B template adaptation is reused
+    vllm: {tp: 1, max_model_len: 32768, reasoning_parser: null, trust_remote_code: true, hf_overrides: {max_dynamic_patch: 1},
+           chat_template: configs/chat_templates/sensenova_internvl3.jinja}
+    thinking: {supported: false, enabled: false, switch: null}
+    chat_template_kwargs: null
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (no generation_config.json in the model directory)"
+    tokens_per_image: 256
+    report_note: "SenseNova-SI-1.1-InternVL3-2B is version 1.1 (the 2B model was only released as 1.1), not the same version as the 8B models (1.2 / 1.3)."
+  MiniCPM-V-4_5:
+    <<: *open_common
+    model: MiniCPM-V-4_5
+    path: models/MiniCPM-V-4_5            # openbmb/MiniCPM-V-4_5 (SigLIP-400M + Qwen3-8B)
+    # The official tokenizer class no longer loads under transformers 5.5.4; the plugin restores the same attributes (im_start_id etc.)
+    # (vllm_plugins/actspace_vllm_plugins/__init__.py)
+    # The official template only accepts string content and fails with HTTP 400 when vLLM passes a list (openai format);
+    # configs/chat_templates/minicpm_v_interleaved.jinja joins the list into a string the way the official chat() does (images become (<image>./</image>),
+    # parts joined with newlines in their original order); the rest of the template is unchanged
+    vllm: {tp: 1, max_model_len: 40960, reasoning_parser: qwen3, trust_remote_code: true, plugins: true, env: {ACTSPACE_MINICPMV_TOKENIZER: 1},
+           chat_template: configs/chat_templates/minicpm_v_interleaved.jinja}
+    thinking: {supported: true, enabled: true, switch: "chat_template_kwargs.enable_thinking"}   # on (off by default in the official code); no high level
+    chat_template_kwargs: {enable_thinking: true}
+    sampling: {temperature: 0.6, top_p: 0.95, top_k: 20}
+    sampling_source: generation_config.json
+    tokens_per_image: 202
+    report_note: "Thinking on (enable_thinking: true; off by default in the official chat()), following the rule that models supporting thinking run with it on in the main setting. Chat template adapted in format: the official template only accepts string content; the new template joins the image/text list into a string the way the official chat() does (images interleaved in the original order), so the model receives the same content in the same order as the other models."
+  Qwen3.5-2B:
+    <<: *open_common
+    model: Qwen3.5-2B
+    path: models/Qwen3.5-2B
+    vllm: {tp: 1, max_model_len: 65536, reasoning_parser: qwen3, trust_remote_code: false}   # native 262,144
+    sampling: {temperature: 0.7, top_p: 0.9}
+    sampling_source: "default (no generation_config.json in the model directory)"
+  GLM-4.6V-Flash:
+    <<: *open_common
+    model: GLM-4.6V-Flash
+    path: models/GLM-4.6V-Flash           # zai-org/GLM-4.6V-Flash (official original, with thinking)
+    vllm: {tp: 1, max_model_len: 65536, reasoning_parser: glm45, trust_remote_code: false}   # native 131,072
+    thinking: {supported: true, enabled: true, switch: "chat_template_kwargs.enable_thinking"}   # on by default; no high level
+    chat_template_kwargs: {enable_thinking: true}
+    sampling: {temperature: 0.8, top_p: 0.6, top_k: 2}       # generation_config.json (the model card also suggests repetition_penalty 1.1, which is not in generation_config and not used)
+    sampling_source: generation_config.json
+    tokens_per_image: 391
+  # Closed models (OpenAI-compatible API). The reasoning effort is written into every result record
+  gpt-6.1-sol:
+    provider: openai
+    model: gpt-6.1-sol
+    temperature: null                # temperature is not sent in reasoning mode
+    max_output_tokens: 32768         # includes reasoning tokens; too small a value truncates reasoning models into empty replies (recorded as invalid replies)
+    max_tokens_param: max_completion_tokens
+    reasoning: {enabled: true, effort: high}   # the evaluation uses high throughout (llm.reasoning_effort); earlier pilot runs used medium
+    json_mode: true
+    image_detail: high
+    prompt_cache_key: true           # one prompt_cache_key per episode, to improve cache hits on the shared prefix
+    tokens_per_image: 360            # measured in the smoke test (6 calls of static settings: 354–361); the original estimate was 765
+    prices_usd_per_mtok: {input: 2.00, cached_input: 0.10, cache_write: 2.50, cache_write_12h: 5.00, output: 10.00}
+    prices_confirmed: true
+    # measured in the smoke test (including reasoning tokens): Active outputs 40 per call (23 reasoning); answers Blind 125, Passive 737, Oracle 858; 600 used
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  # tiny weak-vs-strong comparison (reasoning_effort = high, given by --effort high). Prices as on the provider's model pages;
+  # cache writes (official price page): cache_write is the 30-minute tier (1.25 × input), cache_write_12h the 12-hour tier (2.5 ×);
+  # requests set neither prompt_cache_options nor prompt_cache_retention and use the default 30-minute tier. Included in cost records, estimates and caps (cost.CostTracker).
+  # API parameters are the same as for gpt-6.1-sol (Chat Completions, reasoning_effort, max_completion_tokens, JSON mode, prompt_cache_key).
+  # tokens_per_image: a probe measured 361 tokens per image for terra, luna and sol, consistent with sol's original value 360.
+  gpt-6.1-terra:
+    provider: openai
+    model: gpt-6.1-terra
+    temperature: null
+    max_output_tokens: 32768
+    max_tokens_param: max_completion_tokens
+    reasoning: {enabled: true, effort: high}
+    json_mode: true
+    image_detail: high
+    prompt_cache_key: true
+    tokens_per_image: 360
+    prices_usd_per_mtok: {input: 1.00, cached_input: 0.05, cache_write: 1.25, cache_write_12h: 2.50, output: 5.00}
+    prices_confirmed: true
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  gpt-6-luna:
+    provider: openai
+    model: gpt-6-luna
+    temperature: null
+    max_output_tokens: 32768
+    max_tokens_param: max_completion_tokens
+    reasoning: {enabled: true, effort: high}
+    json_mode: true
+    image_detail: high
+    prompt_cache_key: true
+    tokens_per_image: 360
+    prices_usd_per_mtok: {input: 0.10, cached_input: 0.01, cache_write: 0.125, cache_write_12h: 0.25, output: 0.50}
+    prices_confirmed: true
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  # cost estimates only: prices from report_stage3.PRICES (standard prices), cache writes at 1.25 × input;
+  # prices_confirmed: false, so no real calls. API parameters assumed to be the same as gpt-6.1-sol, tokens_per_image assumed 361 (probe value of the gpt-6.1 / gpt-6 family)
+  gpt-6-astra:
+    provider: openai
+    model: gpt-6-astra
+    temperature: null
+    max_output_tokens: 32768
+    max_tokens_param: max_completion_tokens
+    reasoning: {enabled: true, effort: high}
+    json_mode: true
+    image_detail: high
+    prompt_cache_key: true
+    tokens_per_image: 361
+    prices_usd_per_mtok: {input: 10.00, cached_input: 1.00, cache_write: 12.50, cache_write_12h: 25.00, output: 50.00}
+    prices_confirmed: false
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  # placeholder for a real model. Example prices (input $2.50 / 1M, cached input $1.25 / 1M, output $10 / 1M); with prices_confirmed: false no real calls are allowed
+  openai_example:
+    provider: openai
+    model: REPLACE_WITH_MODEL_NAME
+    temperature: 0.0                 # used in non-reasoning mode
+    max_output_tokens: 1024
+    max_tokens_param: max_completion_tokens
+    reasoning: {enabled: false, effort: medium}   # reasoning mode: send reasoning_effort, not temperature
+    json_mode: true                  # response_format = json_object
+    image_detail: high
+    tokens_per_image: 765            # estimate (640 × 480, high-detail tile counting); verify for the actual model
+    prices_usd_per_mtok: {input: 2.50, cached_input: 1.25, output: 10.0}
+    prices_confirmed: false
+    est_output_tokens: {action: 20, answer_base: 15, answer_per_question: 12, reasoning_per_call: 0}
+  mock:                              # for tests: calls no API, returns valid / invalid replies according to policy, usage counted with the estimates
+    provider: mock
+    model: mock-1
+    policy: valid                    # valid / invalid / mixed / flaky / fatal
+    mock_steps: 5                    # number of moves in Active before answering
+    fail_times: 2                    # flaky: number of failures (retryable errors) before each request succeeds
+    temperature: 0.0
+    max_output_tokens: 256
+    tokens_per_image: 765
+    prices_usd_per_mtok: {input: 2.50, cached_input: 1.25, output: 10.0}
+    prices_confirmed: true
+    est_output_tokens: {action: 20, answer_base: 15, answer_per_question: 12, reasoning_per_call: 0}

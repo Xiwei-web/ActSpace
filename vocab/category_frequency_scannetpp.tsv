@@ -1,0 +1,844 @@
+category	level	instances	scenes_present	scenes_unique	pilot_instances	allowed
+object	fine	564	44	8	45	False
+wall	fine	438	50	1	32	False
+book	fine	283	19	2	3	False
+chair	fine	244	25	10	17	True
+ceiling lamp	fine	186	41	14	10	False
+box	fine	183	33	8	20	True
+socket	fine	159	38	7	19	False
+table	fine	147	33	11	13	True
+bottle	fine	96	22	11	21	False
+window	fine	92	29	8	5	True
+light switch	fine	80	38	18	6	False
+door	fine	79	47	30	7	True
+paper	fine	74	17	5	4	False
+monitor	fine	71	19	6	7	True
+doorframe	fine	70	45	32	7	False
+trash can	fine	69	37	17	6	True
+cabinet	fine	68	29	15	2	True
+ceiling	fine	66	43	28	6	False
+floor	fine	64	50	43	5	False
+office chair	fine	48	16	7	9	True
+pipe	fine	45	9	1	4	False
+cup	fine	44	17	9	4	False
+computer tower	fine	43	8	3	3	True
+window frame	fine	42	22	12	1	False
+shoes	fine	41	7	1	0	False
+electrical duct	fine	39	13	3	3	False
+keyboard	fine	39	17	8	2	True
+picture	fine	39	14	8	0	True
+towel	fine	39	15	5	3	True
+heater	fine	38	24	15	3	True
+whiteboard	fine	35	18	8	5	True
+mouse	fine	33	15	7	2	False
+structure	fine	33	14	5	0	False
+shelf	fine	31	21	14	0	True
+bag	fine	27	13	6	3	False
+smoke detector	fine	26	20	15	2	False
+storage cabinet	fine	26	10	3	4	True
+windowsill	fine	26	20	15	1	False
+kitchen cabinet	fine	25	8	2	0	True
+blinds	fine	23	15	10	2	True
+sink	fine	23	19	16	1	True
+shower wall	fine	20	5	0	0	False
+toilet paper	fine	20	10	6	1	False
+pillow	fine	19	7	1	0	True
+telephone	fine	19	15	11	1	True
+plant	fine	18	6	2	1	True
+file	fine	17	1	0	0	False
+machine	fine	17	5	3	0	False
+plastic case	fine	17	2	0	0	False
+plant pot	fine	16	6	3	1	False
+exhaust fan	fine	15	9	4	0	False
+jar	fine	15	2	0	0	False
+tap	fine	15	12	9	1	True
+backpack	fine	13	7	3	0	False
+board	fine	13	5	3	1	False
+kettle	fine	13	9	7	0	True
+plate	fine	13	8	3	2	False
+power strip	fine	13	8	4	1	True
+switch	fine	13	6	3	2	False
+bookshelf	fine	12	9	6	1	True
+curtain	fine	12	7	3	0	True
+light	fine	12	4	1	0	False
+sofa	fine	12	8	7	0	True
+blanket	fine	11	7	4	0	False
+cardboard	fine	11	3	0	0	False
+crate	fine	11	3	2	9	True
+jacket	fine	11	6	3	0	False
+kitchen utensil	fine	11	4	1	0	False
+speaker	fine	11	6	1	0	True
+stool	fine	11	5	3	0	True
+laboratory equipment	fine	10	1	0	0	False
+paper towel	fine	10	6	3	0	False
+armchair	fine	9	2	1	0	True
+cloth	fine	9	4	2	0	False
+kitchen counter	fine	9	7	6	0	False
+poster	fine	9	4	1	4	True
+printer	fine	9	7	5	0	True
+refrigerator	fine	9	8	7	1	True
+toilet	fine	9	8	7	1	True
+bed	fine	8	8	8	0	True
+cable	fine	8	4	0	0	False
+cable raceway	fine	8	1	0	0	False
+ceiling vent	fine	8	3	1	0	False
+laptop	fine	8	7	6	0	True
+microwave	fine	8	8	8	2	True
+pen	fine	8	2	1	0	False
+pillar	fine	8	5	3	0	False
+soap bottle	fine	8	2	1	0	False
+air conditioner	fine	7	5	4	0	False
+basket	fine	7	4	3	0	True
+beanbag	fine	7	2	0	0	False
+bucket	fine	7	3	1	1	True
+clock	fine	7	7	7	1	True
+paper stapler	fine	7	2	0	0	False
+pen holder	fine	7	3	1	0	False
+reflection	fine	7	1	0	0	False
+shower floor	fine	7	6	5	0	False
+suitcase	fine	7	5	4	0	True
+table lamp	fine	7	4	2	0	True
+toilet brush	fine	7	6	5	1	True
+whiteboard eraser	fine	7	6	5	0	False
+TV	fine	6	6	6	0	True
+bottle crate	fine	6	1	0	6	False
+carpet	fine	6	3	2	0	False
+counter	fine	6	6	6	0	False
+cushion	fine	6	1	0	0	True
+fire extinguisher	fine	6	6	6	0	False
+notice	fine	6	1	0	0	False
+pedestal fan	fine	6	5	4	0	False
+plug	fine	6	2	0	0	False
+projector	fine	6	5	4	0	False
+soap dispenser	fine	6	6	6	0	True
+alligator clips	fine	5	1	0	0	False
+blackboard	fine	5	2	1	0	False
+broom	fine	5	3	2	1	False
+clothes	fine	5	4	3	0	False
+coffee maker	fine	5	4	3	0	False
+cutting board	fine	5	5	5	0	True
+dining chair	fine	5	1	0	0	True
+floor lamp	fine	5	3	1	0	True
+headphones	fine	5	5	5	1	False
+helmet	fine	5	2	0	0	False
+knife	fine	5	1	0	0	False
+lamp	fine	5	5	5	1	True
+mirror	fine	5	4	3	0	False
+spray bottle	fine	5	4	3	0	False
+toothpaste	fine	5	4	3	1	False
+air vent	fine	4	3	2	1	False
+bar stool	fine	4	2	0	0	True
+bathtub	fine	4	4	4	0	True
+bedside table	fine	4	4	4	0	True
+bench	fine	4	1	0	0	False
+coat	fine	4	1	0	0	False
+coat hanger	fine	4	3	2	1	True
+copier	fine	4	4	4	1	True
+dishwasher	fine	4	3	2	0	True
+dumbbell	fine	4	1	0	0	False
+electrical pipe	fine	4	1	0	0	False
+folder	fine	4	2	0	0	False
+mouse pad	fine	4	4	4	1	False
+pan	fine	4	3	2	0	True
+shower curtain	fine	4	4	4	1	False
+spotlight	fine	4	2	0	0	False
+stove	fine	4	4	4	0	True
+toothbrush	fine	4	3	2	1	False
+air duct	fine	3	2	1	0	False
+bathroom cabinet	fine	3	1	0	0	True
+bedframe	fine	3	1	0	0	False
+bicycle	fine	3	1	0	0	False
+binder	fine	3	1	0	0	False
+bowl	fine	3	2	1	2	False
+bunny chocolate	fine	3	1	0	0	False
+cable duct	fine	3	2	1	0	False
+cable tray	fine	3	2	1	0	False
+calendar	fine	3	2	1	2	False
+coffee machine	fine	3	3	3	1	False
+container	fine	3	2	1	0	False
+cosmetic bag	fine	3	1	0	0	False
+decoration	fine	3	2	1	0	False
+drying rack	fine	3	1	0	0	False
+flush button	fine	3	2	1	1	False
+grab bar	fine	3	1	0	3	False
+hammer	fine	3	2	1	0	False
+jug	fine	3	2	1	2	False
+knife set	fine	3	1	0	0	False
+light fixture	fine	3	1	0	0	False
+marker	fine	3	1	0	0	False
+metal sheet	fine	3	1	0	0	False
+ottoman chair	fine	3	2	1	0	True
+oven	fine	3	3	3	0	True
+overhead projector	fine	3	3	3	1	False
+paper ram	fine	3	2	1	0	False
+paper towel dispenser	fine	3	3	3	0	False
+pinboard	fine	3	2	1	0	False
+plant pot mat	fine	3	1	0	0	False
+remote controller	fine	3	2	1	0	False
+roof	fine	3	1	0	0	False
+rug	fine	3	2	1	0	False
+shower	fine	3	3	3	1	False
+sliding door	fine	3	2	1	0	False
+slippers	fine	3	1	0	0	False
+stapler	fine	3	1	0	0	False
+storage rack	fine	3	1	0	0	False
+toilet paper holder	fine	3	3	3	0	False
+tools	fine	3	2	0	0	False
+ventilation	fine	3	2	1	0	False
+wall board	fine	3	1	0	0	False
+wardrobe	fine	3	3	3	0	False
+washing machine	fine	3	3	3	0	True
+wooden brush	fine	3	1	0	0	False
+bathroom shelf	fine	2	2	2	0	True
+blind rail	fine	2	2	2	1	False
+boot	fine	2	1	0	0	False
+cap	fine	2	1	0	0	False
+cheese	fine	2	1	0	0	False
+clothes dryer	fine	2	1	0	0	False
+coaster	fine	2	2	2	1	False
+coax outlet	fine	2	1	0	0	False
+coax socket	fine	2	1	0	0	False
+cooking pot	fine	2	1	0	0	False
+detergent bottle	fine	2	1	0	0	False
+door mat	fine	2	1	0	0	False
+flip flop	fine	2	1	0	0	False
+floor mounted air conditioner	fine	2	1	0	0	False
+footstool	fine	2	2	2	0	True
+fruit	fine	2	1	0	0	False
+hair dryer	fine	2	2	2	0	False
+headset	fine	2	2	2	0	False
+hole puncher	fine	2	2	2	0	False
+jeans	fine	2	1	0	2	False
+kitchen drawer	fine	2	1	0	0	False
+kitchen towel	fine	2	1	0	0	True
+lab equipment	fine	2	1	0	0	False
+lan	fine	2	1	0	0	False
+laundry basket	fine	2	2	2	0	False
+milling machine	fine	2	1	0	0	False
+notebook	fine	2	2	2	0	False
+oscilloscope	fine	2	2	2	0	False
+package	fine	2	1	0	0	False
+panel	fine	2	2	2	0	False
+pants	fine	2	1	0	2	False
+paper holder	fine	2	1	0	0	False
+paper rack	fine	2	1	0	0	False
+photo frame	fine	2	1	0	0	True
+plant pot coaster	fine	2	1	0	0	False
+plastic drum	fine	2	1	0	0	False
+post-it	fine	2	2	2	0	False
+recessed shelf	fine	2	1	0	0	True
+rolling chair	fine	2	1	0	0	True
+scissors	fine	2	2	2	0	False
+screwdriver	fine	2	1	0	0	False
+sculpture	fine	2	1	0	0	False
+shampoo bottle	fine	2	2	2	1	False
+shoe rack	fine	2	2	2	0	True
+shower faucet	fine	2	2	2	0	False
+shower gel	fine	2	1	0	0	False
+shower head	fine	2	2	2	0	False
+shower rug	fine	2	2	2	0	False
+shower valve	fine	2	2	2	1	False
+sink pipe	fine	2	2	2	0	False
+sponge	fine	2	1	0	0	False
+standing lamp	fine	2	2	2	0	True
+tissue box	fine	2	1	0	0	False
+toaster	fine	2	2	2	0	False
+toilet flush button	fine	2	2	2	0	False
+toilet paper dispenser	fine	2	2	2	0	False
+toothbrush holder	fine	2	2	2	1	False
+toy	fine	2	1	0	0	False
+tray	fine	2	2	2	0	False
+tripod	fine	2	2	2	0	False
+trousers	fine	2	2	2	1	False
+tv stand	fine	2	2	2	0	False
+umbrella	fine	2	1	0	0	False
+vacuum cleaner	fine	2	2	2	1	False
+ventilator	fine	2	2	2	0	False
+wall hooks	fine	2	1	0	0	False
+water filter	fine	2	2	2	0	False
+water pipe	fine	2	1	0	0	False
+whiteboard stand	fine	2	1	0	0	False
+wooden plank	fine	2	1	0	0	False
+workshop tool	fine	2	1	0	0	False
+yoga mat	fine	2	2	2	0	False
+apple	fine	1	1	1	0	False
+ball	fine	1	1	1	0	False
+banana	fine	1	1	0	0	False
+bar soap	fine	1	1	1	0	False
+barcode scanner	fine	1	1	1	0	False
+baseball cap	fine	1	1	1	0	False
+bath cabinet	fine	1	1	1	0	True
+bath mat	fine	1	1	1	0	False
+bathroom counter	fine	1	1	1	0	False
+bathroom mat	fine	1	1	1	1	False
+bedside cabinet	fine	1	1	1	0	True
+bedside counter	fine	1	1	1	0	False
+billboard	fine	1	1	1	0	False
+blackboard frame	fine	1	1	1	0	False
+bluetooth speaker	fine	1	1	1	0	True
+buket	fine	1	1	1	0	False
+button	fine	1	1	1	0	False
+cabinet door	fine	1	1	1	0	False
+cable socket	fine	1	1	1	0	False
+calculator	fine	1	1	1	0	False
+car door	fine	1	1	1	0	False
+cart	fine	1	1	1	0	False
+case	fine	1	1	1	0	False
+ceiling beam	fine	1	1	1	0	False
+ceiling speaker	fine	1	1	1	0	True
+cereal box	fine	1	1	1	0	False
+chessboard	fine	1	1	1	0	False
+cleaner	fine	1	1	1	0	False
+cleaning brush	fine	1	1	1	0	False
+cleaning liquid	fine	1	1	1	0	False
+closet	fine	1	1	1	0	False
+cloth hanger	fine	1	1	1	0	False
+clothes hanger	fine	1	1	1	0	False
+clothes rack	fine	1	1	1	0	False
+coat rack	fine	1	1	1	0	False
+coffee table	fine	1	1	1	0	True
+column	fine	1	1	1	0	False
+comforter	fine	1	1	1	0	False
+construction materials	fine	1	1	1	0	False
+cord cover	fine	1	1	1	0	False
+curtain rail	fine	1	1	1	0	False
+curtain rod	fine	1	1	1	0	False
+delivery bag	fine	1	1	1	0	False
+desk fan	fine	1	1	1	1	False
+dining table	fine	1	1	1	0	True
+dish drainer	fine	1	1	1	0	False
+dish drying rack	fine	1	1	1	0	False
+dishwashing sponge	fine	1	1	1	0	False
+disinfectant dispenser	fine	1	1	1	1	False
+door handle	fine	1	1	1	0	False
+door stopper	fine	1	1	1	0	False
+door vent	fine	1	1	1	0	False
+duffle bag	fine	1	1	1	0	False
+dustpan	fine	1	1	1	1	False
+duvet	fine	1	1	1	0	False
+egg carton	fine	1	1	1	0	False
+electric box	fine	1	1	1	1	False
+electric duct	fine	1	1	1	0	False
+electric pot	fine	1	1	1	0	False
+emergency kit	fine	1	1	1	0	False
+eraser	fine	1	1	1	0	False
+espresso machine	fine	1	1	1	0	False
+fabric	fine	1	1	1	0	False
+fan	fine	1	1	1	0	False
+filter jug	fine	1	1	1	0	False
+first aid box	fine	1	1	1	0	False
+first aid cabinet	fine	1	1	1	0	True
+first aid kit	fine	1	1	1	0	False
+fitted wardrobe	fine	1	1	1	0	False
+flour bag	fine	1	1	1	0	False
+flushes	fine	1	1	1	0	False
+foldable closet	fine	1	1	1	0	False
+folder holder	fine	1	1	1	0	False
+folding chair	fine	1	1	1	0	True
+folding screen	fine	1	1	1	0	False
+folding sofa	fine	1	1	1	0	True
+food container	fine	1	1	1	1	False
+frame	fine	1	1	1	0	False
+french press	fine	1	1	1	1	False
+garbage bin cover	fine	1	1	1	0	False
+glass	fine	1	1	1	0	False
+glass pane	fine	1	1	1	1	False
+glass wall	fine	1	1	1	0	False
+guitar	fine	1	1	1	0	False
+hammer holder	fine	1	1	1	0	False
+hand shower	fine	1	1	1	0	False
+hand soap	fine	1	1	1	1	False
+hand vacuum	fine	1	1	1	0	False
+hand washing soap	fine	1	1	1	0	False
+hat	fine	1	1	1	0	False
+headboard	fine	1	1	1	0	False
+headphone case	fine	1	1	1	0	False
+headphone holder	fine	1	1	1	0	False
+instant pot	fine	1	1	1	0	False
+interactive whiteboard	fine	1	1	1	1	True
+intercom device	fine	1	1	1	0	False
+jerrycan	fine	1	1	1	0	False
+junction box	fine	1	1	1	0	False
+kitchen brush	fine	1	1	1	0	False
+kitchen glove	fine	1	1	1	0	False
+kitchen hood	fine	1	1	1	0	False
+kitchen object	fine	1	1	1	0	False
+knife holder	fine	1	1	1	0	False
+laboratory bench	fine	1	1	1	0	False
+ladder	fine	1	1	1	0	False
+laundry hamper	fine	1	1	1	0	False
+led ceiling fan	fine	1	1	1	0	False
+lint roller	fine	1	1	1	0	False
+liquid soap	fine	1	1	1	0	False
+magazine rack	fine	1	1	1	0	False
+magnets	fine	1	1	0	1	False
+mattress	fine	1	1	1	0	False
+metal saw	fine	1	1	1	0	False
+microphone	fine	1	1	1	0	False
+mirror lamp	fine	1	1	1	0	True
+moka pot	fine	1	1	1	0	False
+monitor holder	fine	1	1	1	0	False
+monitor light	fine	1	1	1	0	False
+monitor stand	fine	1	1	1	0	False
+mop	fine	1	1	1	1	False
+mop cloth	fine	1	1	1	0	False
+painting	fine	1	1	1	0	True
+pallet	fine	1	1	1	0	False
+pan set	fine	1	1	1	0	False
+paper bag	fine	1	1	1	0	False
+paper shredder	fine	1	1	1	0	False
+paper towel package	fine	1	1	1	0	False
+pegboard	fine	1	1	1	0	False
+pencil holder	fine	1	1	1	0	False
+pencil stande	fine	1	1	1	0	False
+photo	fine	1	1	1	0	True
+piano	fine	1	1	1	0	False
+piano book	fine	1	1	1	0	False
+piano chair	fine	1	1	1	0	True
+platform trolley	fine	1	1	1	0	False
+pliers	fine	1	1	1	0	False
+plushie	fine	1	1	1	0	False
+portable speaker	fine	1	1	1	0	True
+postcards	fine	1	1	0	0	False
+pot	fine	1	1	1	0	True
+pot cover	fine	1	1	1	0	False
+power brick	fine	1	1	1	0	False
+power panel	fine	1	1	1	0	False
+power plug	fine	1	1	1	0	False
+printer paper	fine	1	1	1	0	False
+projector holder	fine	1	1	1	0	False
+projector screen	fine	1	1	1	0	False
+pumper	fine	1	1	1	0	False
+range hood	fine	1	1	1	0	False
+razor	fine	1	1	1	0	False
+receipt	fine	1	1	1	0	False
+robot vacuum cleaner	fine	1	1	1	0	False
+rods	fine	1	1	0	0	False
+rolling cart	fine	1	1	1	0	False
+rolling stand	fine	1	1	1	0	False
+router	fine	1	1	1	0	False
+safe box	fine	1	1	1	0	False
+salad spinner	fine	1	1	1	0	False
+scarf	fine	1	1	1	0	False
+serving trolley	fine	1	1	1	0	False
+shaving foam	fine	1	1	1	0	False
+shoes holder	fine	1	1	1	0	False
+shower ceiling	fine	1	1	1	0	False
+shower curtain rod	fine	1	1	1	1	False
+shower handle	fine	1	1	1	0	False
+shower loofah	fine	1	1	1	1	False
+shower rod	fine	1	1	1	0	False
+shower seating	fine	1	1	1	0	False
+shower tap	fine	1	1	1	0	False
+silicon gun	fine	1	1	1	0	False
+sink counter	fine	1	1	1	0	False
+sit-up pillow	fine	1	1	1	0	False
+skyligth	fine	1	1	1	0	False
+sliding door frame	fine	1	1	1	0	False
+smartphone	fine	1	1	1	0	False
+soap	fine	1	1	1	0	False
+sofa chair	fine	1	1	1	0	True
+softbox light	fine	1	1	1	0	False
+soldering iron	fine	1	1	1	0	False
+standing fan	fine	1	1	1	0	False
+stationery	fine	1	1	1	0	False
+stick	fine	1	1	1	0	False
+surface cleaning liquid	fine	1	1	1	0	False
+surfboard	fine	1	1	1	0	False
+sweater	fine	1	1	1	0	False
+table mat	fine	1	1	1	0	False
+toilet cleaner	fine	1	1	1	0	False
+toilet seat	fine	1	1	1	0	False
+tool box	fine	1	1	1	0	False
+tool organizer	fine	1	1	1	0	False
+tote bag	fine	1	1	1	0	False
+towel warmer	fine	1	1	1	1	False
+traz	fine	1	1	1	0	False
+tube	fine	1	1	1	0	False
+tv receiver	fine	1	1	1	0	False
+tv remote	fine	1	1	1	0	False
+vacuum flask	fine	1	1	1	1	False
+vent	fine	1	1	1	0	False
+vertical blind control	fine	1	1	1	1	False
+wall cord cover	fine	1	1	1	0	False
+wall hook	fine	1	1	1	0	False
+wall lamp	fine	1	1	1	0	True
+wall unit	fine	1	1	1	0	False
+water boiler	fine	1	1	1	0	False
+water bubbler	fine	1	1	1	0	False
+water pitcher	fine	1	1	1	0	False
+weighing scale	fine	1	1	1	0	False
+wok pan	fine	1	1	1	0	False
+wooden pallet	fine	1	1	1	0	False
+wooden stick	fine	1	1	1	0	False
+workbench	fine	1	1	1	0	False
+object	merged	564	44	8	45	False
+wall	merged	438	50	1	32	False
+chair	merged	314	37	8	26	True
+book	merged	283	19	2	3	False
+box	merged	222	33	6	20	True
+ceiling lamp	merged	186	41	14	10	False
+table	merged	172	41	13	13	True
+socket	merged	159	38	7	19	False
+cabinet	merged	133	35	8	6	True
+bottle	merged	113	23	8	22	False
+window	merged	92	29	8	5	True
+door	merged	82	47	29	7	True
+light switch	merged	80	38	18	6	False
+TV	merged	77	24	10	7	True
+paper	merged	74	17	5	4	False
+doorframe	merged	70	45	32	7	False
+trash can	merged	69	37	17	6	True
+ceiling	merged	66	43	28	6	False
+floor	merged	64	50	43	5	False
+whiteboard	merged	61	25	8	7	True
+picture	merged	53	20	10	4	True
+shelf	merged	53	31	18	1	True
+towel	merged	51	20	6	3	True
+shoes	merged	48	7	1	0	False
+bag	merged	47	16	8	3	False
+pipe	merged	45	9	1	4	False
+cup	merged	44	17	9	4	False
+computer tower	merged	43	8	3	3	True
+window frame	merged	42	22	12	1	False
+lamp	merged	41	17	7	1	True
+electrical duct	merged	39	13	3	3	False
+keyboard	merged	39	17	8	2	True
+heater	merged	38	24	15	3	True
+mouse	merged	33	15	7	2	False
+structure	merged	33	14	5	0	False
+smoke detector	merged	26	20	15	2	False
+windowsill	merged	26	20	15	1	False
+pot	merged	25	9	4	3	True
+blinds	merged	23	15	10	2	True
+sink	merged	23	19	16	1	True
+shower wall	merged	20	5	0	0	False
+toilet paper	merged	20	10	6	1	False
+pillow	merged	19	7	1	0	True
+telephone	merged	19	15	11	1	True
+plant	merged	18	6	2	1	True
+crate	merged	17	4	2	15	True
+file	merged	17	1	0	0	False
+machine	merged	17	5	3	0	False
+stool	merged	17	6	2	0	True
+curtain	merged	16	9	4	1	True
+exhaust fan	merged	15	9	4	0	False
+jar	merged	15	2	0	0	False
+tap	merged	15	12	9	1	True
+speaker	merged	14	9	4	0	True
+blanket	merged	13	9	6	0	False
+kettle	merged	13	9	7	0	True
+plate	merged	13	8	3	2	False
+power strip	merged	13	8	4	1	True
+printer	merged	13	9	6	1	True
+sofa	merged	13	9	8	0	True
+switch	merged	13	6	3	2	False
+jacket	merged	11	6	3	0	False
+kitchen utensil	merged	11	4	1	0	False
+laboratory equipment	merged	10	1	0	0	False
+basket	merged	9	4	1	0	True
+cloth	merged	9	4	2	0	False
+refrigerator	merged	9	8	7	1	True
+toilet	merged	9	8	7	1	True
+bed	merged	8	8	8	0	True
+cable	merged	8	4	0	0	False
+cable raceway	merged	8	1	0	0	False
+ceiling vent	merged	8	3	1	0	False
+coat hanger	merged	8	6	4	1	True
+laptop	merged	8	7	6	0	True
+microwave	merged	8	8	8	2	True
+pen	merged	8	2	1	0	False
+pillar	merged	8	5	3	0	False
+air conditioner	merged	7	5	4	0	False
+beanbag	merged	7	2	0	0	False
+bucket	merged	7	3	1	1	True
+clock	merged	7	7	7	1	True
+paper stapler	merged	7	2	0	0	False
+pen holder	merged	7	3	1	0	False
+reflection	merged	7	1	0	0	False
+shower floor	merged	7	6	5	0	False
+suitcase	merged	7	5	4	0	True
+toilet brush	merged	7	6	5	1	True
+whiteboard eraser	merged	7	6	5	0	False
+carpet	merged	6	3	2	0	False
+cushion	merged	6	1	0	0	True
+fire extinguisher	merged	6	6	6	0	False
+notice	merged	6	1	0	0	False
+pedestal fan	merged	6	5	4	0	False
+plug	merged	6	2	0	0	False
+projector	merged	6	5	4	0	False
+soap dispenser	merged	6	6	6	0	True
+alligator clips	merged	5	1	0	0	False
+broom	merged	5	3	2	1	False
+clothes	merged	5	4	3	0	False
+coffee maker	merged	5	4	3	0	False
+cutting board	merged	5	5	5	0	True
+headphones	merged	5	5	5	1	False
+helmet	merged	5	2	0	0	False
+knife	merged	5	1	0	0	False
+mirror	merged	5	4	3	0	False
+toothpaste	merged	5	4	3	1	False
+air vent	merged	4	3	2	1	False
+bathtub	merged	4	4	4	0	True
+bench	merged	4	1	0	0	False
+coat	merged	4	1	0	0	False
+dishwasher	merged	4	3	2	0	True
+dumbbell	merged	4	1	0	0	False
+electrical pipe	merged	4	1	0	0	False
+folder	merged	4	2	0	0	False
+mouse pad	merged	4	4	4	1	False
+pan	merged	4	3	2	0	True
+stove	merged	4	4	4	0	True
+toothbrush	merged	4	3	2	1	False
+air duct	merged	3	2	1	0	False
+bedframe	merged	3	1	0	0	False
+bicycle	merged	3	1	0	0	False
+binder	merged	3	1	0	0	False
+bunny chocolate	merged	3	1	0	0	False
+cable duct	merged	3	2	1	0	False
+cable tray	merged	3	2	1	0	False
+calendar	merged	3	2	1	2	False
+coffee machine	merged	3	3	3	1	False
+decoration	merged	3	2	1	0	False
+drying rack	merged	3	1	0	0	False
+flush button	merged	3	2	1	1	False
+grab bar	merged	3	1	0	3	False
+hammer	merged	3	2	1	0	False
+jug	merged	3	2	1	2	False
+knife set	merged	3	1	0	0	False
+marker	merged	3	1	0	0	False
+metal sheet	merged	3	1	0	0	False
+oven	merged	3	3	3	0	True
+overhead projector	merged	3	3	3	1	False
+paper ram	merged	3	2	1	0	False
+paper towel dispenser	merged	3	3	3	0	False
+plant pot mat	merged	3	1	0	0	False
+remote controller	merged	3	2	1	0	False
+roof	merged	3	1	0	0	False
+rug	merged	3	2	1	0	False
+shower	merged	3	3	3	1	False
+stapler	merged	3	1	0	0	False
+toilet paper holder	merged	3	3	3	0	False
+tools	merged	3	2	0	0	False
+ventilation	merged	3	2	1	0	False
+washing machine	merged	3	3	3	0	True
+wooden brush	merged	3	1	0	0	False
+blind rail	merged	2	2	2	1	False
+cap	merged	2	1	0	0	False
+cheese	merged	2	1	0	0	False
+clothes dryer	merged	2	1	0	0	False
+coaster	merged	2	2	2	1	False
+coax outlet	merged	2	1	0	0	False
+coax socket	merged	2	1	0	0	False
+door mat	merged	2	1	0	0	False
+floor mounted air conditioner	merged	2	1	0	0	False
+fruit	merged	2	1	0	0	False
+hair dryer	merged	2	2	2	0	False
+headset	merged	2	2	2	0	False
+hole puncher	merged	2	2	2	0	False
+jeans	merged	2	1	0	2	False
+lab equipment	merged	2	1	0	0	False
+lan	merged	2	1	0	0	False
+milling machine	merged	2	1	0	0	False
+notebook	merged	2	2	2	0	False
+oscilloscope	merged	2	2	2	0	False
+package	merged	2	1	0	0	False
+panel	merged	2	2	2	0	False
+pants	merged	2	1	0	2	False
+paper holder	merged	2	1	0	0	False
+plant pot coaster	merged	2	1	0	0	False
+plastic drum	merged	2	1	0	0	False
+post-it	merged	2	2	2	0	False
+scissors	merged	2	2	2	0	False
+screwdriver	merged	2	1	0	0	False
+sculpture	merged	2	1	0	0	False
+shoe rack	merged	2	2	2	0	True
+shower faucet	merged	2	2	2	0	False
+shower gel	merged	2	1	0	0	False
+shower head	merged	2	2	2	0	False
+shower rug	merged	2	2	2	0	False
+shower valve	merged	2	2	2	1	False
+sink pipe	merged	2	2	2	0	False
+sponge	merged	2	1	0	0	False
+toaster	merged	2	2	2	0	False
+toilet flush button	merged	2	2	2	0	False
+toilet paper dispenser	merged	2	2	2	0	False
+toothbrush holder	merged	2	2	2	1	False
+toy	merged	2	1	0	0	False
+tray	merged	2	2	2	0	False
+tripod	merged	2	2	2	0	False
+trousers	merged	2	2	2	1	False
+tv stand	merged	2	2	2	0	False
+umbrella	merged	2	1	0	0	False
+vacuum cleaner	merged	2	2	2	1	False
+ventilator	merged	2	2	2	0	False
+wall hooks	merged	2	1	0	0	False
+water filter	merged	2	2	2	0	False
+water pipe	merged	2	1	0	0	False
+whiteboard stand	merged	2	1	0	0	False
+wooden plank	merged	2	1	0	0	False
+workshop tool	merged	2	1	0	0	False
+yoga mat	merged	2	2	2	0	False
+apple	merged	1	1	1	0	False
+ball	merged	1	1	1	0	False
+banana	merged	1	1	0	0	False
+bar soap	merged	1	1	1	0	False
+barcode scanner	merged	1	1	1	0	False
+baseball cap	merged	1	1	1	0	False
+bath mat	merged	1	1	1	0	False
+bathroom mat	merged	1	1	1	1	False
+billboard	merged	1	1	1	0	False
+blackboard frame	merged	1	1	1	0	False
+buket	merged	1	1	1	0	False
+button	merged	1	1	1	0	False
+cabinet door	merged	1	1	1	0	False
+cable socket	merged	1	1	1	0	False
+calculator	merged	1	1	1	0	False
+car door	merged	1	1	1	0	False
+cart	merged	1	1	1	0	False
+ceiling beam	merged	1	1	1	0	False
+chessboard	merged	1	1	1	0	False
+cleaner	merged	1	1	1	0	False
+cleaning brush	merged	1	1	1	0	False
+cleaning liquid	merged	1	1	1	0	False
+column	merged	1	1	1	0	False
+construction materials	merged	1	1	1	0	False
+cord cover	merged	1	1	1	0	False
+curtain rail	merged	1	1	1	0	False
+curtain rod	merged	1	1	1	0	False
+desk fan	merged	1	1	1	1	False
+dish drainer	merged	1	1	1	0	False
+dish drying rack	merged	1	1	1	0	False
+dishwashing sponge	merged	1	1	1	0	False
+disinfectant dispenser	merged	1	1	1	1	False
+door handle	merged	1	1	1	0	False
+door stopper	merged	1	1	1	0	False
+door vent	merged	1	1	1	0	False
+dustpan	merged	1	1	1	1	False
+electric box	merged	1	1	1	1	False
+electric duct	merged	1	1	1	0	False
+emergency kit	merged	1	1	1	0	False
+eraser	merged	1	1	1	0	False
+espresso machine	merged	1	1	1	0	False
+fabric	merged	1	1	1	0	False
+fan	merged	1	1	1	0	False
+filter jug	merged	1	1	1	0	False
+first aid kit	merged	1	1	1	0	False
+flour bag	merged	1	1	1	0	False
+flushes	merged	1	1	1	0	False
+folder holder	merged	1	1	1	0	False
+folding screen	merged	1	1	1	0	False
+food container	merged	1	1	1	1	False
+french press	merged	1	1	1	1	False
+garbage bin cover	merged	1	1	1	0	False
+glass	merged	1	1	1	0	False
+glass pane	merged	1	1	1	1	False
+glass wall	merged	1	1	1	0	False
+guitar	merged	1	1	1	0	False
+hammer holder	merged	1	1	1	0	False
+hand shower	merged	1	1	1	0	False
+hand soap	merged	1	1	1	1	False
+hand vacuum	merged	1	1	1	0	False
+hand washing soap	merged	1	1	1	0	False
+hat	merged	1	1	1	0	False
+headboard	merged	1	1	1	0	False
+headphone case	merged	1	1	1	0	False
+headphone holder	merged	1	1	1	0	False
+intercom device	merged	1	1	1	0	False
+jerrycan	merged	1	1	1	0	False
+junction box	merged	1	1	1	0	False
+kitchen brush	merged	1	1	1	0	False
+kitchen glove	merged	1	1	1	0	False
+kitchen hood	merged	1	1	1	0	False
+kitchen object	merged	1	1	1	0	False
+knife holder	merged	1	1	1	0	False
+ladder	merged	1	1	1	0	False
+laundry hamper	merged	1	1	1	0	False
+led ceiling fan	merged	1	1	1	0	False
+lint roller	merged	1	1	1	0	False
+liquid soap	merged	1	1	1	0	False
+magnets	merged	1	1	0	1	False
+mattress	merged	1	1	1	0	False
+metal saw	merged	1	1	1	0	False
+microphone	merged	1	1	1	0	False
+monitor holder	merged	1	1	1	0	False
+monitor light	merged	1	1	1	0	False
+monitor stand	merged	1	1	1	0	False
+mop	merged	1	1	1	1	False
+mop cloth	merged	1	1	1	0	False
+pallet	merged	1	1	1	0	False
+pan set	merged	1	1	1	0	False
+paper shredder	merged	1	1	1	0	False
+paper towel package	merged	1	1	1	0	False
+pencil holder	merged	1	1	1	0	False
+pencil stande	merged	1	1	1	0	False
+piano	merged	1	1	1	0	False
+piano book	merged	1	1	1	0	False
+platform trolley	merged	1	1	1	0	False
+pliers	merged	1	1	1	0	False
+plushie	merged	1	1	1	0	False
+postcards	merged	1	1	0	0	False
+pot cover	merged	1	1	1	0	False
+power brick	merged	1	1	1	0	False
+power panel	merged	1	1	1	0	False
+power plug	merged	1	1	1	0	False
+printer paper	merged	1	1	1	0	False
+projector holder	merged	1	1	1	0	False
+projector screen	merged	1	1	1	0	False
+pumper	merged	1	1	1	0	False
+range hood	merged	1	1	1	0	False
+razor	merged	1	1	1	0	False
+receipt	merged	1	1	1	0	False
+robot vacuum cleaner	merged	1	1	1	0	False
+rods	merged	1	1	0	0	False
+rolling cart	merged	1	1	1	0	False
+rolling stand	merged	1	1	1	0	False
+router	merged	1	1	1	0	False
+salad spinner	merged	1	1	1	0	False
+scarf	merged	1	1	1	0	False
+serving trolley	merged	1	1	1	0	False
+shaving foam	merged	1	1	1	0	False
+shoes holder	merged	1	1	1	0	False
+shower ceiling	merged	1	1	1	0	False
+shower curtain rod	merged	1	1	1	1	False
+shower handle	merged	1	1	1	0	False
+shower loofah	merged	1	1	1	1	False
+shower rod	merged	1	1	1	0	False
+shower seating	merged	1	1	1	0	False
+shower tap	merged	1	1	1	0	False
+silicon gun	merged	1	1	1	0	False
+sink counter	merged	1	1	1	0	False
+sit-up pillow	merged	1	1	1	0	False
+skyligth	merged	1	1	1	0	False
+sliding door frame	merged	1	1	1	0	False
+smartphone	merged	1	1	1	0	False
+soap	merged	1	1	1	0	False
+soldering iron	merged	1	1	1	0	False
+standing fan	merged	1	1	1	0	False
+stationery	merged	1	1	1	0	False
+stick	merged	1	1	1	0	False
+surface cleaning liquid	merged	1	1	1	0	False
+surfboard	merged	1	1	1	0	False
+sweater	merged	1	1	1	0	False
+table mat	merged	1	1	1	0	False
+toilet cleaner	merged	1	1	1	0	False
+toilet seat	merged	1	1	1	0	False
+tool organizer	merged	1	1	1	0	False
+towel warmer	merged	1	1	1	1	False
+traz	merged	1	1	1	0	False
+tube	merged	1	1	1	0	False
+tv receiver	merged	1	1	1	0	False
+tv remote	merged	1	1	1	0	False
+vacuum flask	merged	1	1	1	1	False
+vent	merged	1	1	1	0	False
+vertical blind control	merged	1	1	1	1	False
+wall cord cover	merged	1	1	1	0	False
+wall hook	merged	1	1	1	0	False
+wall unit	merged	1	1	1	0	False
+water boiler	merged	1	1	1	0	False
+water bubbler	merged	1	1	1	0	False
+water pitcher	merged	1	1	1	0	False
+weighing scale	merged	1	1	1	0	False
+wok pan	merged	1	1	1	0	False
+wooden pallet	merged	1	1	1	0	False
+wooden stick	merged	1	1	1	0	False

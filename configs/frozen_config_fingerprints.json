@@ -1,0 +1,37 @@
+{
+ "configs/build.yaml": [
+  {
+   "sha256": "fe629e25db208fa1c681e83a17adcc9eba1949db8fb5117444583da79ab98517",
+   "fingerprint": "504f4cbb1726ed5f999fd2d8b090c27f06fb5865748f3f51ffc5fedf4d9ce109",
+   "note": "merged_v1.0 (also scannetpp_only_v0.2 for build.yaml)"
+  }
+ ],
+ "configs/merge.yaml": [
+  {
+   "sha256": "47130317eba44a1c825b03e55c2ae24dd51d0cbc043ba7937c8f0acfc2f9530f",
+   "fingerprint": "c9c3f2e1cd656d5ea8457e7589f94af36becbffb0d2abeb80ce4ddc44de47493",
+   "note": "merged_v1.0"
+  }
+ ],
+ "configs/paraphrases.yaml": [
+  {
+   "sha256": "59ba52b261fdd2590728102cb288a5469a37eec90a7503d7444444f3bcb15665",
+   "fingerprint": "255dab0150bb2308d3e229c417f20f760e66309610242b2e35865fe548165efd",
+   "note": "merged_v1.0"
+  }
+ ],
+ "configs/object_blacklist.yaml": [
+  {
+   "sha256": "e6d8de616ae33540ae522d09cc39ed5ac71f044258b2222b266299ce8a8155b6",
+   "fingerprint": "4ca16745a11e18e1fe83769563177f8d82c18e110b7965bf910b26d647826dee",
+   "note": "merged_v1.0"
+  }
+ ],
+ "configs/object_blacklist_scannetpp.yaml": [
+  {
+   "sha256": "ef4eab0231f36134175f55d946767c5e1327531f0ead8377db3de11f043d58df",
+   "fingerprint": "5e64bf0babc6d44c78948f0c0f8b93ecaa78510de1d2bea7dea463416095ee09",
+   "note": "merged_v1.0"
+  }
+ ]
+}

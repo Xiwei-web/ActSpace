@@ -1,0 +1,134 @@
+# Closed-model (API) registry. One entry per model; read by the one-click script scripts/run_api_eval.sh and by actspace_eval.providers,
+# without changing configs/eval.yaml. The protocol (data, budget, K, prompts, tiny set) is still defined by configs/eval.yaml.
+#
+# - Keys are read only from environment variables (OPENAI_API_KEY, ANTHROPIC_API_KEY or ANTHROPIC_API_KEY_1, _2, ...; for the optional
+#   key file see providers/keys.py) and are never written to logs, command-line arguments or git.
+# - prices_confirmed and reasoning.approved: set to true after the prices have been checked and the reasoning-effort setting approved;
+#   if either is false the adapters refuse real calls.
+# - prices (USD / 1M tokens): input = uncached input; cache_read = cache read; cache_write = cache write (OpenAI 30-minute tier,
+#   Anthropic 5-minute tier, both the request default); cache_write_long = long tier (OpenAI 12 hours, Anthropic 1 hour; this
+#   evaluation does not request the long tier, it is only priced if the API reports it); output = output (thinking tokens included).
+# - To add another provider: add an adapter to ADAPTERS in providers/__init__.py and put its name in provider here.
+results_root: results/api   # <short name>/<setting>/<run name>/; can be overridden with env var API_OUT_ROOT (tests only)
+truncation_warn_rate: 0.02   # when a model's truncation rate in smoke reaches this value, run_api_eval.sh prints a prominent warning
+# First round: active_v2 and random_walk_40 run once each (seed 0); seeds 1 and 2 are added later with --repeats 3 --resume.
+# The reported paper results use 3 runs. Seeds are fixed to 0..N-1; the other settings always run once.
+repeats: {active_v2: 1, random_walk_40: 1}
+
+common:
+  openai: &openai
+    provider: openai
+    base_url: https://api.openai.com/v1/chat/completions
+    key_env: OPENAI_API_KEY
+    prices_confirmed: true             # checked against the official pricing page
+    context_tokens: 1050000            # official model page: 1.05M
+    max_output_tokens: 32768           # 32768, same as for open-weight models; includes reasoning tokens (max_completion_tokens)
+    max_tokens_param: max_completion_tokens
+    reasoning: &openai_reasoning
+      target: high
+      approved: true
+      request: {reasoning_effort: high}
+      returns_thinking: false                    # Chat Completions only reports reasoning_tokens and returns no thinking content or summary
+    image:
+      format: "JPEG base64 data URL (quality 90, same as the OpenAI models in eval.yaml)"
+      detail: high
+      max_images_per_request: 1500     # official images-vision guide (total payload 512 MB)
+      tokens_per_image: 360            # 640x480: 20x15 = 300 patches x 1.2; measured 361 in a probe
+    json: {mode: json_object, note: "response_format = json_object (Chat Completions)"}
+    prompt_cache: {mode: auto, note: "automatic caching; one prompt_cache_key per episode; no retention tier set (30-minute tier)"}
+    logprobs_top: null                 # not collected
+    concurrency: {episodes: 8}         # provisional; official guidance is about 15 requests / minute per cache key, and each episode uses one key with sequential calls
+    request_timeout_s: 1200            # non-streaming, so the whole reply must arrive within the limit; 32768 tokens at 60 tokens/s is about 550 s, plus margin
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+  anthropic: &anthropic
+    provider: anthropic
+    base_url: https://api.anthropic.com/v1/messages
+    key_env: ANTHROPIC_API_KEY
+    api_version: "2026-10-21"          # anthropic-version request header (latest version at https://platform.claude.com/docs/en/api/versioning; this version removes temperature / top_p / top_k, which the adapter does not send)
+    prices_confirmed: true             # checked against the official model page
+    context_tokens: 1000000            # official models overview: 1M
+    max_output_tokens: 32768           # 32768, same as for open-weight models; includes thinking tokens (max_tokens)
+    reasoning: &anthropic_reasoning
+      target: high
+      approved: true
+      request: {thinking: {type: adaptive, display: summarized}, output_config: {effort: high}}
+      returns_thinking: true           # display = summarized returns thinking summaries (raw thinking is not returned); billing does not depend on display
+    image:
+      format: "JPEG base64 (image block source.type = base64, quality 90, same bytes as for OpenAI)"
+      max_images_per_request: 600      # official vision page (above 20 images the per-image size limit is stricter, which does not affect 640x480; 128 MB per request)
+      tokens_per_image: 414            # ceil(640/28) x ceil(480/28) = 23 x 18 (official formula, not measured; the probe measurement overrides it in estimates)
+    # json.mode: none or schema (structured outputs). All 4 Claude models use schema.
+    json: {mode: schema, note: "structured outputs (output_config.format). Prompts unchanged word for word; the server adds format instructions as officially documented, measured at about 558 tokens"}
+    key_budget_usd: 190                # once a key has accumulated this amount, switch to the next one (providers/keys.py); set it a little below each key's spend limit
+    prompt_cache: {mode: explicit, note: "a single cache_control (ephemeral, 5 minutes) only on the Active START image block, whose prefix = system prompt + questions + START image; none for one-shot answering settings (called only once: the write price is higher than the input price and nothing is read)"}
+    logprobs_top: null                 # not offered by the Messages API; not collected
+    concurrency: {episodes: 8}         # provisional
+    request_timeout_s: 600             # streaming requests: maximum wait between two chunks
+    stream: true
+    est_output_tokens: {action: 40, answer_base: 600, answer_per_question: 0, reasoning_per_call: 0}
+
+models:
+  # OpenAI. Prices from https://developers.openai.com/api/docs/pricing (read 2026-11-04, standard tier, short context <= 272K)
+  sol:
+    <<: *openai
+    model_id: gpt-6.1-sol
+    paper_runs: {prefix: all, runs_per_setting: 1, active_v2: 1, random_walk_40: 1, ablations: [rw40_last8_v2]}   # sealed runs behind the paper tables
+    prices: {input: 2.00, cache_read: 0.10, cache_write: 2.50, cache_write_long: 5.00, output: 10.00, source: "https://developers.openai.com/api/docs/pricing"}
+  terra:
+    <<: *openai
+    model_id: gpt-6.1-terra
+    paper_runs: {prefix: all, runs_per_setting: 1, active_v2: 1, random_walk_40: 1, ablations: [start_only, rw40_last8, rw40_last8_v2, active_v2_medium, cogmap_active_v2, cogmap_oracle_route]}   # sealed runs behind the paper tables
+    prices: {input: 1.00, cache_read: 0.05, cache_write: 1.25, cache_write_long: 2.50, output: 5.00, source: "https://developers.openai.com/api/docs/pricing"}
+  luna:
+    <<: *openai
+    model_id: gpt-6-luna
+    paper_runs: {prefix: all, runs_per_setting: 1, active_v2: 1, random_walk_40: 1, ablations: [rw40_last8_v2]}   # sealed runs behind the paper tables
+    prices: {input: 0.10, cache_read: 0.01, cache_write: 0.125, cache_write_long: 0.25, output: 0.50, source: "https://developers.openai.com/api/docs/pricing"}
+  astra:
+    <<: *openai
+    model_id: gpt-6-astra
+    paper_runs: {prefix: tiny_core, subset: "32-group tiny subset only (llm.tiny_groups)", settings: [blind, random_walk_40, active_v2], active_v2: 1, random_walk_40: 1, ablations: []}   # main table row marked "evaluated on the 32-group tiny subset only"
+    prices: {input: 10.00, cache_read: 1.00, cache_write: 12.50, cache_write_long: 25.00, output: 50.00, source: "https://developers.openai.com/api/docs/pricing"}
+  # Current Anthropic models. Model IDs from https://platform.claude.com/docs/en/about-claude/models/overview;
+  # prices from https://platform.claude.com/docs/en/about-claude/pricing (read 2026-11-04, global endpoint, standard tier)
+  fable-5.1:
+    <<: *anthropic
+    model_id: claude-fable-5-1
+    paper_runs: null                 # not part of the paper tables
+    prices: {input: 10.00, cache_read: 0.25, cache_write: 12.50, cache_write_long: 20.00, output: 50.00, source: "https://platform.claude.com/docs/en/about-claude/pricing"}
+    concurrency: {episodes: 4}         # lower rate limits (input / output tokens per minute) than the other models
+  opus-5.5:
+    <<: *anthropic
+    model_id: claude-opus-5-5
+    paper_runs: {prefix: all_v1, runs_per_setting: 1, active_v2: 1, random_walk_40: 1, ablations: [rw40_last8_v2]}   # sealed runs behind the paper tables
+    prices: {input: 4.00, cache_read: 0.20, cache_write: 5.00, cache_write_long: 8.00, output: 20.00, source: "https://platform.claude.com/docs/en/about-claude/pricing"}
+  sonnet-5.5:
+    <<: *anthropic
+    model_id: claude-sonnet-5-5
+    paper_runs: {prefix: all_v1, runs_per_setting: 1, active_v2: 1, random_walk_40: 1, ablations: [rw40_last8_v2]}   # sealed runs behind the paper tables
+    prices: {input: 2.00, cache_read: 0.10, cache_write: 2.50, cache_write_long: 4.00, output: 10.00, source: "https://platform.claude.com/docs/en/about-claude/pricing"}
+  haiku-5.5:
+    <<: *anthropic
+    model_id: claude-haiku-5-5
+    paper_runs: {prefix: all_v1, runs_per_setting: 1, active_v2: 3, random_walk_40: 3, ablations: [start_only, rw40_last8, rw40_last8_v2, active_v2_medium, cogmap_active_v2, cogmap_oracle_route]}   # sealed runs behind the paper tables
+    # These are the prices for requests up to 100,000 tokens; the longest request in this evaluation (Passive-40) is about 20k tokens, below the higher-price tier
+    prices: {input: 0.10, cache_read: 0.01, cache_write: 0.125, cache_write_long: 0.20, output: 0.50, source: "https://platform.claude.com/docs/en/about-claude/pricing"}
+
+# For tests: the real adapters (message assembly, usage parsing, retries, cost) + an in-process fake transport (providers/mock.py); no network connections, no key needed.
+mock_models:
+  mock-openai:
+    <<: *openai
+    model_id: mock-openai
+    key_env: null
+    reasoning: *openai_reasoning
+    prices: {input: 2.00, cache_read: 0.10, cache_write: 2.50, cache_write_long: 5.00, output: 10.00, source: mock}
+    concurrency: {episodes: 3}
+    mock: {policy: normal, steps: 5, fail_times: 2}
+  mock-anthropic:
+    <<: *anthropic
+    model_id: mock-anthropic
+    key_env: null
+    reasoning: *anthropic_reasoning
+    prices: {input: 2.00, cache_read: 0.10, cache_write: 2.50, cache_write_long: 4.00, output: 10.00, source: mock}
+    concurrency: {episodes: 3}
+    mock: {policy: normal, steps: 5, fail_times: 2}

@@ -1,0 +1,4 @@
+{% for message in messages %}{{'<|im_start|>' + message['role'] + ' '}}{# ActSpace（负责人 2026-11-16，[EVAL-OPEN-EXT]）：图片、视频、文字按原始内容的顺序输出（官方模板先输出全部图片、再全部视频、再全部文字）。占位符、每段文字前的换行、助手文字的 generation 标记都与官方相同；只改顺序，不改内容。 #}{% if message['content'] is string %}{% set parts = [{'type': 'text', 'text': message['content']}] %}{% else %}{% set parts = message['content'] %}{% endif %}{% for content in parts %}{% if content['type'] == 'image' %}{{ '<image>' }}{% elif content['type'] == 'video' %}{{ '<video>' }}{% elif content['type'] == 'text' %}{% if message['role'] != 'assistant' %}{{ '
+' + content['text'] }}{% else %}{% generation %}{{ '
+' + content['text'] }}{% endgeneration %}{% endif %}{% endif %}{% endfor %}{{'<|im_end|>'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant
+' }}{% endif %}

@@ -1,0 +1,46 @@
+# Local paths and secrets (never commit)
+configs/paths.yaml
+.env
+.env.*
+*.token
+*.pem
+*.key
+.git-credentials
+credentials*
+api_keys.env
+
+# Data, frames, models, results and environments (all outside git)
+/data_raw/
+/work/
+/frames/
+/release/
+/merge_sandbox/
+/models/
+/results/
+/logs/
+/envs/
+/third_party/
+/synthetic_data/
+/reports/
+/paper_table/
+/demo_report.md
+/build_info.json
+*.npy
+*.npz
+*.h5
+*.ply
+*.mkv
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.zip
+*.tar
+*.tar.gz
+
+# Python and tools
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store
