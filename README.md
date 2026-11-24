@@ -435,10 +435,14 @@ once complete, `SHA256SUMS`; `actspace_eval.trajectory.replay` re-runs a traject
 ## Citation, license and data terms
 
 ```bibtex
-@misc{actspace2026,
-  title  = {ActSpace-Bench},
-  note   = {Citation will be added upon publication},
-  year   = {2026}
+@misc{liu2026seekingspacebenchmarkingpurposeful,
+      title={Seeking in Space: Benchmarking Purposeful Active Exploration of Vision-Language Models for Spatial Reasoning}, 
+      author={Xiwei Liu and Yulong Li and Xuhui Li and Xinlin Zhuang and Zhixiang Lu and Haolin Yang and Jianxu Chen and Yifan Lu and Zhiran Zhang and Yutong Xie},
+      year={2026},
+      eprint={2611.31215},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2611.31215}, 
 }
 ```
 
